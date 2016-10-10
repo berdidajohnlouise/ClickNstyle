@@ -7,10 +7,13 @@
 		<link rel="shortcut icon" href="<?php echo base_url();?>assets/images/logo.png">
 		<title><?php echo $title; ?></title>
 		<!-- Loading third party fonts -->
+
 		<link href="<?php echo base_url();?>assets/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="<?php echo base_url();?>assets/fonts/novecento-font/novecento-font.css" rel="stylesheet" type="text/css">
 		<!-- Loading main css file -->
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/style.css">
+
+
 
 		<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
@@ -21,6 +24,7 @@
 
 
 	<body class="<?php if(!empty($homepageheader)){echo $homepageheader;}; ?>">
+
 
 		<div id="site-content">
 
@@ -40,10 +44,12 @@
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
 							<li class="menu-item current-menu-item"><a href="<?php echo base_url();?>">Home</a></li>
-							<li class="menu-item"><a href="<?php echo base_url()?>Web/about">About</a></li>
-							<li class="menu-item"><a href="<?php echo base_url()?>Web/services">Services</a></li>
-							<li class="menu-item"><a href="<?php echo base_url()?>Web/gallery">Gallery</a></li>
-							<li class="menu-item"><a href="<?php echo base_url()?>Web/contact">Contact</a></li>
+							<li class="menu-item"><a href="<?php echo base_url();?>Web/about">About</a></li>
+							<li class="menu-item"><a href="<?php echo base_url();?>Web/services">Services</a></li>
+							<li class="menu-item"><a href="<?php echo base_url();?>Web/gallery">Gallery</a></li>
+							<li class="menu-item"><a href="<?php echo base_url();?>Web/contact">Contact</a></li>
+							<li class="menu-item"><a href="<?php echo base_url();?>Web/register">Register</a></li>
+							<li class="menu-item"><a href="<?php echo base_url();?>Web/login">Login</a></li>
 						</ul> <!-- .menu -->
 					</div> <!-- .main-navigation -->
 

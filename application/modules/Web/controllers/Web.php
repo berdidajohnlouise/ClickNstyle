@@ -40,7 +40,7 @@ class Web extends MY_Controller{
 
     function gallery(){
       $data = array(
-        'title'=>'Our Services'
+        'title'=>'Our Galleries'
 
       );
       $this->load->view('Default/header',$data);
@@ -57,5 +57,20 @@ class Web extends MY_Controller{
       $this->load->view('Default/header',$data);
       $this->load->view('contact');
       $this->load->view('Default/footer');
+    }
+
+    function register(){
+      $data = array(
+        'title'=>'Registration Form',
+        'notsuccess'=>''
+      );
+      $notsuccess = "";
+      $this->load->view('Default/header',$data);
+      $this->load->view('register',$data);
+      $this->load->view('Default/footer');
+    }
+
+    function login(){
+      $this->load->view('login');
     }
 }

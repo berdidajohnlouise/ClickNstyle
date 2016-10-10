@@ -38,7 +38,7 @@
     </div>
 
     <div class="colophon">
-      <p>Copyright 2014 Company name. Designed by Themezy. All rights reserved.</p>
+      <p>Copyright 2016 Click N Style.  All rights reserved.</p>
     </div>
   </div>
 </footer>
@@ -46,9 +46,43 @@
 
 
 <script src="<?php echo base_url();?>assets/js/jquery-1.11.1.min.js"></script>
-<script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+<script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrapValidator.min.js"></script>
+
 <script src="<?php echo base_url();?>assets/js/plugins.js"></script>
 <script src="<?php echo base_url();?>assets/js/app.js"></script>
+<script type="text/javascript">
+  $(function(){
+      var validator = $('.contact-form').bootstrapValidator({
+          fields : {
+             password:{
+               validators: {
+                 trigger:'focus',
+                 notEmpty:{
+                   message: "Password is required <br> "
+                 },
+                 stringLength:{
+                   min:6,
+                   message: "Password must be 6 characters long <br>"
+                 }
+               }
+             },
+             confirmpassword:{
+               validators:{
+                 notEmpty:{
+                   message: "Confirm Password is required <br> "
+                 },
+                 identical:{
+                   field: "password",
+                   message: "Password And Confirm Password must match <br> "
+                 }
+               }
+             }
+
+          }
+      });
+  });
+</script>
 
 </body>
 

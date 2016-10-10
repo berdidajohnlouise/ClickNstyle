@@ -13,4 +13,6 @@ class Default extends MY_Controller{
       $this->load->view('footer');
     }
 
+
+
 }
