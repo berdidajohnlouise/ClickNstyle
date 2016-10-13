@@ -16,7 +16,8 @@ class Auth extends MY_Controller{
       'email'=>$this->input->post('email'),
       'fname'=>$this->input->post('fname'),
       'lname'=>$this->input->post('lname'),
-      'address'=>$this->input->post('address')
+      'address'=>$this->input->post('address'),
+      'user_image'=>'user.png'
     );
 
     $success = $this->M_auth->register($registerdata);
@@ -29,6 +30,9 @@ class Auth extends MY_Controller{
       $this->load->view('Default/header',$data);
       $this->load->view('Web/register',$data);
       $this->load->view('Default/footer');
+    }
+    else if($success == 'Login'){
+      redirect('Functions');
     }
   }
 

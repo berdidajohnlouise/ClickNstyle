@@ -1,20 +1,22 @@
 <!-- Default snippet for navigation -->
 <div class="main-navigation">
-	<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
-	<ul class="menu">
-		<li class="menu-item current-menu-item"><a href="<?php echo base_url();?>">Home</a></li>
-		<li class="menu-item"><a href="<?php echo base_url();?>Web/about">About</a></li>
-		<li class="menu-item"><a href="<?php echo base_url();?>Web/services">Services</a></li>
-		<li class="menu-item"><a href="<?php echo base_url();?>Web/gallery">Gallery</a></li>
-		<li class="menu-item"><a href="<?php echo base_url();?>Web/contact">Contact</a></li>
-		<li class="menu-item"><a href="<?php echo base_url();?>Web/register">Register</a></li>
-		<li class="menu-item"><a href="<?php echo base_url();?>Web/login">Login</a></li>
-	</ul> <!-- .menu -->
+  <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+  <ul class="menu">
+    <li class="menu-item current-menu-item"><a href="<?php echo base_url();?>GlobalService">Home</a></li>
+    <li class="menu-item"><a href="<?php echo base_url();?>GlobalService/about">About</a></li>
+    <li class="menu-item"><a href="<?php echo base_url();?>GlobalService/services">Services</a></li>
+    <li class="menu-item"><a href="<?php echo base_url();?>GlobalService/gallery">Gallery</a></li>
+    <li class="menu-item"><a href="<?php echo base_url();?>GlobalService/contact">Contact</a></li>
+    <li class="menu-item"><a href="<?php echo base_url();?>Functions">My Account</a></li>
+    <li class="menu-item"><a href="<?php echo base_url();?>Auth/logout">Logout</a></li>
+
+  </ul> <!-- .menu -->
 </div> <!-- .main-navigation -->
 
 <div class="mobile-navigation"></div>
 </div>
 </header>
+
 
 
 			<div class="hero hero-slider">

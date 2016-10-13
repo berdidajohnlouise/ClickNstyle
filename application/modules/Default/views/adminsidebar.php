@@ -6,7 +6,7 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="<?php echo base_url();?>assets/img/avatar3.png" class="img-circle" alt="User Image" />
+                    <img src="<?php echo base_url();?>assets/usersimage/<?php echo $userdetails->user_image;?>" class="img-circle" alt="User Image" />
                 </div>
                 <div class="pull-left info">
                     <p>Hello, <?php echo $userdetails->username;?></p>
@@ -28,11 +28,7 @@
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
-                <li class="active">
-                    <a href="<?php echo base_url();?>Functions/">
-                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                    </a>
-                </li>
+
             <?php foreach($sidebar as $row):?>
                 <li>
                     <a href="<?php echo base_url()."Functions/".$row->menu_route;?>">

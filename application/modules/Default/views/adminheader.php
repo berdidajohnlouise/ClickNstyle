@@ -12,6 +12,7 @@
         <link href="<?php echo base_url();?>assets/css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url();?>assets/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -22,7 +23,7 @@
     <body class="skin-black">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a href="<?php echo base_url();?>Functions/" class="logo">
+            <a href="<?php echo base_url();?>GlobalService/" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 ClickNStyle
             </a>
@@ -123,7 +124,7 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
-                                    <img src="<?php echo base_url();?>assets/img/avatar3.png" class="img-circle" alt="User Image" />
+                                    <img src="<?php echo base_url();?>assets/usersimage/<?php echo $userdetails->user_image;?>" class="img-circle" alt="User Image" />
                                     <p>
                                         <?php echo ucfirst($userdetails->firstname).' '.ucfirst($userdetails->lastname);?> - <?php if($userdetails->usertype==0){echo 'Admin';}else if($userdetails->usertype==1){echo 'Salon Customer';}else{ echo 'Salon Admin';}?>
                                         <small>Member since <?php echo date('M. d, Y',strtotime($userdetails->created_at));?></small>
@@ -144,7 +145,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                        <a href="<?php echo base_url();?>GlobalService" class="btn btn-default btn-flat">Go To Main Page</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="<?php echo base_url();?>Auth/logout" class="btn btn-default btn-flat">Sign out</a>
