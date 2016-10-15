@@ -68,7 +68,7 @@
         });
       }
       else{
-        alert('Bright');
+        location.reload();
       }
     });
   });
