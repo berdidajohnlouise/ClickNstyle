@@ -30,5 +30,49 @@
   });
 </script>
 
+<script type="text/javascript">
+  $('#salonaddress').on('change',function(){
+      var str = $('#salonaddress').val();
+
+      var text = str.split(" ");
+ 			        var i = 0;
+ 			        do{
+ 			            text[i] += "+";
+ 			            i++;
+ 			        } while(i < text.length - 2);
+ 			        var newText = text.join().replace(/,/g,'');
+
+ 			       var url = 'http://maps.googleapis.com/maps/api/geocode/json?address='+newText+'&sensor=true';
+ 			       $.getJSON(url,function(result){
+
+              var lat = result.results[0].geometry.location.lat;
+              var long = result.results[0].geometry.location.lng;
+
+              $('#lat').attr('value',lat);
+              $('#long').attr('value',long);
+
+ 			       });
+  })
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#deactivate').click(function(){
+
+      if(confirm('Are you sure you want to delete your account ?')== true){
+
+        $.post('http://localhost/clicknstyle/Auth/deactivate',function(result){
+          var result1 = result.toString().replace(/\s/g, "") ;
+          alert('Your account is permanently delete');
+          window.location.href ="http://localhost/clicknstyle/";
+        });
+      }
+      else{
+        alert('Bright');
+      }
+    });
+  });
+</script>
+
 </body>
 </html>

@@ -77,11 +77,57 @@
                    message: "Password And Confirm Password must match <br> "
                  }
                }
+             },
+             contactnumber:{
+
+                 validators: {
+                     numeric: {
+                         message: 'Contact number must be numeric'
+                     }
+                 }
+
              }
 
           }
       });
   });
+</script>
+<script type="text/javascript">
+    $('#usertype').on('change',function(){
+      if($('#usertype').val() == 1){
+        $('#salonadmin').hide();
+        $('#customer').show();
+      }
+      else{
+
+        $('#customer').hide();
+        $('#salonadmin').show();
+      }
+    })
+</script>
+<script type="text/javascript">
+  $('#salonaddress').on('change',function(){
+      var str = $('#salonaddress').val();
+
+      var text = str.split(" ");
+ 			        var i = 0;
+ 			        do{
+ 			            text[i] += "+";
+ 			            i++;
+ 			        } while(i < text.length - 2);
+ 			        var newText = text.join().replace(/,/g,'');
+
+ 			       var url = 'http://maps.googleapis.com/maps/api/geocode/json?address='+newText+'&sensor=true';
+ 			       $.getJSON(url,function(result){
+
+              var lat = result.results[0].geometry.location.lat;
+              var long = result.results[0].geometry.location.lng;
+
+              $('#lat').attr('value',lat);
+              $('#long').attr('value',long);
+
+ 			       });
+  })
 </script>
 
 </body>

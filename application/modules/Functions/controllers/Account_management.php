@@ -44,39 +44,87 @@ class Account_management extends MY_Controller{
         $data = $this->input->post();
         $this->load->library("upload", $config);
 
-      if( ! $this->upload->do_upload($filename)){
+      if($this->session->userdata('usertype')==1){
+        if( ! $this->upload->do_upload($filename)){
 
-        $userdetails = array(
-          'firstname'=>$data['firstname'],
-          'lastname'=>$data['lastname'],
-          'address'=>$data['address'],
-          'user_image'=>''
-        );
+          $userdetails = array(
+            'firstname'=>$data['firstname'],
+            'lastname'=>$data['lastname'],
+            'address'=>$data['address'],
+            'user_image'=>''
+          );
 
-        $success = $this->Account_management_m->updateProfile($userdetails);
+          $success = $this->Account_management_m->updateProfile($userdetails);
 
-        if($success =='True'){
-          redirect('Functions');
+          if($success =='True'){
+            redirect('Functions');
+          }
+        }else{
+
+            $image = $this->upload->data();
+
+
+          $userdetails = array(
+            'firstname'=>$data['firstname'],
+            'lastname'=>$data['lastname'],
+            'address'=>$data['address'],
+            'user_image'=>$image['file_name']
+          );
+
+
+          $success = $this->Account_management_m->updateProfile($userdetails);
+
+          if($success =='True'){
+            redirect('Functions');
+          }
         }
-      }else{
 
-          $image = $this->upload->data();
+      }
+      else if($this->session->userdata('usertype')==2){
+        if( ! $this->upload->do_upload($filename)){
+
+          $userdetails = array(
+            'salonname'=>$data['salonname'],
+            'contactnumber'=>$data['contactnumber'],
+            'salonaddress'=>$data['salonaddress'],
+            'long'=>$data['long'],
+            'lat'=>$data['lat'],
+            'ownername'=>$data['ownername'],
+            'salondetails'=>$data['salondetails'],
+            'user_image'=>''
+          );
+
+          $success = $this->Account_management_m->updateProfile($userdetails);
+
+          if($success =='True'){
+            redirect('Functions');
+          }
+
+        }else{
+
+            $image = $this->upload->data();
 
 
-        $userdetails = array(
-          'firstname'=>$data['firstname'],
-          'lastname'=>$data['lastname'],
-          'address'=>$data['address'],
-          'user_image'=>$image['file_name']
-        );
+          $userdetails = array(
+            'salonname'=>$data['salonname'],
+            'contactnumber'=>$data['contactnumber'],
+            'salonaddress'=>$data['salonaddress'],
+            'long'=>$data['long'],
+            'lat'=>$data['lat'],
+            'ownername'=>$data['ownername'],
+            'salondetails'=>$data['salondetails'],
+            'user_image'=>$image['file_name']
+          );
 
 
-        $success = $this->Account_management_m->updateProfile($userdetails);
+          $success = $this->Account_management_m->updateProfile($userdetails);
 
-        if($success =='True'){
-          redirect('Functions');
+          if($success =='True'){
+            redirect('Functions');
+          }
         }
       }
+
 
   }
 

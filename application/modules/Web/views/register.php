@@ -35,15 +35,28 @@
 							</div>
 							<div class="col-md-6 col-md-offset-1">
 
-              <select style="background:#151215" name="usertype" required>
+              <select style="background:#151215" name="usertype" id="usertype" required>
                   <option selected="selected" disabled="disabled">Select a User type</option>
                   <option value="1">Salon Customer</option>
                   <option value="2">Salon Admin</option>
               </select>
+              <div id="customer">
                 <input type="email" name="email" value="" placeholder="Email Address" required>
                 <input type="text" name="fname" value="" placeholder="First Name" required>
                 <input type="text" name="lname" value="" placeholder="Last Name" required>
                 <input type="text" name="address" value="" placeholder="Address" required>
+              </div>
+
+              <div id="salonadmin" hidden>
+                <input type="text" name="salonname" value="" placeholder="Salon Name" required>
+                <input type="text" name="contactnumber" value="" id="contactnumber" placeholder="Contact Number" required>
+                <input type="text" name="salonaddress" value="" placeholder="Salon Address" id="salonaddress" required>
+                <input type="email" name="salonemail" value="" placeholder="Email Address" required>
+                <input type="hidden" name="long" value="" id="long"/>
+                <input type="hidden" name="lat" value="" id="lat"/>
+                <input type="text" name="salonowner" value="" placeholder="Salon Owner" required>
+                <textarea name="salondetails"  placeholder="Salon Details" required></textarea>
+              </div>
                 <div class="text-right">
                   <button class="button large" type="submit">Register</button>
                 </div>

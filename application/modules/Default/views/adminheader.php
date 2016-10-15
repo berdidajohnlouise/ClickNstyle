@@ -126,21 +126,16 @@
                                 <li class="user-header bg-light-blue">
                                     <img src="<?php echo base_url();?>assets/usersimage/<?php echo $userdetails->user_image;?>" class="img-circle" alt="User Image" />
                                     <p>
-                                        <?php echo ucfirst($userdetails->firstname).' '.ucfirst($userdetails->lastname);?> - <?php if($userdetails->usertype==0){echo 'Admin';}else if($userdetails->usertype==1){echo 'Salon Customer';}else{ echo 'Salon Admin';}?>
+                                        <?php if($userdetails->usertype==0){echo ucfirst($userdetails->firstname).' '.ucfirst($userdetails->lastname);}else if($userdetails->usertype==1){echo ucfirst($userdetails->firstname).' '.ucfirst($userdetails->lastname);}else{echo ucfirst($userdetails->OwnerName);}?> - <?php if($userdetails->usertype==0){echo 'Admin';}else if($userdetails->usertype==1){echo 'Salon Customer';}else{ echo 'Salon Admin';}?>
                                         <small>Member since <?php echo date('M. d, Y',strtotime($userdetails->created_at));?></small>
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
                                 <li class="user-body">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
+                                    <div class="col-xs-12 text-center">
+                                        <a href="" id="deactivate" style="color:red" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-trash"></span> Delete Account</a>
                                     </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
-                                    </div>
+
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
