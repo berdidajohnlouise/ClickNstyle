@@ -30,7 +30,7 @@
 
 			<header class="site-header">
 				<div class="container">
-					<a id="branding" href="<?php echo base_url();?>">
+					<a id="branding" href="<?php echo base_url();?>/GlobalService">
 						<img src="<?php echo base_url();?>assets/images/logo.png" alt="Company name" class="logo">
 						<div class="logo-copy">
 							<h1 class="site-title">ClickNStyle</h1>
