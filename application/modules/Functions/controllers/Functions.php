@@ -16,6 +16,7 @@ class Functions extends MY_Controller{
       $sidebar = $this->M_sidebars->sidebars($this->session->userdata('usertype'));
       $usersdetails = $this->Account_management_m->account_details($this->session->userdata('userid'));
 
+
       $data = array(
         'title'=>'Dashboard',
         'sidebar'=>$sidebar,

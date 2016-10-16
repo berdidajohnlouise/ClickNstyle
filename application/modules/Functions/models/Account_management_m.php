@@ -6,9 +6,19 @@ class Account_management_m extends CI_Model{
     parent::__construct();
   }
 
+  function usersaccounts(){
+    $sql = "select * from users where usertype = 1 or usertype = 2";
+    $query = $this->db->query($sql);
+
+    if($query->num_rows()>0){
+        $results = $query->result();
+        return $results;
+    }
+  }
+
   function account_details($id){
 
-    if($this->session->userdata('usertype')==1 || $this->session->userdata('usertype')=='1'){
+    if($this->session->userdata('usertype')==1 || $this->session->userdata('usertype')=='1' || $this->session->userdata('usertype')==0 || $this->session->userdata('usertype')=='0'){
 
           $sql = "select * from users where userid = ?";
           $query = $this->db->query($sql,array($id));

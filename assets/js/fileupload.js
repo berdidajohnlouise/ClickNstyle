@@ -20,3 +20,9 @@ function click_image(){
   $('#uploadImage').click();
 
 }
+
+function click_staff(){
+
+  $('#uploadStaff').click();
+
+}

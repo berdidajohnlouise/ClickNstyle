@@ -10,7 +10,9 @@
         <!-- font Awesome -->
         <link href="<?php echo base_url();?>assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url();?>assets/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url();?>assets/css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url();?>assets/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+
 
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -126,16 +128,26 @@
                                 <li class="user-header bg-light-blue">
                                     <img src="<?php echo base_url();?>assets/usersimage/<?php echo $userdetails->user_image;?>" class="img-circle" alt="User Image" />
                                     <p>
-                                        <?php if($userdetails->usertype==0){echo ucfirst($userdetails->firstname).' '.ucfirst($userdetails->lastname);}else if($userdetails->usertype==1){echo ucfirst($userdetails->firstname).' '.ucfirst($userdetails->lastname);}else{echo ucfirst($userdetails->OwnerName);}?> - <?php if($userdetails->usertype==0){echo 'Admin';}else if($userdetails->usertype==1){echo 'Salon Customer';}else{ echo 'Salon Admin';}?>
+                                        <?php if($userdetails->usertype==0){echo ucfirst($userdetails->firstname).' '.ucfirst($userdetails->lastname);}else if($userdetails->usertype==1){echo ucfirst($userdetails->firstname).' '.ucfirst($userdetails->lastname);}else{echo ucfirst($userdetails->OwnerName);}?> - <?php if($userdetails->usertype==0){echo 'Super Admin';}else if($userdetails->usertype==1){echo 'Salon Customer';}else{ echo 'Salon Admin';}?>
                                         <small>Member since <?php echo date('M. d, Y',strtotime($userdetails->created_at));?></small>
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
                                 <li class="user-body">
-                                    <div class="col-xs-12 text-center">
+                                  <div class="row">
+                                    <?php if($userdetails->usertype==0){?>
+                                    <div class="col-xs-5 text-center pull-left">
+                                        <a href="<?php echo base_url();?>Functions" style="color:#4682b4;" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-user"></span> Profile</a>
+                                    </div>
+                                    <div class="col-xs-7 text-center pull-right">
                                         <a href="" id="deactivate" style="color:red" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-trash"></span> Delete Account</a>
                                     </div>
-
+                                    <?php }else{?>
+                                      <div class="col-xs-12 text-center">
+                                          <a href="" id="deactivate" style="color:red" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-trash"></span> Delete Account</a>
+                                      </div>
+                                    <?php }?>
+                                    </div>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">

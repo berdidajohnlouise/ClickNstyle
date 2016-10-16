@@ -17,7 +17,7 @@
 
 
                 <div class="row">
-        <?php if($userdetails->usertype==1){?>
+        <?php if($userdetails->usertype==1 || $userdetails->usertype==0){?>
 				<div class="col-md-2" align="center">
       <form action="<?php echo base_url();?>Functions/Account_management/updateprofile" method="post" enctype="multipart/form-data">
 				<strong>Select Profile Image:</strong>
@@ -70,7 +70,7 @@
 
           <div class="col-md-4">
 
-          <h2>Profile Information</h2>
+          <h2>Salon Information</h2>
 
               <div class="form-group">
                 <label for="salonname">Salon Name:</label>

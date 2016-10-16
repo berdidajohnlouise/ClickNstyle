@@ -9,6 +9,9 @@
  <script type="text/javascript" src="<?php echo base_url();?>assets/js/fileupload.js"></script>
  <!-- Bootstrap -->
  <script src="<?php echo base_url();?>assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+ <script src="<?php echo base_url();?>assets/js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+ <script src="<?php echo base_url();?>assets/js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
  <!-- AdminLTE App -->
  <script src="<?php echo base_url();?>assets/js/AdminLTE/app.js" type="text/javascript"></script>
 
@@ -22,6 +25,24 @@
 
         reader.onload = function(e){
           $('#img_avatar2').attr('src',e.target.result);
+        };
+         reader.readAsDataURL(this.files[0]);
+
+      }
+    })
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $('#uploadStaff').on('change',function(){
+
+      if(this.files && this.files[0]){
+        var reader = new FileReader();
+
+        reader.onload = function(e){
+          $('#staff_avatar').attr('src',e.target.result);
         };
          reader.readAsDataURL(this.files[0]);
 
@@ -74,5 +95,71 @@
   });
 </script>
 
+<script type="text/javascript">
+  function deleteStaff(id){
+    if(confirm('Are you sure you want to delete this Staff ?')==true){
+      var url = "<?php echo base_url();?>Functions/Staff_management_salon/deleteStaff/"+id;
+      $.post(url,function(result){
+
+
+        var result1 = result.toString().replace(/\s/g, "");
+
+        if(result1=='True'){
+          alert('Staff Successfully Deleted');
+          window.location.href = "<?php echo base_url();?>Functions/Staff_management_salon";
+        }
+        else{
+          alert('Developer nga bogo');
+        }
+
+      });
+    }
+    else{
+      location.reload();
+    }
+  }
+</script>
+
+
+<!-- page script -->
+        <script type="text/javascript">
+            $(function() {
+                $("#example1").dataTable();
+                $('#example2').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+            });
+        </script>
+
+  <!-- updatestaff script -->
+
+  <script type="text/javascript">
+      $(document).on("click",".updateStaff",function(){
+
+          var staffid = $(this).data('id');
+
+          var url = "<?php echo base_url();?>Functions/Staff_management_salon/getStaff/"+staffid;
+
+          $.getJSON(url,function(result){
+            console.log(result);
+            $('#staffsid').val(result.staffID);
+            $('#nickname').val(result.nickName);
+            $('#lastname').val(result.lastName);
+            $('#firstname').val(result.firstName);
+            $('#position').val(result.jobdescription);
+            $('#staff_avatar').attr('src','<?php echo base_url();?>assets/staffsimage/'+result.photo);
+            $('#dob').val(result.dob);
+            $('#updateLabel').text('Update '+result.nickName);
+            $('#contactnumber').val(result.contactNo);
+            $('#status').val(result.status);
+          });
+
+      })
+  </script>
 </body>
 </html>
