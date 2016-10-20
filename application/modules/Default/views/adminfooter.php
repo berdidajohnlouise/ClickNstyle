@@ -118,6 +118,48 @@
       location.reload();
     }
   }
+
+  function deleteService(id){
+    if(confirm('Are you sure you want to delete this Service ?')==true){
+      var url = "<?php echo base_url();?>Functions/Services_management_salon/deleteService/"+id;
+      $.post(url,function(result){
+        var result1 = result.toString().replace(/\s/g, "");
+
+        if(result1=='True'){
+          alert('Service Successfully Deleted');
+          window.location.href = "<?php echo base_url();?>Functions/Services_management_salon";
+        }
+        else{
+          alert('Developer nga bogo');
+        }
+
+      });
+    }
+    else{
+      location.reload();
+    }
+  }
+
+  function deletePromo(id){
+    if(confirm('Are you sure you want to delete this Promo ?')==true){
+      var url = "<?php echo base_url();?>Functions/Promos_management_salon/deletePromo/"+id;
+      $.post(url,function(result){
+        var result1 = result.toString().replace(/\s/g, "");
+
+        if(result1=='True'){
+          alert('Promo Successfully Deleted');
+          window.location.href = "<?php echo base_url();?>Functions/Promos_management_salon";
+        }
+        else{
+          alert('Developer nga bogo');
+        }
+
+      });
+    }
+    else{
+      location.reload();
+    }
+  }
 </script>
 
 
@@ -159,7 +201,58 @@
             $('#status').val(result.status);
           });
 
-      })
+      });
   </script>
+
+
+  <!-- updateservices script -->
+
+  <script type="text/javascript">
+  $(document).on("click",".updateService",function(){
+
+      var serviceid = $(this).data('id');
+
+      var url = "<?php echo base_url();?>Functions/Services_management_salon/getService/"+serviceid;
+
+      $.getJSON(url,function(result){
+
+        $('#serviceid').val(result.serviceID);
+        $('#servicename').val(result.servicename);
+        $('#servicedesc').val(result.description);
+        $('#price').val(result.price);
+        $('#duration').val(result.duration);
+        $('#updateLabel').text('Update '+result.servicename);
+        $('#staff_avatar').attr('src','<?php echo base_url();?>assets/servicesimage/'+result.service_photo);
+
+      });
+
+  });
+  </script>
+
+
+  <!-- updatePromos script -->
+
+  <script type="text/javascript">
+  $(document).on("click",".updatePromo",function(){
+
+      var promoid = $(this).data('id');
+
+      var url = "<?php echo base_url();?>Functions/Promos_management_salon/getPromo/"+promoid;
+
+      $.getJSON(url,function(result){
+
+        $('#promoid').val(result.promoID);
+        $('#promoname').val(result.Name);
+        $('#promodesc').val(result.promoDetails);
+        $('#price').val(result.Price);
+        $('#serviceduration').val(result.expDate);
+        $('#updateLabel').text('Update '+result.Name);
+        $('#staff_avatar').attr('src','<?php echo base_url();?>assets/promosimage/'+result.Photo);
+
+      });
+
+  });
+  </script>
+
 </body>
 </html>

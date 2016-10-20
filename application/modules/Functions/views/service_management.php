@@ -1,3 +1,5 @@
+
+
 <!-- Right side column. Contains the navbar and content of the page -->
           <aside class="right-side">
               <!-- Content Header (Page header) -->
@@ -17,33 +19,33 @@
 
                 <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">Registered Users Accounts</h3>
-
+                                    <h3 class="box-title">Salon Services</h3>
                                 </div><!-- /.box-header -->
 
                                 <div class="box-body table-responsive">
-
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>#ID</th>
-                                                <th>User image</th>
-                                                <th>Username</th>
-                                                <th>Email</th>
-                                                <th>User type</th>
+                                                <th>Salon name</th>
+                                                <th>Service image</th>
+                                                <th>Service name</th>
+                                                <th>Service description</th>
+                                                <th>Service Price</th>
+                                                <th>Service Duration</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                          <?php if(!empty($useraccounts)){?>
-                                          <?php foreach($useraccounts as $row):?>
-                                            <tr>
-                                                <td><?php echo $row->userid?></td>
-                                                <td><img src="<?php echo base_url();?>assets/usersimage/<?php echo $row->user_image;?>" width="50" height="50"/></td>
-                                                <td><?php echo ucfirst($row->username);?></td>
-                                                <td><?php echo $row->email;?></td>
-                                                <td><?php if($row->usertype==1){echo 'Salon Customer'; }else if($row->usertype==2){echo 'Salon Admin';}?></td>
-                                            </tr>
-                                          <?php endforeach;}?>
+                                          <?php if(!empty($services)){?>
+                                          <?php foreach($services as $row):?>
+                                          <tr>
+                                            <td><?php echo ucfirst($row->SalonName)?></td>
+                                            <td><img src="<?php echo base_url();?>assets/servicesimage/<?php echo $row->service_photo;?>" width="50" height="50"/></td>
+                                            <td><?php echo ucfirst($row->servicename);?></td>
+                                            <td><?php echo ucfirst($row->description);?></td>
+                                            <td>&#8369; <?php echo $row->price;?></td>
+                                            <td><?php echo ucfirst($row->duration);?></td>
+                                          </tr>
+                                        <?php endforeach;}?>
                                         </tbody>
 
                                     </table>

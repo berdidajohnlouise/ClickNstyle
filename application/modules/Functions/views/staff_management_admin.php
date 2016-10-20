@@ -38,6 +38,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                          <?php if(!empty($staffs)){?>
                                           <?php foreach($staffs as $row):?>
                                           <tr>
                                             <td><?php echo $row->staffID;?></td>
@@ -52,7 +53,7 @@
                                             <td><?php if($row->status==0){echo 'Inactive';}else{echo 'Active';}?></td>
 
                                           </tr>
-                                        <?php endforeach;?>
+                                        <?php endforeach;}?>
                                         </tbody>
 
                                     </table>

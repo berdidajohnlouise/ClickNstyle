@@ -39,6 +39,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                          <?php if(!empty($staffs)){?>
                                           <?php foreach($staffs as $row):?>
                                           <tr>
                                             <td><img src="<?php echo base_url();?>assets/staffsimage/<?php echo $row->photo;?>" width="50" height="50"/></td>
@@ -51,7 +52,7 @@
                                             <td><?php if($row->status==0){echo 'Inactive';}else{echo 'Active';}?></td>
                                             <td><a href="#updateStaff" data-toggle="modal" data-id="<?php echo $row->staffID;?>" class="updateStaff" style="color:green"><i class="fa fa-edit"></i> Edit </a><span style="padding-left:3px;"><a href="#" onclick="deleteStaff(<?php echo $row->staffID;?>)" style="color:red"><i class="fa fa-edit"></i> Delete</a></span></td>
                                           </tr>
-                                        <?php endforeach;?>
+                                        <?php endforeach;}?>
                                         </tbody>
 
                                     </table>
