@@ -19,7 +19,7 @@ class Promos_management extends MY_Controller{
           $promos = $this->Promos_management_m->getPromos();
 
           $data = array(
-            'title'=>'User Accounts',
+            'title'=>'Promos Management',
             'sidebar'=>$sidebar,
             'userdetails'=>$usersdetails,
             'promos'=>$promos

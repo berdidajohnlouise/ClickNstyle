@@ -160,6 +160,28 @@
       location.reload();
     }
   }
+
+function deleteProduct(id){
+  if(confirm('Are you sure you want to delete this Product ?')==true){
+    var url = "<?php echo base_url();?>Functions/Products_management_salon/deleteProduct/"+id;
+    $.post(url,function(result){
+      var result1 = result.toString().replace(/\s/g, "");
+
+      if(result1=='True'){
+        alert('Product Successfully Deleted');
+        window.location.href = "<?php echo base_url();?>Functions/Products_management_salon";
+      }
+      else{
+        alert('Developer nga bogo');
+      }
+
+    });
+  }
+  else{
+    location.reload();
+  }
+}
+
 </script>
 
 
@@ -254,5 +276,28 @@
   });
   </script>
 
+
+  <!-- uploadProducts script -->
+
+  <script type="text/javascript">
+  $(document).on("click",".updateProduct",function(){
+
+      var productid = $(this).data('id');
+
+      var url = "<?php echo base_url();?>Functions/Products_management_salon/getProduct/"+productid;
+
+      $.getJSON(url,function(result){
+
+         $('#productid').val(result.pro_id);
+         $('#productname').val(result.pro_name);
+         $('#productbrand').val(result.pro_brand);
+         $('#price').val(result.price);
+         $('#updateLabel').text('Update '+result.pro_name);
+         $('#staff_avatar').attr('src','<?php echo base_url();?>assets/productsimage/'+result.photo);
+
+      });
+
+  });
+  </script>
 </body>
 </html>

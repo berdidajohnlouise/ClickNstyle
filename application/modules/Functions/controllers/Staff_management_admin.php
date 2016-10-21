@@ -19,7 +19,7 @@ class Staff_management_admin extends MY_Controller{
           $staffs = $this->Staff_management_admin_m->getStaffs();
 
           $data = array(
-            'title'=>'User Accounts',
+            'title'=>'Staffs Management',
             'sidebar'=>$sidebar,
             'userdetails'=>$usersdetails,
             'staffs'=>$staffs

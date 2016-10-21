@@ -19,36 +19,34 @@
 
                 <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">View Salon Promos</h3>
+                                    <h3 class="box-title">View Salon Products</h3>
                                 </div><!-- /.box-header -->
 
                                 <div class="box-body table-responsive">
+
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                              <th>Salon name</th>
-                                              <th>Promos image</th>
-                                              <th>Promos name</th>
-                                              <th>Promos detail</th>
-                                              <th>Promos price</th>
-                                              <th>Expiration date</th>
-                                              <th>Date posted</th>
-
+                                                <th>Salon Name</th>
+                                                <th>Products image</th>
+                                                <th>Products name</th>
+                                                <th>Products brand</th>
+                                                <th>Products price</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                          <?php if(!empty($promos)){?>
-                                          <?php foreach($promos as $row):?>
+                                          <?php if(!empty($products)){?>
+                                          <?php foreach($products as $row):?>
                                           <tr>
                                             <td><?php echo ucfirst($row->SalonName);?></td>
-                                            <td><img src="<?php echo base_url();?>assets/promosimage/<?php echo $row->Photo;?>" width="50" height="50"/></td>
-                                            <td><?php echo ucfirst($row->Name);?></td>
-                                            <td><?php echo ucfirst($row->promoDetails);?></td>
-                                            <td>&#8369; <?php echo $row->Price;?></td>
-                                            <td><?php echo date('M. d, Y',strtotime($row->expDate));?></td>
-                                            <td><?php echo date('M. d, Y',strtotime($row->datePosted));?></td>
+                                            <td><img src="<?php echo base_url();?>assets/productsimage/<?php echo $row->photo;?>" width="50" height="50"/></td>
+                                            <td><?php echo ucfirst($row->pro_name);?></td>
+                                            <td><?php echo ucfirst($row->pro_brand);?></td>
+                                            <td>&#8369; <?php echo $row->price;?></td>
+
                                           </tr>
                                         <?php endforeach; }?>
+
                                         </tbody>
 
                                     </table>

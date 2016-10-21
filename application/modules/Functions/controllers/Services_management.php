@@ -19,7 +19,7 @@ class Services_management extends MY_Controller{
           $services = $this->Services_management_m->getServices();
 
           $data = array(
-            'title'=>'User Accounts',
+            'title'=>'Service Management',
             'sidebar'=>$sidebar,
             'userdetails'=>$usersdetails,
             'services'=>$services

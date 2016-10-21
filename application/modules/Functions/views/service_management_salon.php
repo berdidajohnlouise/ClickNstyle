@@ -9,7 +9,7 @@
                       <small><?php if($userdetails->usertype==2){echo $userdetails->SalonName;}else{echo $userdetails->firstname.' '.$userdetails->lastname;} ?></small>
                   </h1>
                   <ol class="breadcrumb">
-                      <li><a href="<?php echo base_url();?>Functions"><i class="fa fa-dashboard"></i> Home</a></li>
+                      <li><a href="<?php echo base_url();?>Functions"><i class="fa fa-home"></i> Home</a></li>
                       <li class="active"><?php echo $title;?></li>
                   </ol>
               </section>
