@@ -76,6 +76,40 @@
   })
 </script>
 
+
+<script type="text/javascript">
+  $('#addStaffsButton').on('click',function(){
+
+    $('#staffsname').empty();
+    var url = "<?php echo base_url();?>Functions/Staff_management_user_salon/getStaffs";
+
+    $.getJSON(url,function(result){
+
+      $('#staffsname').append('<option selected disabled>--Select Staff--</option>');
+      $.each(result,function(value,element){
+
+        $('#staffsname').append(
+          '<option value="'+element.staffID+'">'+element.lastName+', '+element.firstName+'</option>'
+        );
+      })
+
+    });
+
+  });
+
+  $('#staffsname').on('change',function(){
+    var staffid = $('#staffsname').val();
+
+    var url = "<?php echo base_url();?>Functions/Staff_management_user_salon/getStaff/"+staffid;
+
+    $.getJSON(url,function(result){
+       $('#img_avatar2').attr('src','<?php echo base_url();?>assets/staffsimage/'+result.photo);
+    });
+
+  });
+</script>
+
+
 <script type="text/javascript">
   $(document).ready(function(){
     $('#deactivate').click(function(){
@@ -170,6 +204,27 @@ function deleteProduct(id){
       if(result1=='True'){
         alert('Product Successfully Deleted');
         window.location.href = "<?php echo base_url();?>Functions/Products_management_salon";
+      }
+      else{
+        alert('Developer nga bogo');
+      }
+
+    });
+  }
+  else{
+    location.reload();
+  }
+}
+
+function deleteAnnouncement(id){
+  if(confirm('Are you sure you want to delete this Announcement ?')==true){
+    var url = "<?php echo base_url();?>Functions/Announcement_management_salon/deleteAnnouncement/"+id;
+    $.post(url,function(result){
+      var result1 = result.toString().replace(/\s/g, "");
+
+      if(result1=='True'){
+        alert('Announcement Successfully Deleted');
+        window.location.href = "<?php echo base_url();?>Functions/Announcement_management_salon";
       }
       else{
         alert('Developer nga bogo');
@@ -277,7 +332,7 @@ function deleteProduct(id){
   </script>
 
 
-  <!-- uploadProducts script -->
+  <!-- updateProducts script -->
 
   <script type="text/javascript">
   $(document).on("click",".updateProduct",function(){
@@ -294,6 +349,26 @@ function deleteProduct(id){
          $('#price').val(result.price);
          $('#updateLabel').text('Update '+result.pro_name);
          $('#staff_avatar').attr('src','<?php echo base_url();?>assets/productsimage/'+result.photo);
+
+      });
+
+  });
+  </script>
+
+  <!-- updateAnnouncement script -->
+
+  <script type="text/javascript">
+  $(document).on("click",".updateAnnouncement",function(){
+
+      var announcementid = $(this).data('id');
+
+      var url = "<?php echo base_url();?>Functions/Announcement_management_salon/getAnnouncement/"+announcementid;
+
+      $.getJSON(url,function(result){
+          $('#ann_id').val(result.ann_id);
+          $('#ann_title').val(result.ann_name);
+          $('#ann_desc').val(result.ann_description);
+          $('#updateLabel').text('Update '+result.ann_name);
 
       });
 
