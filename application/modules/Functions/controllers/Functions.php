@@ -8,7 +8,9 @@ class Functions extends MY_Controller{
       $this->load->model('Account_management_m');
       if(!$this->session->userdata('userid')){
             redirect('Web');
-        }
+      }
+
+
     }
 
     function index(){

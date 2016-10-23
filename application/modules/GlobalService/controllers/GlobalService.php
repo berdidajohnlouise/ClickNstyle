@@ -4,6 +4,7 @@ class GlobalService extends MY_Controller{
 
     function __construct(){
       parent::__construct();
+      $this->load->model('GlobalService_m');
       if(!$this->session->userdata('userid')){
             redirect('Web');
         }
@@ -43,12 +44,14 @@ class GlobalService extends MY_Controller{
     }
 
     function gallery(){
-      $data = array(
-        'title'=>'Our Galleries'
+      $salons = $this->GlobalService_m->getSalons();
 
+      $data = array(
+        'title'=>'Our Galleries',
+        'salons'=>$salons
       );
       $this->load->view('Default/globalheader',$data);
-      $this->load->view('gallery');
+      $this->load->view('gallery',$data);
       $this->load->view('Default/globalfooter');
 
     }

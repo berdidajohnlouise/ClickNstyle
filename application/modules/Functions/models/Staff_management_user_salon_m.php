@@ -54,6 +54,29 @@ class Staff_management_user_salon_m extends CI_Model{
 
   }
 
+  function getStaffuser(){
+    $userid = $this->session->userdata('userid');
+    $sql = "select * from salon where userid = $userid";
+    $query = $this->db->query($sql);
+
+    if($query ->num_rows()>0){
+      $row = $query->row();
+      $salonid = $row->SalonID;
+
+        $this->db->select('*');
+        $this->db->from('staff_users');
+        $this->db->join('personnels','personnels.staffID = staff_users.personnel_id');
+        $this->db->where('staff_users.salonID',$salonid);
+        $query2 = $this->db->get();
+
+        if($query2->num_rows()>0){
+          $result = $query2->result();
+          return $result;
+        }
+    }
+
+  }
+
   function getStaff($id){
 
     $sql = "select * from personnels where staffID = $id ";
@@ -69,72 +92,60 @@ class Staff_management_user_salon_m extends CI_Model{
 
 
 
-  // function getProduct($id){
-  //   $sql = "select * from products where pro_id = ?";
-  //   $query = $this->db->query($sql,array($id));
-  //
-  //   if($query->num_rows()>0){
-  //     $row = $query->row();
-  //     return $row;
-  //   }
-  // }
-  //
-  // function addproduct($data){
-  //
-  //     $userid = $this->session->userdata('userid');
-  //     $sql = "select * from salon where userid = $userid";
-  //     $query = $this->db->query($sql);
-  //
-  //     if($query ->num_rows()>0){
-  //         $row = $query->row();
-  //         $salonid = $row->SalonID;
-  //         $sql2 = "insert into products(SalonID,pro_name,pro_brand,price,photo)values(?,?,?,?,?)";
-  //         $query2 = $this->db->query($sql2,array($salonid,$data['productname'],$data['productbrand'],$data['price'],$data['productimage']));
-  //         if($query2){
-  //           return 'True';
-  //         }
-  //         else{
-  //           return 'False';
-  //         }
-  //     }
-  // }
-  //
-  // function updateproduct($data){
-  //
-  //   if($data['productimage']==''){
-  //
-  //     $this->db->set('pro_name',$data['productname']);
-  //     $this->db->set('pro_brand',$data['productbrand']);;
-  //     $this->db->set('price',$data['price']);
-  //     $this->db->where('pro_id',$data['productid']);
-  //     $query = $this->db->update('products');
-  //
-  //     if($query){
-  //       return 'True';
-  //     }
-  //
-  //   }
-  //   else{
-  //     $this->db->set('photo',$data['productimage']);
-  //     $this->db->set('pro_name',$data['productname']);
-  //     $this->db->set('pro_brand',$data['productbrand']);;
-  //     $this->db->set('price',$data['price']);
-  //     $this->db->where('pro_id',$data['productid']);
-  //     $query = $this->db->update('products');
-  //
-  //     if($query){
-  //       return 'True';
-  //     }
-  //   }
-  // }
-  //
-  // function deleteProduct($id){
-  //   $this->db->where('pro_id',$id);
-  //   $query = $this->db->delete('products');
-  //
-  //   if($query){
-  //     return 'True';
-  //   }
-  // }
+  function getStaffAccount($id){
+
+    $this->db->select('*');
+    $this->db->from('staff_users');
+    $this->db->join('personnels','personnels.staffID = staff_users.personnel_id');
+    $this->db->where('suID',$id);
+    $query = $this->db->get();
+
+    if($query->num_rows()>0){
+      $row = $query->row();
+      return $row;
+    }
+  }
+
+  function addStaffUser($data){
+
+      $userid = $this->session->userdata('userid');
+      $sql = "select * from salon where userid = $userid";
+      $query = $this->db->query($sql);
+
+      if($query ->num_rows()>0){
+          $row = $query->row();
+          $salonid = $row->SalonID;
+          $sql2 = "insert into staff_users(userName,password,salonID,personnel_id)values(?,?,?,?)";
+          $query2 = $this->db->query($sql2,array($data['username'],$data['password'],$salonid,$data['staffid']));
+          if($query2){
+            return 'True';
+          }
+          else{
+            return 'False';
+          }
+      }
+  }
+
+  function updateSU($data){
+
+      $this->db->set('userName',$data['username']);;
+      $this->db->set('password',$data['password']);
+      $this->db->where('suID',$data['suid']);
+      $query = $this->db->update('staff_users');
+
+      if($query){
+        return 'True';
+      }
+
+  }
+
+  function deleteSU($id){
+    $this->db->where('suID',$id);
+    $query = $this->db->delete('staff_users');
+
+    if($query){
+      return 'True';
+    }
+  }
 
 }

@@ -16,12 +16,12 @@ class Staff_management_user_salon extends MY_Controller{
 
       $sidebar = $this->M_sidebars->sidebars($this->session->userdata('usertype'));
       $usersdetails = $this->Account_management_m->account_details($this->session->userdata('userid'));
-      //$products = $this->Products_management_salon_m->getProducts();
-
+      $staffuser = $this->Staff_management_user_salon_m->getStaffuser();
       $data = array(
         'title'=>'Staff User Management',
         'sidebar'=>$sidebar,
         'userdetails'=>$usersdetails,
+        'staffs'=>$staffuser
 
       );
 
@@ -45,116 +45,47 @@ class Staff_management_user_salon extends MY_Controller{
 
 
 
-    // function getProduct($id){
-    //   $success = $this->Products_management_salon_m->getProduct($id);
-    //   echo json_encode($success);
-    // }
-    //
-    //
-    // function addProduct(){
-    //   $filename = 'uploadimage';
-    //
-    //   $path = "./assets/productsimage";
-    //   chmod($path, 777);
-    //   $config["upload_path"] = $path;
-    //   $config["allowed_types"] = "jpg|png|jpeg|ico";
-    //   $config["max_size"] = "10000";
-    //   $config["max_height"] = "7680";
-    //   $config["max_width"] = "10240";
-    //   $this->load->library("upload", $config);
-    //   $productdetails = $this->input->post();
-    //
-    //   if( ! $this->upload->do_upload($filename)){
-    //
-    //     $data = array(
-    //       'productname'=>$productdetails['productname'],
-    //       'productbrand'=>$productdetails['productbrand'],
-    //       'price'=>$productdetails['price'],
-    //       'productimage'=>'productssample.jpg'
-    //     );
-    //
-    //     $success = $this->Products_management_salon_m->addproduct($data);
-    //
-    //     if($success =='True'){
-    //       redirect('Functions/Products_management_salon');
-    //     }
-    //   }else{
-    //
-    //       $image = $this->upload->data();
-    //
-    //
-    //       $data = array(
-    //         'productname'=>$productdetails['productname'],
-    //         'productbrand'=>$productdetails['productbrand'],
-    //         'price'=>$productdetails['price'],
-    //         'productimage'=>$image['file_name']
-    //       );
-    //
-    //
-    //     $success = $this->Products_management_salon_m->addproduct($data);
-    //
-    //     if($success =='True'){
-    //       redirect('Functions/Products_management_salon');
-    //     }
-    //   }
-    //
-    // }
-    //
-    // function updateProduct(){
-    //   $filename = 'uploadProduct';
-    //
-    //   $path = "./assets/productsimage";
-    //   chmod($path, 777);
-    //   $config["upload_path"] = $path;
-    //   $config["allowed_types"] = "jpg|png|jpeg|ico";
-    //   $config["max_size"] = "10000";
-    //   $config["max_height"] = "7680";
-    //   $config["max_width"] = "10240";
-    //   $this->load->library("upload", $config);
-    //   $productdetails = $this->input->post();
-    //
-    //   if( ! $this->upload->do_upload($filename)){
-    //
-    //     $data = array(
-    //       'productid'=>$productdetails['productid'],
-    //       'productname'=>$productdetails['productname'],
-    //       'productbrand'=>$productdetails['productbrand'],
-    //       'price'=>$productdetails['price'],
-    //       'productimage'=>''
-    //     );
-    //
-    //     $success = $this->Products_management_salon_m->updateproduct($data);
-    //
-    //     if($success =='True'){
-    //       redirect('Functions/Products_management_salon');
-    //     }
-    //   }else{
-    //
-    //       $image = $this->upload->data();
-    //
-    //
-    //       $data = array(
-    //         'productid'=>$productdetails['productid'],
-    //         'productname'=>$productdetails['productname'],
-    //         'productbrand'=>$productdetails['productbrand'],
-    //         'price'=>$productdetails['price'],
-    //         'productimage'=>$image['file_name']
-    //       );
-    //
-    //
-    //     $success = $this->Products_management_salon_m->updateproduct($data);
-    //
-    //     if($success =='True'){
-    //       redirect('Functions/Products_management_salon');
-    //     }
-    //   }
-    // }
-    //
-    // function deleteProduct($id){
-    //   $success = $this->Products_management_salon_m->deleteProduct($id);
-    //   echo $success;
-    // }
-    //
+    function getStaffUser($id){
+      $success = $this->Staff_management_user_salon_m->getStaffAccount($id);
+      echo json_encode($success);
+    }
+
+
+    function addStaffUser(){
+
+      $staffdetails = $this->input->post('data');
+        $data = array(
+          'staffid'=>$staffdetails['staffsid'],
+          'username'=>$staffdetails['username'],
+          'password'=>md5($staffdetails['password'])
+        );
+
+        $success = $this->Staff_management_user_salon_m->addStaffUser($data);
+
+        echo $success;
+
+
+    }
+
+    function updateSU(){
+      $staffdetails = $this->input->post();
+        $data = array(
+          'suid'=>$staffdetails['suid'],
+          'username'=>$staffdetails['username'],
+          'password'=>md5($staffdetails['password'])
+        );
+
+        $success = $this->Staff_management_user_salon_m->updateSU($data);
+        if($success =='True'){
+          redirect('Functions/Staff_management_user_salon');
+        }
+    }
+
+    function deleteSU($id){
+      $success = $this->Staff_management_user_salon_m->deleteSU($id);
+      echo $success;
+    }
+
 
 
 

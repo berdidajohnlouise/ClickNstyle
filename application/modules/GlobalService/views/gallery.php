@@ -5,7 +5,7 @@
     <li class="menu-item"><a href="<?php echo base_url();?>GlobalService">Home</a></li>
     <li class="menu-item"><a href="<?php echo base_url();?>GlobalService/about">About</a></li>
     <li class="menu-item"><a href="<?php echo base_url();?>GlobalService/services">Services</a></li>
-    <li class="menu-item current-menu-item"><a href="<?php echo base_url();?>GlobalService/gallery">Gallery</a></li>
+    <li class="menu-item current-menu-item"><a href="<?php echo base_url();?>GlobalService/gallery">Salons</a></li>
     <li class="menu-item"><a href="<?php echo base_url();?>GlobalService/contact">Contact</a></li>
     <li class="menu-item"><a href="<?php echo base_url();?>Functions">My Account</a></li>
     <li class="menu-item"><a href="<?php echo base_url();?>Auth/logout">Logout</a></li>
@@ -41,139 +41,37 @@
       </div>
 
       <div class="filterable-items">
+
+        <?php if(!empty($salons)){?>
+        <?php foreach($salons as $row):?>
+
         <div class="gallery-item filterable-item manicure">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-1.jpg">
+          <a href="<?php echo base_url();?>assets/usersimage/<?php echo $row->user_image;?>">
             <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-1.jpg" alt="">
+              <img src="<?php echo base_url();?>assets/usersimage/<?php echo $row->user_image;?>" alt="">
               <figcaption>
-                <h2 class="gallery-title">Lorem ipsum dolor sit amet</h2>
-                <p>Maecenas dictum suscipit</p>
+                <h2 class="gallery-title">Salon Name : <?php echo ucfirst($row->SalonName);?></h2>
+                <p>Address : <?php echo ucfirst($row->Address);?></p>
               </figcaption>
             </figure>
           </a>
         </div>
-        <div class="gallery-item filterable-item face">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-2.jpg">
-            <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-2.jpg" alt="">
-              <figcaption>
-                <h2 class="gallery-title">Consectetur adipisicing elit</h2>
-                <p>Maecenas dictum suscipit</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
-        <div class="gallery-item filterable-item hair">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-3.jpg">
-            <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-3.jpg" alt="">
-              <figcaption>
-                <h2 class="gallery-title">Repellat fugit tenetur</h2>
-                <p>Maecenas dictum suscipit</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
-        <div class="gallery-item filterable-item pedicure">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-4.jpg">
-            <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-4.jpg" alt="">
-              <figcaption>
-                <h2 class="gallery-title">Asperiores quas voluptatem</h2>
-                <p>Maecenas dictum suscipit</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
-        <div class="gallery-item filterable-item face">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-5.jpg">
-            <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-5.jpg" alt="">
-              <figcaption>
-                <h2 class="gallery-title">Ex quos ab perspiciatis</h2>
-                <p>Maecenas dictum suscipit</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
-        <div class="gallery-item filterable-item face">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-6.jpg">
-            <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-6.jpg" alt="">
-              <figcaption>
-                <h2 class="gallery-title">Natus dolores ad et ipsam</h2>
-                <p>Maecenas dictum suscipit</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
-        <div class="gallery-item filterable-item manicure">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-7.jpg">
-            <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-7.jpg" alt="">
-              <figcaption>
-                <h2 class="gallery-title">Hic nisi. Animi placeat</h2>
-                <p>Maecenas dictum suscipit</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
-        <div class="gallery-item filterable-item face">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-8.jpg">
-            <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-8.jpg" alt="">
-              <figcaption>
-                <h2 class="gallery-title">Obcaecati quam</h2>
-                <p>Maecenas dictum suscipit</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
-        <div class="gallery-item filterable-item face">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-9.jpg">
-            <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-9.jpg" alt="">
-              <figcaption>
-                <h2 class="gallery-title">quam exercitationem</h2>
-                <p>Maecenas dictum suscipit</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
-        <div class="gallery-item filterable-item manicure">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-10.jpg">
-            <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-10.jpg" alt="">
-              <figcaption>
-                <h2 class="gallery-title">Hic nisi. Animi placeat</h2>
-                <p>Maecenas dictum suscipit</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
-        <div class="gallery-item filterable-item makeup">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-11.jpg">
-            <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-11.jpg" alt="">
-              <figcaption>
-                <h2 class="gallery-title">Obcaecati quam</h2>
-                <p>Maecenas dictum suscipit</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
-        <div class="gallery-item filterable-item makeup">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-12.jpg">
-            <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-12.jpg" alt="">
-              <figcaption>
-                <h2 class="gallery-title">quam exercitationem</h2>
-                <p>Maecenas dictum suscipit</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
+
+       <?php endforeach; }?>
       </div>
     </div>
   </div>
 </main>
+
+
+<?php if(!empty($products)){?>
+<?php foreach($products as $row):?>
+<tr>
+  <td><?php echo ucfirst($row->SalonName);?></td>
+  <td><img src="<?php echo base_url();?>assets/productsimage/<?php echo $row->photo;?>" width="50" height="50"/></td>
+  <td><?php echo ucfirst($row->pro_name);?></td>
+  <td><?php echo ucfirst($row->pro_brand);?></td>
+  <td>&#8369; <?php echo $row->price;?></td>
+
+</tr>
+<?php endforeach; }?>

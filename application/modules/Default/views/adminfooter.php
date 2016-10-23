@@ -237,6 +237,27 @@ function deleteAnnouncement(id){
   }
 }
 
+function updateSU(id){
+  if(confirm('Are you sure you want to delete this Staff Account ?')==true){
+    var url = "<?php echo base_url();?>Functions/Staff_management_user_salon/deleteSU/"+id;
+    $.post(url,function(result){
+      var result1 = result.toString().replace(/\s/g, "");
+
+      if(result1=='True'){
+        alert('Staff Account Successfully Deleted');
+        window.location.href = "<?php echo base_url();?>Functions/Staff_management_user_salon";
+      }
+      else{
+        alert('Developer nga bogo');
+      }
+
+    });
+  }
+  else{
+    location.reload();
+  }
+}
+
 </script>
 
 
@@ -369,6 +390,29 @@ function deleteAnnouncement(id){
           $('#ann_title').val(result.ann_name);
           $('#ann_desc').val(result.ann_description);
           $('#updateLabel').text('Update '+result.ann_name);
+
+      });
+
+  });
+  </script>
+
+  <!-- update StaffUser script -->
+
+  <script type="text/javascript">
+  $(document).on("click",".updateSU",function(){
+
+      var suid = $(this).data('id');
+
+      var url = "<?php echo base_url();?>Functions/Staff_management_user_salon/getStaffUser/"+suid;
+
+      $.getJSON(url,function(result){
+
+        console.log(result);
+           $('#staffsname1').val(result.lastName+', '+result.firstName);
+           $('#username1').val(result.userName);
+           $('#staff_image').attr('src','<?php echo base_url();?>assets/staffsimage/'+result.photo);
+          $('#suid').val(result.suID);
+           $('#updateLabel').text('Update '+result.userName);
 
       });
 

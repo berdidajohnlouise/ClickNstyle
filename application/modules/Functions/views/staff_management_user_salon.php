@@ -27,16 +27,26 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Products image</th>
-                                                <th>Products name</th>
-                                                <th>Products brand</th>
-                                                <th>Products price</th>
+                                                <th>Staff Image</th>
+                                                <th>Staff Name</th>
+                                                <th>Staff Username</th>
+                                                <th>Staff Password</th>
+                                                <th>Staff Status</th>
                                                 <th>Options</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-
-
+                                          <?php if(!empty($staffs)){?>
+                                          <?php foreach($staffs as $row):?>
+                                          <tr>
+                                            <td><img src="<?php echo base_url();?>assets/staffsimage/<?php echo $row->photo;?>" width="50" height="50"/></td>
+                                            <td><?php echo ucfirst($row->lastName).', '.$row->firstName;?></td>
+                                            <td><?php echo ucfirst($row->userName);?></td>
+                                            <td >*****************</td>
+                                            <td><?php if($row->status==0){echo 'Inactive';}else{echo 'Active';}?></td>
+                                            <td><a href="#updateStaff" data-toggle="modal" data-id="<?php echo $row->suID;?>" class="updateSU" style="color:green"><i class="fa fa-edit"></i> Edit </a><span style="padding-left:3px;"><a href="#" onclick="updateSU(<?php echo $row->suID;?>)" style="color:red"><i class="fa fa-edit"></i> Delete</a></span></td>
+                                          </tr>
+                                        <?php endforeach;}?>
                                         </tbody>
 
                                     </table>
@@ -58,7 +68,7 @@
                 <div class="modal-body">
                   <div class="row">
 
-                    <form action="<?php echo base_url();?>Functions/Products_management_salon/addProduct" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo base_url();?>Functions/Staff_management_user_salon/addStaffUser" class="staffInfo" method="post">
                     <div class="col-md-4">
                       <strong style="margin-left:5px;">Staff Image:</strong>
 
@@ -71,19 +81,19 @@
 
                       <div class="form-group">
                         <label for="staffsname">Staffs Name:</label>
-                        <select class="form-control" name="" id="staffsname">
-                          <option selected disabled>--Select Staff--</option>
+                        <select class="form-control" name="staffsname" id="staffsname">
+
                         </select>
                       </div>
 
                         <div class="form-group">
-                          <label for="productname">Username:</label>
-                          <input type="text" class="form-control" name="productname" value=""  required>
+                          <label for="username">Username:</label>
+                          <input type="text" class="form-control" name="username" id="username" value=""  required>
                         </div>
 
                          <div class="form-group">
                           <label for="password">Password:</label>
-                          <input type="password" name="password" class="form-control" value="" required/>
+                          <input type="password" name="password" class="form-control" id="password" value="" required/>
                         </div>
 
                         <div class="form-group">
@@ -111,7 +121,7 @@
 
 
           <!-- Modal -->
-          <div class="modal fade" id="updateProduct" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal fade" id="updateStaff" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -121,34 +131,34 @@
                 <div class="modal-body">
                   <div class="row">
 
-                    <form action="<?php echo base_url();?>Functions/Products_management_salon/updateProduct" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo base_url();?>Functions/Staff_management_user_salon/updateSU" method="post" enctype="multipart/form-data">
                     <div class="col-md-4">
-                      <strong style="margin-left:5px;">Select Products Image:</strong>
+                      <strong style="margin-left:5px;">Staff Account Image:</strong>
 
                       <br>
 
-                      <input type="file" name="uploadProduct" id="uploadStaff" class="form-control has-feedback-left" style="display:none;"/>
-                      <a href="javascript:void(0)"><img onclick="click_staff()" style="width:150px;height:150px;" id="staff_avatar" src="<?php echo base_url();?>assets/productsimage/productssample.jpg" alt=""></a>
+                      <img style="width:150px;height:150px;" id="staff_image" src="<?php echo base_url();?>assets/staffsimage/user.png" alt="">
 
                     </div>
 
                     <div class="col-md-7">
 
-                        <input type="hidden" name="productid" value="" id="productid"/>
+                      <input type="hidden" name="suid" value="" id="suid">
+                      <div class="form-group">
+                        <label for="staffsname">Staffs Name:</label>
+                        <input type="text" class="form-control" value="" id="staffsname1" disabled>
+                      </div>
+
                         <div class="form-group">
-                          <label for="productname">Product Name:</label>
-                          <input type="text" class="form-control" name="productname" value="" id="productname" required>
+                          <label for="username">Username:</label>
+                          <input type="text" class="form-control" name="username" id="username1" value=""  required>
                         </div>
 
                          <div class="form-group">
-                          <label for="productbrand">Product Brand:</label>
-                          <input type="text" name="productbrand" class="form-control" value="" id="productbrand" required/>
+                          <label for="password">Password:</label>
+                          <input type="password" name="password" class="form-control" value="" required/>
                         </div>
 
-                        <div class="form-group">
-                          <label for="price">Price:</label>
-                          <input type="number" class="form-control" name="price" value="" id="price" required>
-                        </div>
 
                     </div>
 
