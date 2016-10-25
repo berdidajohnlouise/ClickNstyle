@@ -4,8 +4,8 @@
   <ul class="menu">
     <li class="menu-item"><a href="<?php echo base_url();?>">Home</a></li>
     <li class="menu-item"><a href="<?php echo base_url();?>Web/about">About</a></li>
-    <li class="menu-item"><a href="<?php echo base_url();?>Web/services">Services</a></li>
-    <li class="menu-item current-menu-item"><a href="<?php echo base_url();?>Web/gallery">Gallery</a></li>
+    <li class="menu-item"><a href="<?php echo base_url();?>Web/salons">Salons</a></li>
+    <li class="menu-item current-menu-item"><a href="<?php echo base_url();?>Web/gallery">Salon Services</a></li>
     <li class="menu-item"><a href="<?php echo base_url();?>Web/contact">Contact</a></li>
     <li class="menu-item"><a href="<?php echo base_url();?>Web/register">Register</a></li>
     <li class="menu-item"><a href="<?php echo base_url();?>Web/login">Login</a></li>
@@ -35,143 +35,122 @@
           <a href="#" class="wow fadeInRight" data-wow-delay=".4s" data-filter=".manicure">manicure</a>
           <a href="#" class="wow fadeInRight" data-wow-delay=".6s" data-filter=".pedicure">pedicure</a>
           <a href="#" class="wow fadeInRight" data-wow-delay=".8s" data-filter=".face">face</a>
+          <a href="#" class="wow fadeInRight" data-wow-delay=".10s" data-filter=".massage">Massage</a>
           <a href="#" class="wow fadeInRight" data-wow-delay="1s" data-filter=".makeup">makeup</a>
         </div>
       </div>
 
       <div class="filterable-items">
+
+        <?php if(!empty($manicure)){?>
+        <?php foreach($manicure as $row):?>
+
         <div class="gallery-item filterable-item manicure">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-1.jpg">
+          <a href="#">
             <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-1.jpg" alt="">
+              <img src="<?php echo base_url();?>assets/servicesimage/<?php echo $row->service_photo;?>" alt="">
               <figcaption>
-                <h2 class="gallery-title">Lorem ipsum dolor sit amet</h2>
-                <p>Maecenas dictum suscipit</p>
+                <h2 class="gallery-title">Salon Name : <?php echo ucfirst($row->SalonName);?></h2>
+                <p>Service type : <?php echo ucfirst($row->service_type);?></p>
+                <p>Price :  &#8369; <?php echo $row->price;?></p>
+                <p>Address : <?php echo ucfirst($row->Address);?></p>
               </figcaption>
             </figure>
           </a>
         </div>
-        <div class="gallery-item filterable-item face">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-2.jpg">
-            <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-2.jpg" alt="">
-              <figcaption>
-                <h2 class="gallery-title">Consectetur adipisicing elit</h2>
-                <p>Maecenas dictum suscipit</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
+
+      <?php endforeach; }?>
+      <?php if(!empty($hair)){?>
+        <?php foreach($hair as $row):?>
+
         <div class="gallery-item filterable-item hair">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-3.jpg">
+          <a href="#">
             <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-3.jpg" alt="">
+              <img src="<?php echo base_url();?>assets/servicesimage/<?php echo $row->service_photo;?>" alt="">
               <figcaption>
-                <h2 class="gallery-title">Repellat fugit tenetur</h2>
-                <p>Maecenas dictum suscipit</p>
+                <h2 class="gallery-title">Salon Name : <?php echo ucfirst($row->SalonName);?></h2>
+                <p>Service type : <?php echo ucfirst($row->service_type);?></p>
+                <p>Price :  &#8369; <?php echo $row->price;?></p>
+                <p>Address : <?php echo ucfirst($row->Address);?></p>
               </figcaption>
             </figure>
           </a>
         </div>
+
+      <?php endforeach; }?>
+      <?php if(!empty($pedicure)){?>
+        <?php foreach($pedicure as $row):?>
+
         <div class="gallery-item filterable-item pedicure">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-4.jpg">
+          <a href="#">
             <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-4.jpg" alt="">
+              <img src="<?php echo base_url();?>assets/servicesimage/<?php echo $row->service_photo;?>" alt="">
               <figcaption>
-                <h2 class="gallery-title">Asperiores quas voluptatem</h2>
-                <p>Maecenas dictum suscipit</p>
+                <h2 class="gallery-title">Salon Name : <?php echo ucfirst($row->SalonName);?></h2>
+                <p>Service type : <?php echo ucfirst($row->service_type);?></p>
+                <p>Price :  &#8369; <?php echo $row->price;?></p>
+                <p>Address : <?php echo ucfirst($row->Address);?></p>
               </figcaption>
             </figure>
           </a>
         </div>
-        <div class="gallery-item filterable-item face">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-5.jpg">
-            <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-5.jpg" alt="">
-              <figcaption>
-                <h2 class="gallery-title">Ex quos ab perspiciatis</h2>
-                <p>Maecenas dictum suscipit</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
-        <div class="gallery-item filterable-item face">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-6.jpg">
-            <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-6.jpg" alt="">
-              <figcaption>
-                <h2 class="gallery-title">Natus dolores ad et ipsam</h2>
-                <p>Maecenas dictum suscipit</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
-        <div class="gallery-item filterable-item manicure">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-7.jpg">
-            <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-7.jpg" alt="">
-              <figcaption>
-                <h2 class="gallery-title">Hic nisi. Animi placeat</h2>
-                <p>Maecenas dictum suscipit</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
-        <div class="gallery-item filterable-item face">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-8.jpg">
-            <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-8.jpg" alt="">
-              <figcaption>
-                <h2 class="gallery-title">Obcaecati quam</h2>
-                <p>Maecenas dictum suscipit</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
-        <div class="gallery-item filterable-item face">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-9.jpg">
-            <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-9.jpg" alt="">
-              <figcaption>
-                <h2 class="gallery-title">quam exercitationem</h2>
-                <p>Maecenas dictum suscipit</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
-        <div class="gallery-item filterable-item manicure">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-10.jpg">
-            <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-10.jpg" alt="">
-              <figcaption>
-                <h2 class="gallery-title">Hic nisi. Animi placeat</h2>
-                <p>Maecenas dictum suscipit</p>
-              </figcaption>
-            </figure>
-          </a>
-        </div>
+
+      <?php endforeach; }?>
+      <?php if(!empty($makeup)){?>
+        <?php foreach($makeup as $row):?>
+
         <div class="gallery-item filterable-item makeup">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-11.jpg">
+          <a href="#">
             <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-11.jpg" alt="">
+              <img src="<?php echo base_url();?>assets/servicesimage/<?php echo $row->service_photo;?>" alt="">
               <figcaption>
-                <h2 class="gallery-title">Obcaecati quam</h2>
-                <p>Maecenas dictum suscipit</p>
+                <h2 class="gallery-title">Salon Name : <?php echo ucfirst($row->SalonName);?></h2>
+                <p>Service type : <?php echo ucfirst($row->service_type);?></p>
+                <p>Price :  &#8369; <?php echo $row->price;?></p>
+                <p>Address : <?php echo ucfirst($row->Address);?></p>
               </figcaption>
             </figure>
           </a>
         </div>
-        <div class="gallery-item filterable-item makeup">
-          <a href="<?php echo base_url();?>assets/dummy/large-gallery/gallery-12.jpg">
+
+      <?php endforeach; }?>
+      <?php if(!empty($massage)){?>
+        <?php foreach($massage as $row):?>
+
+        <div class="gallery-item filterable-item massage">
+          <a href="#">
             <figure class="featured-image">
-              <img src="<?php echo base_url();?>assets/dummy/gallery-12.jpg" alt="">
+              <img src="<?php echo base_url();?>assets/servicesimage/<?php echo $row->service_photo;?>" alt="">
               <figcaption>
-                <h2 class="gallery-title">quam exercitationem</h2>
-                <p>Maecenas dictum suscipit</p>
+                <h2 class="gallery-title">Salon Name : <?php echo ucfirst($row->SalonName);?></h2>
+                <p>Service type : <?php echo ucfirst($row->service_type);?></p>
+                <p>Price :  &#8369; <?php echo $row->price;?></p>
+                <p>Address : <?php echo ucfirst($row->Address);?></p>
               </figcaption>
             </figure>
           </a>
         </div>
+
+      <?php endforeach; }?>
+
+      <?php if(!empty($facial)){?>
+        <?php foreach($facial as $row):?>
+
+        <div class="gallery-item filterable-item face">
+          <a href="#">
+            <figure class="featured-image">
+              <img src="<?php echo base_url();?>assets/servicesimage/<?php echo $row->service_photo;?>" alt="">
+              <figcaption>
+                <h2 class="gallery-title">Salon Name : <?php echo ucfirst($row->SalonName);?></h2>
+                <p>Service type : <?php echo ucfirst($row->service_type);?></p>
+                <p>Price :  &#8369; <?php echo $row->price;?></p>
+                <p>Address : <?php echo ucfirst($row->Address);?></p>
+              </figcaption>
+            </figure>
+          </a>
+        </div>
+
+      <?php endforeach; }?>
       </div>
     </div>
   </div>

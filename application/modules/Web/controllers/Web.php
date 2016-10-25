@@ -4,6 +4,7 @@ class Web extends MY_Controller{
 
     function __construct(){
       parent::__construct();
+      $this->load->model('Web_m');
       // if($this->session->userdata('userid')){
       //       redirect('Functions/Functions');
       // }
@@ -31,23 +32,35 @@ class Web extends MY_Controller{
       $this->load->view('Default/footer');
     }
 
-    function services(){
+    function salons(){
       $data = array(
         'title'=>'Our Services'
 
       );
       $this->load->view('Default/header',$data);
-      $this->load->view('services');
+      $this->load->view('salons');
       $this->load->view('Default/footer');
     }
 
     function gallery(){
+      $manicure = $this->Web_m->getManicure();
+      $hair = $this->Web_m->getHair();
+      $pedicure = $this->Web_m->getPedicure();
+      $makeup = $this->Web_m->getMakeup();
+      $massage = $this->Web_m->getMassage();
+      $facial = $this->Web_m->getFacial();
       $data = array(
-        'title'=>'Our Galleries'
-
+        'title'=>'Our Salon Services',
+        'manicure'=>$manicure,
+        'hair'=>$hair,
+        'pedicure'=>$pedicure,
+        'makeup'=>$makeup,
+        'massage'=>$massage,
+        'facial'=>$facial,
       );
+
       $this->load->view('Default/header',$data);
-      $this->load->view('gallery');
+      $this->load->view('gallery',$data);
       $this->load->view('Default/footer');
 
     }

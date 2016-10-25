@@ -5,6 +5,7 @@ class GlobalService extends MY_Controller{
     function __construct(){
       parent::__construct();
       $this->load->model('GlobalService_m');
+      $this->load->model('Salons_m');
       if(!$this->session->userdata('userid')){
             redirect('Web');
         }
@@ -33,22 +34,32 @@ class GlobalService extends MY_Controller{
       $this->load->view('Default/globalfooter');
     }
 
-    function services(){
+    function salons(){
+      $salons = $this->Salons_m->getSalons();
       $data = array(
-        'title'=>'Our Services'
-
+        'title'=>'Our Salons',
+        'salons'=>$salons
       );
       $this->load->view('Default/globalheader',$data);
-      $this->load->view('services');
+      $this->load->view('salons');
       $this->load->view('Default/globalfooter');
     }
 
     function gallery(){
-      $salons = $this->GlobalService_m->getSalons();
-
+      $manicure = $this->GlobalService_m->getManicure();
+      $hair = $this->GlobalService_m->getHair();
+      $pedicure = $this->GlobalService_m->getPedicure();
+      $makeup = $this->GlobalService_m->getMakeup();
+      $massage = $this->GlobalService_m->getMassage();
+      $facial = $this->GlobalService_m->getFacial();
       $data = array(
-        'title'=>'Our Galleries',
-        'salons'=>$salons
+        'title'=>'Our Salon Services',
+        'manicure'=>$manicure,
+        'hair'=>$hair,
+        'pedicure'=>$pedicure,
+        'makeup'=>$makeup,
+        'massage'=>$massage,
+        'facial'=>$facial,
       );
       $this->load->view('Default/globalheader',$data);
       $this->load->view('gallery',$data);
@@ -64,6 +75,42 @@ class GlobalService extends MY_Controller{
       $this->load->view('Default/globalheader',$data);
       $this->load->view('contact');
       $this->load->view('Default/globalfooter');
+    }
+
+    function salon($id){
+
+      if(!empty($id)){
+
+        $salon = $this->Salons_m->getSalon($id);
+
+        if($salon != 'False'){
+            $staffs = $this->Salons_m->getStaffs($id);
+            $services = $this->Salons_m->getServices($id);
+            $products = $this->Salons_m->getProducts($id);
+            $promos = $this->Salons_m->getPromos($id);
+            $announcements = $this->Salons_m->getAnnouncements($id);
+            $data = array(
+              'title'=>'Salon',
+              'salon'=>$salon,
+              'staffs'=>$staffs,
+              'services'=>$services,
+              'products'=>$products,
+              'promos'=>$promos,
+              'announcements'=>$announcements
+            );
+            $this->load->view('Default/globalheader',$data);
+            $this->load->view('salon',$data);
+            $this->load->view('Default/globalfooter');
+        }
+        else{
+          redirect('GlobalService');
+        }
+
+      }
+      else{
+        redirect('GlobalService');
+      }
+
     }
 
 

@@ -56,6 +56,7 @@ class Services_management_salon extends MY_Controller{
           'servicedesc'=>$servicedetails['servicedesc'],
           'price'=>$servicedetails['price'],
           'serviceduration'=>$servicedetails['serviceduration'],
+          'servicetype'=>$servicedetails['servicetype'],
           'serviceimage'=>'salonservices.jpg'
         );
 
@@ -73,6 +74,7 @@ class Services_management_salon extends MY_Controller{
             'servicedesc'=>$servicedetails['servicedesc'],
             'price'=>$servicedetails['price'],
             'serviceduration'=>$servicedetails['serviceduration'],
+            'servicetype'=>$servicedetails['servicetype'],
             'serviceimage'=>$image['file_name']
           );
 
@@ -107,6 +109,7 @@ class Services_management_salon extends MY_Controller{
           'servicedesc'=>$servicedetails['servicedesc'],
           'price'=>$servicedetails['price'],
           'serviceduration'=>$servicedetails['serviceduration'],
+          'servicetype'=>$servicedetails['servicetype'],
           'serviceimage'=>''
         );
 
@@ -126,6 +129,7 @@ class Services_management_salon extends MY_Controller{
             'servicedesc'=>$servicedetails['servicedesc'],
             'price'=>$servicedetails['price'],
             'serviceduration'=>$servicedetails['serviceduration'],
+            'servicetype'=>$servicedetails['servicetype'],
             'serviceimage'=>$image['file_name']
           );
 

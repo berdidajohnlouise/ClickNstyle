@@ -49,8 +49,8 @@ class Services_management_salon_m extends CI_Model{
 
           $salonid = $row->SalonID;
 
-          $sql2 = "insert into salon_services(description,servicename,service_photo,duration,price,salonID)values(?,?,?,?,?,?)";
-          $query2 = $this->db->query($sql2,array($data['servicedesc'],$data['servicename'],$data['serviceimage'],$data['serviceduration'],$data['price'],$salonid));
+          $sql2 = "insert into salon_services(description,servicename,service_photo,duration,service_type,price,salonID)values(?,?,?,?,?,?,?)";
+          $query2 = $this->db->query($sql2,array($data['servicedesc'],$data['servicename'],$data['serviceimage'],$data['serviceduration'],$data['servicetype'],$data['price'],$salonid));
 
           if($query2){
             return 'True';
@@ -68,6 +68,7 @@ class Services_management_salon_m extends CI_Model{
       $this->db->set('servicename',$data['servicename']);
       $this->db->set('description',$data['servicedesc']);;
       $this->db->set('duration',$data['serviceduration']);
+      $this->db->set('service_type',$data['servicetype']);
       $this->db->set('price',$data['price']);
       $this->db->where('serviceID',$data['serviceid']);
       $query = $this->db->update('salon_services');

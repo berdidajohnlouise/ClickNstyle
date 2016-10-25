@@ -319,6 +319,7 @@ function updateSU(id){
         $('#servicedesc').val(result.description);
         $('#price').val(result.price);
         $('#duration').val(result.duration);
+        $('#servicetype').val(result.service_type);
         $('#updateLabel').text('Update '+result.servicename);
         $('#staff_avatar').attr('src','<?php echo base_url();?>assets/servicesimage/'+result.service_photo);
 

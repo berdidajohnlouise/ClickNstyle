@@ -1,6 +1,6 @@
 <?php
 
-class GlobalService_m extends CI_Model{
+class Web_m extends CI_Model{
 
   function __construct(){
     parent::__construct();

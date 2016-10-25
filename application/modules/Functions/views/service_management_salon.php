@@ -32,6 +32,7 @@
                                                 <th>Service description</th>
                                                 <th>Service Price</th>
                                                 <th>Service Duration</th>
+                                                <th>Service Type</th>
                                                 <th>Options</th>
 
                                             </tr>
@@ -45,6 +46,7 @@
                                             <td><?php echo ucfirst($row->description);?></td>
                                             <td>&#8369; <?php echo $row->price;?></td>
                                             <td><?php echo ucfirst($row->duration);?></td>
+                                            <td><?php echo ucfirst($row->service_type);?></td>
                                             <td><a href="#updateService" data-toggle="modal" data-id="<?php echo $row->serviceID;?>" class="updateService" style="color:green"><i class="fa fa-edit"></i> Edit </a><span style="padding-left:3px;"><a href="#" onclick="deleteService(<?php echo $row->serviceID;?>)" style="color:red"><i class="fa fa-edit"></i> Delete</a></span></td>
                                           </tr>
                                         <?php endforeach;}?>
@@ -120,6 +122,21 @@
                             <option>5 Hours and 30 minutes</option>
                           </select>
                         </div>
+
+
+                        <div class="form-group">
+                          <label for="servicetype">Service Type:</label>
+                          <select class="form-control" name="servicetype" required>
+                            <option selected="selected" disabled>--Service Type--</option>
+                            <option>Hair</option>
+                            <option>Manicure</option>
+                            <option>Pedicure</option>
+                            <option>Makeup</option>
+                            <option>Massage</option>
+                            <option>Facial</option>
+                          </select>
+                        </div>
+
                     </div>
 
                   </div><!-- end of row -->
@@ -199,6 +216,19 @@
                             <option>5 Hours</option>
                             <option>5 Hours and 15 minutes</option>
                             <option>5 Hours and 30 minutes</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="servicetype">Service Type:</label>
+                          <select class="form-control" name="servicetype" id="servicetype" required>
+                            <option selected="selected" disabled>--Service Type--</option>
+                            <option>Hair</option>
+                            <option>Manicure</option>
+                            <option>Pedicure</option>
+                            <option>Makeup</option>
+                            <option>Massage</option>
+                            <option>Facial</option>
                           </select>
                         </div>
                     </div>
