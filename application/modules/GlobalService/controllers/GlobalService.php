@@ -90,6 +90,7 @@ class GlobalService extends MY_Controller{
             $products = $this->Salons_m->getProducts($id);
             $promos = $this->Salons_m->getPromos($id);
             $announcements = $this->Salons_m->getAnnouncements($id);
+
             $data = array(
               'title'=>'Welcome To '.$salon->SalonName,
               'salon'=>$salon,

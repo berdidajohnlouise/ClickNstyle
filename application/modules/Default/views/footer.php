@@ -48,7 +48,7 @@
 <script src="<?php echo base_url();?>assets/js/jquery-1.11.1.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrapValidator.min.js"></script>
-
+<script src="<?php echo base_url();?>assets/js/plugins/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/js/plugins.js"></script>
 <script src="<?php echo base_url();?>assets/js/app.js"></script>
 <script type="text/javascript">
@@ -129,6 +129,71 @@
  			       });
   })
 </script>
+
+<!-- Page specific script -->
+       <script type="text/javascript">
+           $(function() {
+
+             var myevent = [];
+             window.onload = function(){
+               getData();
+
+             };
+
+             function getData(){
+               var Salonid = window.location.href.split("/").pop();
+                var url = "<?php echo base_url();?>Web/getCalendars/"+Salonid;
+                 $.getJSON(url,function(result){
+                   console.log(result);
+
+                     $.each(result,function(value,element){
+
+                       console.log(element.cal_name);
+                         var insertEvents = {
+
+                           title: element.cal_name.charAt(0).toUpperCase() + element.cal_name.slice(1),
+                           description: "Details: "+element.cal_description.charAt(0).toUpperCase()+ element.cal_description.slice(1),
+                           start:element.cal_date,
+                           backgroundColor: "#f56954", //red
+                           borderColor: "#f56954" //red
+                         };
+                         myevent.push(insertEvents);
+                     });
+                 });
+
+
+             }
+
+
+
+               /* initialize the calendar
+                -----------------------------------------------------------------*/
+               //Date for the calendar events (dummy data)
+               var date = new Date();
+
+
+               var d = date.getDate(),
+                       m = date.getMonth(),
+                       y = date.getFullYear();
+               $('#calendar').fullCalendar({
+                   header: {
+                       center: 'title',
+
+                   },
+                   //Random default events
+                   events: myevent,
+                   eventClick: function(events,element) {
+                      if (events) {
+                        alert(events.description+'\n');
+                          return false;
+                      }
+                  }
+
+
+               });
+
+           });
+       </script>
 
 </body>
 

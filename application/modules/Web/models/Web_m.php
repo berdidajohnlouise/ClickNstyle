@@ -93,4 +93,18 @@ class Web_m extends CI_Model{
     }
   }
 
+  function getCalendars($id){
+
+
+      $sql2= "select * from calendar where SalonID = $id ORDER BY cal_date ASC";
+      $query2 = $this->db->query($sql2);
+
+      if($query2->num_rows()>0){
+          $result = $query2->result();
+          return $result;
+      }
+
+  }
+
+
 }

@@ -144,4 +144,9 @@ class Web extends MY_Controller{
         $this->load->view('Default/footer');
 
     }
+
+    function getCalendars($id){
+      $success = $this->Web_m->getCalendars($id);
+      echo json_encode($success);
+    }
 }

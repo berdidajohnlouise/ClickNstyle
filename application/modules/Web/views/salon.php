@@ -59,6 +59,10 @@
 
               <div class="col-md-6 col" >
 
+                <h4 style="font-size: 28px;text-transform: uppercase;font-weight: 300;font-family: 'Novecento Sans', 'Open Sans', sans-serif; background-image: -webkit-linear-gradient(90deg, #cc7250, #f7d0c2);-webkit-background-clip: text;-webkit-text-fill-color: transparent;margin-bottom: 20px;">Salon Calendar:</h4><br>
+
+                <div id="calendar" style="background:#fff; color:#000; padding:5px; border-radius:10px;"></div>
+
                 <?php if(!empty($services)){ ?>
                     <h4 style="font-size: 28px;text-transform: uppercase;font-weight: 300;font-family: 'Novecento Sans', 'Open Sans', sans-serif; background-image: -webkit-linear-gradient(90deg, #cc7250, #f7d0c2);-webkit-background-clip: text;-webkit-text-fill-color: transparent;margin-bottom: 20px;">Services:</h4><br>
                 <?php foreach($services as $row):?>

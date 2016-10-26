@@ -10,9 +10,15 @@
 
 		<link href="<?php echo base_url();?>assets/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="<?php echo base_url();?>assets/fonts/novecento-font/novecento-font.css" rel="stylesheet" type="text/css">
+		<link href="<?php echo base_url();?>assets/css/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url();?>assets/css/fullcalendar/fullcalendar.print.css" rel="stylesheet" type="text/css" media='print' />
 		<!-- Loading main css file -->
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/style.css">
-
+		<style>
+			.fc-header-title>h2{
+				color:#000;
+			}
+		</style>
 
 
 		<!--[if lt IE 9]>

@@ -258,6 +258,27 @@ function updateSU(id){
   }
 }
 
+function deleteCalendar(id){
+  if(confirm('Are you sure you want to delete this Event?')==true){
+    var url = "<?php echo base_url();?>Functions/Calendar_management_salon/deleteCalendar/"+id;
+    $.post(url,function(result){
+      var result1 = result.toString().replace(/\s/g, "");
+
+      if(result1=='True'){
+        alert('Event Successfully Deleted');
+        window.location.href = "<?php echo base_url();?>Functions/Calendar_management_salon";
+      }
+      else{
+        alert('Developer nga bogo');
+      }
+
+    });
+  }
+  else{
+    location.reload();
+  }
+}
+
 </script>
 
 
@@ -408,12 +429,36 @@ function updateSU(id){
 
       $.getJSON(url,function(result){
 
-        console.log(result);
            $('#staffsname1').val(result.lastName+', '+result.firstName);
            $('#username1').val(result.userName);
            $('#staff_image').attr('src','<?php echo base_url();?>assets/staffsimage/'+result.photo);
           $('#suid').val(result.suID);
            $('#updateLabel').text('Update '+result.userName);
+
+      });
+
+  });
+  </script>
+
+  <!-- update Calendar script -->
+
+  <script type="text/javascript">
+  $(document).on("click",".updateCalendar",function(){
+
+      var calid = $(this).data('id');
+
+      var url = "<?php echo base_url();?>Functions/Calendar_management_salon/getCalendar/"+calid;
+
+      $.getJSON(url,function(result){
+
+        console.log(result);
+
+        $('#calid').val(result.cal_id);
+        $('#caltitle').val(result.cal_name);
+        $('#caldesc').val(result.cal_description);
+        $('#caldate').val(result.cal_date);
+        $('#updateLabel').text('Update '+result.cal_name);
+
 
       });
 
