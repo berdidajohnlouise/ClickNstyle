@@ -6,6 +6,7 @@ class GlobalService extends MY_Controller{
       parent::__construct();
       $this->load->model('GlobalService_m');
       $this->load->model('Salons_m');
+      $this->load->model('Services_m');
       if(!$this->session->userdata('userid')){
             redirect('Web');
         }
@@ -90,7 +91,7 @@ class GlobalService extends MY_Controller{
             $promos = $this->Salons_m->getPromos($id);
             $announcements = $this->Salons_m->getAnnouncements($id);
             $data = array(
-              'title'=>'Salon',
+              'title'=>'Welcome To '.$salon->SalonName,
               'salon'=>$salon,
               'staffs'=>$staffs,
               'services'=>$services,
@@ -112,6 +113,32 @@ class GlobalService extends MY_Controller{
       }
 
     }
+
+    function service($id){
+
+      if(!empty($id)){
+
+
+        $service = $this->Services_m->getService($id);
+        $services = $this->Services_m->getServices($id);
+        $data = array(
+          'title'=>'Services',
+          'service'=>$service,
+          'services'=>$services
+        );
+        $this->load->view('Default/globalheader',$data);
+        $this->load->view('service',$data);
+        $this->load->view('Default/globalfooter');
+
+
+      }
+      else{
+        redirect('GlobalService');
+      }
+
+
+    }
+
 
 
 

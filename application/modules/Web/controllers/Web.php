@@ -5,6 +5,8 @@ class Web extends MY_Controller{
     function __construct(){
       parent::__construct();
       $this->load->model('Web_m');
+      $this->load->model('GlobalService/Salons_m');
+      $this->load->model('GlobalService/Services_m');
       // if($this->session->userdata('userid')){
       //       redirect('Functions/Functions');
       // }
@@ -33,12 +35,14 @@ class Web extends MY_Controller{
     }
 
     function salons(){
+      $salons = $this->Salons_m->getSalons();
       $data = array(
-        'title'=>'Our Services'
+        'title'=>'Our Salons',
+        'salons'=>$salons
 
       );
       $this->load->view('Default/header',$data);
-      $this->load->view('salons');
+      $this->load->view('salons',$data);
       $this->load->view('Default/footer');
     }
 
@@ -88,5 +92,56 @@ class Web extends MY_Controller{
 
     function login(){
       $this->load->view('login');
+    }
+
+    function salon($id){
+
+      if(!empty($id)){
+
+        $salon = $this->Salons_m->getSalon($id);
+
+        if($salon != 'False'){
+            $staffs = $this->Salons_m->getStaffs($id);
+            $services = $this->Salons_m->getServices($id);
+            $products = $this->Salons_m->getProducts($id);
+            $promos = $this->Salons_m->getPromos($id);
+            $announcements = $this->Salons_m->getAnnouncements($id);
+            $data = array(
+              'title'=>'Welcome To '.$salon->SalonName,
+              'salon'=>$salon,
+              'staffs'=>$staffs,
+              'services'=>$services,
+              'products'=>$products,
+              'promos'=>$promos,
+              'announcements'=>$announcements
+            );
+            $this->load->view('Default/header',$data);
+            $this->load->view('salon',$data);
+            $this->load->view('Default/footer');
+        }
+        else{
+          redirect('Web');
+        }
+
+      }
+      else{
+        redirect('Web');
+      }
+
+    }
+
+    function service($id){
+
+        $service = $this->Services_m->getService($id);
+        $services = $this->Services_m->getServices($id);
+        $data = array(
+          'title'=>'Services',
+          'service'=>$service,
+          'services'=>$services
+        );
+        $this->load->view('Default/header',$data);
+        $this->load->view('service',$data);
+        $this->load->view('Default/footer');
+
     }
 }

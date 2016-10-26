@@ -47,7 +47,7 @@
         <?php foreach($manicure as $row):?>
 
         <div class="gallery-item filterable-item manicure">
-          <a href="#">
+          <a href="<?php echo base_url();?>GlobalService/service/<?php echo $row->serviceID;?>">
             <figure class="featured-image">
               <img src="<?php echo base_url();?>assets/servicesimage/<?php echo $row->service_photo;?>" alt="">
               <figcaption>
@@ -65,7 +65,7 @@
         <?php foreach($hair as $row):?>
 
         <div class="gallery-item filterable-item hair">
-          <a href="#">
+          <a href="<?php echo base_url();?>GlobalService/service/<?php echo $row->serviceID;?>">
             <figure class="featured-image">
               <img src="<?php echo base_url();?>assets/servicesimage/<?php echo $row->service_photo;?>" alt="">
               <figcaption>
@@ -83,7 +83,7 @@
         <?php foreach($pedicure as $row):?>
 
         <div class="gallery-item filterable-item pedicure">
-          <a href="#">
+          <a href="<?php echo base_url();?>GlobalService/service/<?php echo $row->serviceID;?>">
             <figure class="featured-image">
               <img src="<?php echo base_url();?>assets/servicesimage/<?php echo $row->service_photo;?>" alt="">
               <figcaption>
@@ -101,7 +101,7 @@
         <?php foreach($makeup as $row):?>
 
         <div class="gallery-item filterable-item makeup">
-          <a href="#">
+          <a href="<?php echo base_url();?>GlobalService/service/<?php echo $row->serviceID;?>">
             <figure class="featured-image">
               <img src="<?php echo base_url();?>assets/servicesimage/<?php echo $row->service_photo;?>" alt="">
               <figcaption>
@@ -119,7 +119,7 @@
         <?php foreach($massage as $row):?>
 
         <div class="gallery-item filterable-item massage">
-          <a href="#">
+          <a href="<?php echo base_url();?>GlobalService/service/<?php echo $row->serviceID;?>">
             <figure class="featured-image">
               <img src="<?php echo base_url();?>assets/servicesimage/<?php echo $row->service_photo;?>" alt="">
               <figcaption>
@@ -138,7 +138,7 @@
         <?php foreach($facial as $row):?>
 
         <div class="gallery-item filterable-item face">
-          <a href="#">
+          <a href="<?php echo base_url();?>GlobalService/service/<?php echo $row->serviceID;?>">
             <figure class="featured-image">
               <img src="<?php echo base_url();?>assets/servicesimage/<?php echo $row->service_photo;?>" alt="">
               <figcaption>

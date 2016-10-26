@@ -4,8 +4,8 @@
   <ul class="menu">
     <li class="menu-item"><a href="<?php echo base_url();?>">Home</a></li>
     <li class="menu-item"><a href="<?php echo base_url();?>Web/about">About</a></li>
-    <li class="menu-item current-menu-item"><a href="<?php echo base_url();?>Web/services">Services</a></li>
-    <li class="menu-item"><a href="<?php echo base_url();?>Web/gallery">Gallery</a></li>
+    <li class="menu-item current-menu-item"><a href="<?php echo base_url();?>Web/salons">Salons</a></li>
+    <li class="menu-item"><a href="<?php echo base_url();?>Web/gallery">Salon Services</a></li>
     <li class="menu-item"><a href="<?php echo base_url();?>Web/contact">Contact</a></li>
     <li class="menu-item"><a href="<?php echo base_url();?>Web/register">Register</a></li>
     <li class="menu-item"><a href="<?php echo base_url();?>Web/login">Login</a></li>
@@ -18,98 +18,42 @@
 
 
 <main class="main-content">
-    <div class="page">
-      <div class="container">
-        <p>Fusce nec congue diam. Maecenas condimentum porttitor nibh in dignissim. Maecenas dictum felis id suscipit facilisis. Quisque et ipsum eleifend, commodo tellus at, ultrices purus. Suspendisse bibendum diam et tortor sodales sagittis. Phasellus rutrum justo libero, in gravida sem laoreet in. Aenean sed elit nec felis elementum scelerisque sit amet nec leo. Curabitur ipsum justo, laoreet quis feugiat at, blandit vel mauris. Vivamus luctus placerat nibh quis tempus. Nunc molestie, mi et suscipit vulputate, sem est rhoncus arcu, a vestibulum nunc magna ac tortor. Sed malesuada quis sem in tincidunt. Sed cursus enim orci, vitae vulputate est condimentum pharetra. Curabitur pretium est quis venenatis pharetra. Vestibulum a leo at quam rutrum vestibulum. Aenean tincidunt tellus quis tortor feugiat, rutrum sollicitudin .</p>
-
-        <div class="row">
-          <div class="col-md-3">
-            <div class="feature">
-              <img src="<?php echo base_url();?>assets/images/icon-1.png" class="feature-image">
-              <h3 class="feature-title">Voluptatem</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dolor </p>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="feature">
-              <img src="<?php echo base_url();?>assets/images/icon-2.png" class="feature-image">
-              <h3 class="feature-title">COnsequatur</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, minus, totam. Officia </p>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="feature">
-              <img src="<?php echo base_url();?>assets/images/icon-3.png" class="feature-image">
-              <h3 class="feature-title">Temporibus</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, omnis cum, </p>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="feature">
-              <img src="<?php echo base_url();?>assets/images/icon-4.png" class="feature-image">
-              <h3 class="feature-title">Perferendis</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, facere numquam porro </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-3">
-            <div class="feature">
-              <img src="<?php echo base_url();?>assets/images/icon-5.png" class="feature-image">
-              <h3 class="feature-title">Voluptatem</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dolor perferendis</p>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="feature">
-              <img src="<?php echo base_url();?>assets/images/icon-6.png" class="feature-image">
-              <h3 class="feature-title">COnsequatur</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, minus, totam. Officia ea</p>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="feature">
-              <img src="<?php echo base_url();?>assets/images/icon-7.png" class="feature-image">
-              <h3 class="feature-title">Temporibus</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, omnis cum, quo dolorem </p>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="feature">
-              <img src="<?php echo base_url();?>assets/images/icon-8.png" class="feature-image">
-              <h3 class="feature-title">Perferendis</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, facere numquam porro </p>
-            </div>
-          </div>
-        </div> <!-- .row -->
-
-        <div class="row">
-          <div class="col-md-6">
-            <div class="price-list">
-              <h2 class="section-title">Men's prices</h2>
-              <ul class="prices">
-                <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
-                <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
-                <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
-                <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
-                <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="price-list">
-              <h2 class="section-title">women's prices</h2>
-              <ul class="prices">
-                <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
-                <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
-                <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
-                <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
-                <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
-              </ul>
-            </div>
-          </div>
+  <div class="page">
+    <div class="container">
+      <div class="text-center">
+        <div class="filter-links filterable-nav">
+          <select class="mobile-filter">
+            <option value="*">Show all</option>
+            <option value=".hair">hair</option>
+            <option value=".manicure">manicure</option>
+            <option value=".pedicure">pedicure</option>
+            <option value=".face">face</option>
+            <option value=".makeup">makeup</option>
+          </select>
+          <a href="#" class="current wow fadeInRight" data-filter="*">All Salons</a>
         </div>
       </div>
+
+      <div class="filterable-items">
+
+        <?php if(!empty($salons)){?>
+        <?php foreach($salons as $row):?>
+
+        <div class="gallery-item filterable-item">
+          <a href="<?php echo base_url();?>Web/salon/<?php echo $row->SalonID;?>">
+            <figure class="featured-image">
+              <img src="<?php echo base_url();?>assets/usersimage/<?php echo $row->user_image;?>" alt="">
+              <figcaption>
+                <h2 class="gallery-title">Salon Name : <?php echo ucfirst($row->SalonName);?></h2>
+                <p>Address : <?php echo ucfirst($row->Address);?></p>
+              </figcaption>
+            </figure>
+          </a>
+        </div>
+
+      <?php endforeach; }?>
+
+      </div>
     </div>
-  </main>
+  </div>
+</main>

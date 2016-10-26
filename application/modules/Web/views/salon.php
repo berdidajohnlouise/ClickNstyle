@@ -2,14 +2,13 @@
 <div class="main-navigation">
   <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
   <ul class="menu">
-    <li class="menu-item"><a href="<?php echo base_url();?>GlobalService">Home</a></li>
-    <li class="menu-item"><a href="<?php echo base_url();?>GlobalService/about">About</a></li>
-    <li class="menu-item"><a href="<?php echo base_url();?>GlobalService/salons">Salons</a></li>
-    <li class="menu-item"><a href="<?php echo base_url();?>GlobalService/gallery">Salons Services</a></li>
-    <li class="menu-item"><a href="<?php echo base_url();?>GlobalService/contact">Contact</a></li>
-    <li class="menu-item"><a href="<?php echo base_url();?>Functions">My Account</a></li>
-    <li class="menu-item"><a href="<?php echo base_url();?>Auth/logout">Logout</a></li>
-
+    <li class="menu-item"><a href="<?php echo base_url();?>">Home</a></li>
+    <li class="menu-item"><a href="<?php echo base_url();?>Web/about">About</a></li>
+    <li class="menu-item"><a href="<?php echo base_url();?>Web/salons">Salons</a></li>
+    <li class="menu-item"><a href="<?php echo base_url();?>Web/gallery">Salon Services</a></li>
+    <li class="menu-item"><a href="<?php echo base_url();?>Web/contact">Contact</a></li>
+    <li class="menu-item"><a href="<?php echo base_url();?>Web/register">Register</a></li>
+    <li class="menu-item"><a href="<?php echo base_url();?>Web/login">Login</a></li>
   </ul> <!-- .menu -->
 </div> <!-- .main-navigation -->
 
@@ -66,7 +65,7 @@
                 <!-- services -->
                 <div class="row">
                   <div class="col-md-3">
-                          <a href="<?php echo base_url();?>GlobalService/service/<?php echo $row->serviceID?>"><img src="<?php echo base_url();?>assets/servicesimage/<?php echo $row->service_photo;?>" alt="" width="100" height="100"/></a>
+                          <a href="<?php echo base_url();?>Web/service/<?php echo $row->serviceID?>"><img src="<?php echo base_url();?>assets/servicesimage/<?php echo $row->service_photo;?>" alt="" width="100" height="100"/></a>
                   </div>
                   <div class="col-md-8">
                       <b>Service Name :</b> <i><?php echo ucfirst($row->servicename);?> </i><br>
