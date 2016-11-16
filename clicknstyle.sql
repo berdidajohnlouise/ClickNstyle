@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2016 at 06:39 PM
+-- Generation Time: Nov 16, 2016 at 02:45 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -48,7 +48,15 @@ CREATE TABLE IF NOT EXISTS `calendar` (
   `cal_description` varchar(50) NOT NULL,
   `cal_date` date NOT NULL,
   PRIMARY KEY (`cal_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `calendar`
+--
+
+INSERT INTO `calendar` (`cal_id`, `SalonID`, `cal_name`, `cal_description`, `cal_date`) VALUES
+(2, 3, 'Salon is Closed', 'Salon Is fucking closed ayaw pag buot', '2016-11-07'),
+(3, 3, 'Salon is bankrupt', 'ayaw pag buot kay dili ka lord', '2016-11-15');
 
 -- --------------------------------------------------------
 
@@ -254,14 +262,15 @@ CREATE TABLE IF NOT EXISTS `salon` (
   `OwnerName` text NOT NULL,
   `userid` int(11) NOT NULL,
   PRIMARY KEY (`SalonID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `salon`
 --
 
 INSERT INTO `salon` (`SalonID`, `SalonName`, `ContactNum`, `SalonDetails`, `Latitude`, `Longitude`, `Address`, `Status`, `OwnerName`, `userid`) VALUES
-(3, 'Boom', '09239414642', 'Ang Bobo mo naman :D \r\n', 10.3115, 123.901, 'Gen. Maxilom Avenue Cebu City', '1', 'John Louise Berdida', 11);
+(3, 'Salon De Rose', '09239414642', 'Ang Bobo mo naman :D \r\n', 10.3208, 123.907, 'Barrio Luz Cebu City', '1', 'John Louise Berdida', 11),
+(4, 'Bridges Salon', '12345689', 'This is fucking awesome salon\r\n', 10.3242, 123.909, '9410, The Gallery, Pope John Paul II Ave, Cebu Cit', '1', 'Kim', 13);
 
 -- --------------------------------------------------------
 
@@ -303,18 +312,19 @@ INSERT INTO `salon_services` (`serviceID`, `description`, `servicename`, `servic
 CREATE TABLE IF NOT EXISTS `staff_users` (
   `suID` int(11) NOT NULL AUTO_INCREMENT,
   `userName` varchar(30) NOT NULL,
-  `password` varchar(30) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `salonID` int(11) NOT NULL,
   `personnel_id` int(11) NOT NULL,
   PRIMARY KEY (`suID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `staff_users`
 --
 
 INSERT INTO `staff_users` (`suID`, `userName`, `password`, `salonID`, `personnel_id`) VALUES
-(3, 'johnberdida', 'f6fdffe48c908deb0f4c3bd36c032e', 3, 4);
+(3, 'johnberdida', 'f6fdffe48c908deb0f4c3bd36c032e72', 3, 4),
+(4, 'manatad', 'f6fdffe48c908deb0f4c3bd36c032e72', 3, 8);
 
 -- --------------------------------------------------------
 
@@ -394,18 +404,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created_at` date NOT NULL,
   `user_status` int(11) NOT NULL COMMENT '0 - inactive | 1 - active',
   PRIMARY KEY (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`userid`, `username`, `password`, `email`, `user_image`, `firstname`, `lastname`, `address`, `usertype`, `created_at`, `user_status`) VALUES
-(1, 'jLKisni', 'f6fdffe48c908deb0f4c3bd36c032e72', 'jLKisni@yahoo.com', '13833313_10209423004473613_608471399_o.jpg', 'John Louise', 'Berdida', 'Alaska Mambaling Cebu City', 1, '2016-10-11', 1),
+(1, 'jLKisni', 'f6fdffe48c908deb0f4c3bd36c032e72', 'jLKisni@yahoo.com', 'boy1.jpg', 'John Louise', 'Berdida', 'Alaska Mambaling Cebu City', 1, '2016-10-11', 1),
 (5, 'glipa', 'f6fdffe48c908deb0f4c3bd36c032e72', 'glipa@yahoo.com', 'glipa.png', 'Christine', 'Glipa', 'Guadalupe Sitio Kamunggay St. Cebu City', 1, '2016-10-11', 1),
 (6, 'manatad', 'f6fdffe48c908deb0f4c3bd36c032e72', 'manatad@yahoo.com', 'user.png', 'Jezeryl', 'Manatad', 'Oprah', 1, '2016-10-11', 1),
-(11, 'Boom', 'f6fdffe48c908deb0f4c3bd36c032e72', 'boom@yahoo.com', '1465690249_google_plus.ico', '', '', 'Gen. Maxilom Avenue Cebu City', 2, '2016-10-16', 1),
-(12, 'admin', 'f6fdffe48c908deb0f4c3bd36c032e72', 'admin@yahoo.com', 'user.png', 'admin', 'admin', 'Administrator', 0, '2016-10-16', 1);
+(11, 'Boom', 'f6fdffe48c908deb0f4c3bd36c032e72', 'boom@yahoo.com', '1465690249_google_plus.ico', '', '', 'Barrio Luz Cebu City', 2, '2016-10-16', 1),
+(12, 'admin', 'f6fdffe48c908deb0f4c3bd36c032e72', 'admin@yahoo.com', 'avatar04.png', 'admin', 'admin', 'Administrator', 0, '2016-10-16', 1),
+(13, 'bridges', 'f6fdffe48c908deb0f4c3bd36c032e72', 'sample@yahoo.com', 'user.png', '', '', '9410, The Gallery, Pope John Paul II Ave, Cebu City, 6000 Cebu', 2, '2016-11-06', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

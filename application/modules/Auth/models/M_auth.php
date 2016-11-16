@@ -110,6 +110,29 @@ class M_auth extends CI_Model{
 
   }
 
+  function loginSalonStaff($data){
+
+    $sql = "select * from staff_users where userName = ? and password = ?";
+    $query = $this->db->query($sql,array($data['username'],$data['password']));
+    if($query->num_rows()>0){
+        $row = $query->row();
+        $session = array(
+          'userid'=>$row->suID,
+          'username'=>$row->userName,
+          'logged_in'=>1
+        );
+        $this->session->set_userdata($session);
+
+        return 'Login';
+
+    }
+    else{
+         return 'false';
+
+     }
+
+  }
+
   function deactivate(){
     $this->db->set('user_status',0);
     $this->db->where('userid',$this->session->userdata('userid'));

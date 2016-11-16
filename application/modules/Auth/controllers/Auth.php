@@ -94,6 +94,23 @@ class Auth extends MY_Controller{
     }
   }
 
+  function loginStaff(){
+
+    $data = $this->input->post('data');
+
+    $userdetails = array(
+      'username'=>$data['username'],
+      'password'=>md5($data['password'])
+    );
+    $success = $this->M_auth->loginSalonStaff($userdetails);
+    echo $success;
+    // if($success == 'Login'){
+    //   echo $success;
+    // }else{
+    //   echo $success;
+    // }
+  }
+
   function logout(){
         $this->session->sess_destroy();
         redirect('Web');

@@ -62,7 +62,7 @@ class Account_management_m extends CI_Model{
 
   function updateProfile($data){
 
-    if($this->session->userdata('usertype')==1){
+    if($this->session->userdata('usertype')==1 || $this->session->userdata('usertype')==0){
 
       if($data['user_image'] != ""){
         $this->db->set('user_image',$data['user_image']);
@@ -75,7 +75,6 @@ class Account_management_m extends CI_Model{
         if($query){
           return 'True';
         }
-
 
       }
       else{

@@ -149,4 +149,9 @@ class Web extends MY_Controller{
       $success = $this->Web_m->getCalendars($id);
       echo json_encode($success);
     }
+
+
+    function signinStaff(){
+      $this->load->view('loginStaff');
+    }
 }

@@ -2,7 +2,7 @@
 <html class="bg-black">
     <head>
         <meta charset="UTF-8">
-        <title>ClickNStyle | Log in</title>
+        <title>ClickNStyle | Log in as salon staff</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <link rel="shortcut icon" href="<?php echo base_url();?>assets/images/logo.png">
         <!-- bootstrap 3.0.2 -->
@@ -17,7 +17,7 @@
     <body class="bg-black">
 
         <div class="form-box" id="login-box">
-            <div class="header">Sign In</div>
+            <div class="header">Sign-in as salon staff</div>
 
               <form class="contact-form" method="post">
                 <div class="body bg-gray">
@@ -35,8 +35,8 @@
                 <div class="footer">
                     <button type="submit" name="submit" class="btn bg-olive btn-block" id="loginform">Sign me in</button>
                 </form>
-                    <a href="<?php echo base_url();?>Web/register" class="text-center">Register a new account</a>
-                    <a href="<?php echo base_url();?>Web/signinStaff" class="text-center pull-right">Sign-in as Salon Staff</a>
+                    <a href="<?php echo base_url();?>Web/login" class="text-center">Back to main login page</a>
+
                 </div>
 
 
@@ -91,15 +91,17 @@
               'username':username,
               'password':password
             };
-            var url ="<?php echo base_url();?>Auth/login";
+            var url ="<?php echo base_url();?>Auth/loginStaff";
             $.post(url,{data:userdata},function(result){
-              var result1 = result.toString().replace(/\s/g, "") ;
-              if(result1=="Login"){
-                window.location.href = "<?php echo base_url();?>Functions/";
-              }
-              else{
-                $form.find('.alert').html('Incorrect User Credentials! Please Try Again').show();
-              }
+
+              alert(result);
+              // var result1 = result.toString().replace(/\s/g, "") ;
+              // if(result1=="Login"){
+              //   window.location.href = "<?php echo base_url();?>Functions/";
+              // }
+              // else{
+              //   $form.find('.alert').html('Incorrect User Credentials! Please Try Again').show();
+              // }
 
             });
 

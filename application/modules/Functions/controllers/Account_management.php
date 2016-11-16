@@ -80,6 +80,40 @@ class Account_management extends MY_Controller{
         }
 
       }
+      else if($this->session->userdata('usertype')==0){
+
+        if( ! $this->upload->do_upload($filename)){
+
+          $userdetails = array(
+            'firstname'=>$data['firstname'],
+            'lastname'=>$data['lastname'],
+            'address'=>$data['address'],
+            'user_image'=>''
+          );
+
+          $success = $this->Account_management_m->updateProfile($userdetails);
+          if($success =='True'){
+            redirect('Functions');
+          }
+        }else{
+
+          $image = $this->upload->data();
+
+          $userdetails = array(
+            'firstname'=>$data['firstname'],
+            'lastname'=>$data['lastname'],
+            'address'=>$data['address'],
+            'user_image'=>$image['file_name']
+          );
+
+
+          $success = $this->Account_management_m->updateProfile($userdetails);
+
+          if($success =='True'){
+            redirect('Functions');
+          }
+        }
+      }
       else if($this->session->userdata('usertype')==2){
         if( ! $this->upload->do_upload($filename)){
 

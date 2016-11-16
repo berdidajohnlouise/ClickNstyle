@@ -31,28 +31,27 @@ class Staff_management_user_salon_m extends CI_Model{
   // }
 
   function getStaffs(){
+
     $userid = $this->session->userdata('userid');
-    $sql = "select * from personnels where salonID = $userid ";
+    $sql = "select * from salon where userid = $userid";
     $query = $this->db->query($sql);
 
-    if($query->num_rows()>0){
-      $row = $query->result();
-      return $row;
-      // $sql2= "select * from personnels where salonID = $salonid";
-      // $query2 = $this->db->query($sql2);
-      //
-      // if($query2->num_rows()>0){
-      //     $result = $query2->result();
-      //     return $result;
-      // }
-      // else{
-      //   echo 'wala';
-      // }
+    if($query ->num_rows()>0){
+      $row = $query->row();
+      $salonid = $row->SalonID;
+      $sql2 = "select * from personnels where salonID = $salonid ";
+      $query2 = $this->db->query($sql2);
+
+        if($query2->num_rows()>0){
+          $row = $query2->result();
+          return $row;
+
+        }
+
+      }
 
 
-    }
-
-  }
+}
 
   function getStaffuser(){
     $userid = $this->session->userdata('userid');
