@@ -6,6 +6,7 @@ class Functions extends MY_Controller{
       parent::__construct();
       $this->load->model('M_sidebars');
       $this->load->model('Account_management_m');
+      $this->load->model('Function_m');
       if(!$this->session->userdata('userid')){
             redirect('Web');
       }
@@ -28,6 +29,21 @@ class Functions extends MY_Controller{
       $this->load->view('Default/adminsidebar',$data);
       $this->load->view('dashboard',$data);
       $this->load->view('Default/adminfooter');
+    }
+
+
+    function staff_user(){
+        $sidebar = $this->Function_m->staff_sidebar($this->session->userdata('salonid'));
+        $usersdetails = $this->Function_m->userdetails($this->session->userdata('userid'));
+        $data = array(
+          'title'=>'Dashboard',
+          'sidebar'=>$sidebar,
+          'userdetails'=>$usersdetails
+        );
+        $this->load->view('Default/staffheader',$data);
+         $this->load->view('Default/staffsidebar',$data);
+        // $this->load->view('dashboard',$data);
+        $this->load->view('Default/adminfooter');
     }
 
 }

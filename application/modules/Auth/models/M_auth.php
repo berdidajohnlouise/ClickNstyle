@@ -119,7 +119,7 @@ class M_auth extends CI_Model{
         $session = array(
           'userid'=>$row->suID,
           'username'=>$row->userName,
-          'logged_in'=>1
+          'salonid'=>$row->salonID
         );
         $this->session->set_userdata($session);
 

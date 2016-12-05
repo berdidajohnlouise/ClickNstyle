@@ -94,14 +94,14 @@
             var url ="<?php echo base_url();?>Auth/loginStaff";
             $.post(url,{data:userdata},function(result){
 
-              alert(result);
-              // var result1 = result.toString().replace(/\s/g, "") ;
-              // if(result1=="Login"){
-              //   window.location.href = "<?php echo base_url();?>Functions/";
-              // }
-              // else{
-              //   $form.find('.alert').html('Incorrect User Credentials! Please Try Again').show();
-              // }
+
+              var result1 = result.toString().replace(/\s/g, "") ;
+              if(result1=="Login"){
+                window.location.href = "<?php echo base_url();?>Functions/staff_user";
+              }
+              else{
+                $form.find('.alert').html('Incorrect User Credentials! Please Try Again').show();
+              }
 
             });
 

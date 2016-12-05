@@ -103,12 +103,12 @@ class Auth extends MY_Controller{
       'password'=>md5($data['password'])
     );
     $success = $this->M_auth->loginSalonStaff($userdetails);
-    echo $success;
-    // if($success == 'Login'){
-    //   echo $success;
-    // }else{
-    //   echo $success;
-    // }
+
+    if($success == 'Login'){
+      echo $success;
+    }else{
+      echo $success;
+    }
   }
 
   function logout(){
