@@ -17,13 +17,86 @@
 </div>
 </header>
 
+<!-- Reservation Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Reservation</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
 
+          <form action="<?php echo base_url();?>Functions/Staff_management_salon/addstaffs" method="post" enctype="multipart/form-data">
+          <div class="col-md-4">
+            <strong style="margin-left:5px;">Staff to serve you:</strong>
 
+            <br>
+            <img style="width:150px;height:150px;" id="img_avatar2" src="<?php echo base_url();?>assets/staffsimage/user.png" alt=""/>
+
+          </div>
+
+          <div class="col-md-7">
+
+              <div class="form-group">
+                <label for="contactnumber">Select Service:</label>
+                <select class="form-control" name="">
+                  <option value=""></option>
+                  <option value=""></option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="">Staff :</label>
+                <select class="form-control" name="">
+                  <option value=""></option>
+                  <option value=""></option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="">Calendar:</label>
+                <input type="date" class="form-control"/>
+              </div>
+
+              <div class="form-group">
+                  <label for="">Reserve Hours:</label>
+                <select class="form-control" name="">
+                  <option value="">8 am</option>
+                  <option value="">9 am</option>
+                  <option value="">10 am</option>
+                  <option value="">11 am</option>
+                  <option value="">12 pm</option>
+                  <option value="">1 pm</option>
+                  <option value="">2 pm</option>
+                  <option value="">3 pm</option>
+                  <option value="">4 pm</option>
+                  <option value="">5 pm</option>
+                  <option value="">6 pm</option>
+                </select>
+              </div>
+
+          </div>
+
+        </div><!-- end of row -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-success">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End of Reservation Modal -->
 
 <main class="main-content">
 				<div class="page">
           <center><h2 style="text-transform: uppercase;font-weight: 300;font-family: 'Novecento Sans', 'Open Sans', sans-serif; background-image: -webkit-linear-gradient(90deg, #cc7250, #f7d0c2);-webkit-background-clip: text;-webkit-text-fill-color: transparent;margin-bottom: 20px;">Welcome to <?php echo ucfirst($salon->SalonName);?></h2></center>
-					<div class="container">
+
+
+          </div>
+          <div class="container">
 
             <div class="row">
               <input type="hidden" id="calendarid" value="">
@@ -34,7 +107,8 @@
                   <h5>Contact no:</h5><span> <?php echo $salon->ContactNum; ?></span>
                   <h5>Owner:</h5><span> <?php echo ucfirst($salon->OwnerName);?></span>
                   <h5>Salon Details:</h5><span> <?php echo ucfirst($salon->SalonDetails);?></span>
-                  <h5>Location:</h5>
+                  <h5><br></h5><span> <a href="#" class="button large" data-toggle="modal" data-target="#myModal"><span class="fa fa-calendar fa-lg"> &nbsp;</span>Reserve now!</a></span>
+                  <h5><br>Location:</h5>
                   <iframe style="height:300px;width:100%;border:0;" frameborder="0" src="https://maps.google.com/maps?q=<?php echo $salon->Latitude;?>,<?php echo $salon->Longitude;?>&hl=es;z=14&amp;output=embed"></iframe>
 
                   <h4 style="font-size: 28px;text-transform: uppercase;font-weight: 300;font-family: 'Novecento Sans', 'Open Sans', sans-serif; background-image: -webkit-linear-gradient(90deg, #cc7250, #f7d0c2);-webkit-background-clip: text;-webkit-text-fill-color: transparent;margin-bottom: 20px;">Staffs:</h4><br>

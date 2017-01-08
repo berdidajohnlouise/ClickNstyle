@@ -7,7 +7,7 @@
 		<link rel="shortcut icon" href="<?php echo base_url();?>assets/images/logo.png">
 		<title><?php echo $title; ?></title>
 		<!-- Loading third party fonts -->
-
+		<link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 		<link href="<?php echo base_url();?>assets/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="<?php echo base_url();?>assets/fonts/novecento-font/novecento-font.css" rel="stylesheet" type="text/css">
 		<link href="<?php echo base_url();?>assets/css/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
