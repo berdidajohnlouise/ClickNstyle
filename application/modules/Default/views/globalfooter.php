@@ -52,6 +52,55 @@
 <script src="<?php echo base_url();?>assets/js/plugins.js"></script>
 <script src="<?php echo base_url();?>assets/js/app.js"></script>
 
+<!-- Script for reservation  -->
+<script type="text/javascript">
+  $('#btnreserve').click(function(){
+
+
+      var salonid = $('#salon_id').val();
+
+      var url = "<?php echo base_url();?>GlobalService/getSalonService/"+salonid;
+
+      $.getJSON(url,function(result){
+        alert(result);
+        //
+        // $.each(result,function(element,value){
+        //
+        //    $('#salonservices').append('<option>'+value.servicename+'</option>');
+        //  });
+
+      });
+  });
+</script>
+
+<!-- reveal staffs -->
+<script type="text/javascript">
+  $(function(){
+
+    $('#salonservices').on('change',function(){
+      $('#serviceStaff').show();
+
+      var url = "<?php echo base_url(); ?>GetServices/getStaffService/";
+
+
+    $.getJSON(url,function(result){
+
+        console.log(result);
+
+    });
+
+    });
+
+  });
+</script>
+
+<!-- reveal staffs -->
+
+
+<!-- end script for reservation -->
+
+
+
 <!-- Page specific script -->
        <script type="text/javascript">
            $(function() {
@@ -66,11 +115,11 @@
                var Salonid = window.location.href.split("/").pop();
                 var url = "http://localhost/clicknstyle/Functions/Calendar_management_salon/getAllCalendars/"+Salonid;
                  $.getJSON(url,function(result){
-                   console.log(result);
+
 
                      $.each(result,function(value,element){
 
-                       console.log(element.cal_name);
+
                          var insertEvents = {
 
                            title: element.cal_name.charAt(0).toUpperCase() + element.cal_name.slice(1),

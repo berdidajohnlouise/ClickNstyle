@@ -36,5 +36,31 @@ class Services_m extends CI_Model{
   }
 
 
+  function getSalonServices($salonid){
+
+  $sql = "Select * from salon_services where salonID = $salonid";
+  $query = $this->db->query($sql);
+
+  if($query->num_rows()>0){
+    $row = $query->result();
+    return $row;
+  }
+
+}
+
+
+function getStaffService(){
+
+  $sql = "select * from personnels";
+  $query = $this->db->query($sql);
+
+  if($query->num_rows()>0){
+    $row = $query->result();
+    return $row;
+  }
+
+}
+
+
 
 }

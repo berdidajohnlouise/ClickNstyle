@@ -41,16 +41,14 @@
 
               <div class="form-group">
                 <label for="contactnumber">Select Service:</label>
-                <select class="form-control" name="">
-                  <option value=""></option>
-                  <option value=""></option>
+                <select class="form-control" id="salonservices">
+                  <option>-- Choose Services --</option>
                 </select>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" id="serviceStaff" hidden>
                 <label for="">Staff :</label>
-                <select class="form-control" name="">
-                  <option value=""></option>
+                <select class="form-control" name="" id="Staffs">
                   <option value=""></option>
                 </select>
               </div>
@@ -100,6 +98,7 @@
 
             <div class="row">
               <input type="hidden" id="calendarid" value="">
+              <input type="hidden" id="salon_id" value="<?php echo $salon->SalonID; ?>"/>
               <div class="col-md-5">
                  <img src="<?php echo base_url();?>assets/usersimage/<?php echo $salon->user_image;?>" alt="" />
                   <h4 style="font-size: 28px;text-transform: uppercase;font-weight: 300;font-family: 'Novecento Sans', 'Open Sans', sans-serif; background-image: -webkit-linear-gradient(90deg, #cc7250, #f7d0c2);-webkit-background-clip: text;-webkit-text-fill-color: transparent;margin-bottom: 20px;">Information:</h4><br>
@@ -107,7 +106,7 @@
                   <h5>Contact no:</h5><span> <?php echo $salon->ContactNum; ?></span>
                   <h5>Owner:</h5><span> <?php echo ucfirst($salon->OwnerName);?></span>
                   <h5>Salon Details:</h5><span> <?php echo ucfirst($salon->SalonDetails);?></span>
-                  <h5><br></h5><span> <a href="#" class="button large" data-toggle="modal" data-target="#myModal"><span class="fa fa-calendar fa-lg"> &nbsp;</span>Reserve now!</a></span>
+                  <h5><br></h5><span> <a href="#" class="button large" data-toggle="modal" data-target="#myModal" id="btnreserve"><span class="fa fa-calendar fa-lg"> &nbsp;</span>Reserve now!</a></span>
                   <h5><br>Location:</h5>
                   <iframe style="height:300px;width:100%;border:0;" frameborder="0" src="https://maps.google.com/maps?q=<?php echo $salon->Latitude;?>,<?php echo $salon->Longitude;?>&hl=es;z=14&amp;output=embed"></iframe>
 
@@ -127,7 +126,7 @@
 
 
                   </div>
-                  <?php endforeach; }?>
+                <?php endforeach; }?>1
 
               </div>
               <div class="col-md-1">&nbsp;</div>

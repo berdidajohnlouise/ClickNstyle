@@ -141,6 +141,17 @@ class GlobalService extends MY_Controller{
     }
 
 
+    function getSalonService($salonid){
+
+        $success = $this->Services_m->getSalonServices($salonid);
+
+        if($success){
+          echo $success;
+        }
+
+    }
+
+
 
 
 }
