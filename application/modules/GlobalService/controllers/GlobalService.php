@@ -142,14 +142,28 @@ class GlobalService extends MY_Controller{
 
 
     function getSalonService($salonid){
-
         $success = $this->Services_m->getSalonServices($salonid);
-
         if($success){
-          echo $success;
+          echo json_encode($success);
         }
 
     }
+
+    function getStaffService(){
+       $success = $this->Services_m->getStaffService();
+       if($success){
+         echo json_encode($success);
+       }
+    }
+
+    function getStaffById($staffid){
+
+      $success = $this->Services_m->getStaffById($staffid);
+      if($success){
+        echo json_encode($success);
+      }
+    }
+
 
 
 

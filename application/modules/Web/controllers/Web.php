@@ -7,9 +7,10 @@ class Web extends MY_Controller{
       $this->load->model('Web_m');
       $this->load->model('GlobalService/Salons_m');
       $this->load->model('GlobalService/Services_m');
-      // if($this->session->userdata('userid')){
-      //       redirect('Functions/Functions');
-      // }
+       if($this->session->userdata('userid')){
+             redirect('GlobalService');
+       }
+
     }
 
     function index(){

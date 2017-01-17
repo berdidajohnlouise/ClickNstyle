@@ -21,15 +21,15 @@
 
 			<div class="hero hero-slider">
 				<ul class="slides">
-					<li data-bg-image="<?php echo base_url();?>assets/dummy/slider-1.jpg">
+					<li data-bg-image="<?php echo base_url();?>assets/dummy/slider1.jpg">
 						<div class="container">
 							<h3 class="slider-subtitle">Your header goes here</h3>
 							<h2 class="slider-title">Click N Style</h2>
-							<p>A web and mobile software as a service for salong shops</p>
+							<p>A web and mobile software as a service for salon shops</p>
 							<a href="#" class="button large">Read more</a>
 						</div>
 					</li>
-					<li data-bg-image="<?php echo base_url();?>assets/dummy/slider-2.jpg">
+					<li data-bg-image="<?php echo base_url();?>assets/dummy/slider2.jpg">
 						<div class="container">
 							<h3 class="slider-subtitle">Your header goes here</h3>
 							<h2 class="slider-title">Professional</h2>
@@ -37,7 +37,7 @@
 							<a href="#" class="button large">Read more</a>
 						</div>
 					</li>
-					<li data-bg-image="<?php echo base_url();?>assets/dummy/slider-3.jpg">
+					<li data-bg-image="<?php echo base_url();?>assets/dummy/slider3.jpg">
 						<div class="container">
 							<h3 class="slider-subtitle">Your header goes here</h3>
 							<h2 class="slider-title">Professional</h2>

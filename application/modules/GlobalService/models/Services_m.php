@@ -61,6 +61,17 @@ function getStaffService(){
 
 }
 
+function getStaffById($staffid){
+    $sql = "Select * from personnels where staffID = $staffid";
+    $query = $this->db->query($sql);
+
+    if($query->num_rows()>0){
+      $row = $query->row();
+      return $row;
+
+    }
+}
+
 
 
 }

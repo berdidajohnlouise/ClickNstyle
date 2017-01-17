@@ -33,7 +33,7 @@
             <strong style="margin-left:5px;">Staff to serve you:</strong>
 
             <br>
-            <img style="width:150px;height:150px;" id="img_avatar2" src="<?php echo base_url();?>assets/staffsimage/user.png" alt=""/>
+            <img style="width:150px;height:150px;" id="staff_image" src="<?php echo base_url();?>assets/staffsimage/user.png" alt=""/>
 
           </div>
 
@@ -42,14 +42,14 @@
               <div class="form-group">
                 <label for="contactnumber">Select Service:</label>
                 <select class="form-control" id="salonservices">
-                  <option>-- Choose Services --</option>
+                  <option disabled>-- Choose Services --</option>
                 </select>
               </div>
 
               <div class="form-group" id="serviceStaff" hidden>
                 <label for="">Staff :</label>
                 <select class="form-control" name="" id="Staffs">
-                  <option value=""></option>
+                  <option selected="selected" disabled>--Choose Staffs--</option>
                 </select>
               </div>
 

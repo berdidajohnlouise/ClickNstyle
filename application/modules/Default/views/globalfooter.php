@@ -62,12 +62,11 @@
       var url = "<?php echo base_url();?>GlobalService/getSalonService/"+salonid;
 
       $.getJSON(url,function(result){
-        alert(result);
-        //
-        // $.each(result,function(element,value){
-        //
-        //    $('#salonservices').append('<option>'+value.servicename+'</option>');
-        //  });
+
+        // console.log(result);
+         $.each(result,function(element,value){
+            $('#salonservices').append('<option value="'+value.serviceID+'">'+value.servicename+'</option>');
+          });
 
       });
   });
@@ -78,16 +77,31 @@
   $(function(){
 
     $('#salonservices').on('change',function(){
+      $('#Staffs').empty();
       $('#serviceStaff').show();
 
-      var url = "<?php echo base_url(); ?>GetServices/getStaffService/";
-
+      var url = "<?php echo base_url(); ?>GlobalService/getStaffService/";
 
     $.getJSON(url,function(result){
 
-        console.log(result);
+        $.each(result,function(element,value){
+           $('#Staffs').append('<option value="'+value.staffID+'">'+value.lastName.charAt(0).toUpperCase() + value.lastName.slice(1) + ', '+value.firstName+'</option>');
+         });
 
     });
+
+    });
+
+
+    $('#Staffs').on('change',function(){
+
+        var staffid = $('#Staffs').val();
+        var url = "<?php echo base_url();?>GlobalService/getStaffById/"+staffid;
+
+      $.getJSON(url,function(result){
+
+        $('#staff_image').attr('src','<?php echo base_url();?>assets/staffsimage/'+result.photo+'');
+      });
 
     });
 

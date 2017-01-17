@@ -99,6 +99,16 @@
                 <textarea class="form-control" name="salondetails" rows="8" cols="25"><?php echo $userdetails->SalonDetails;?></textarea>
               </div>
 
+              <div class="form-group">
+                <label for="ownername">Opening Hours:</label>
+                <input type="time" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label for="ownername">Closing Hours:</label>
+                <input type="time" class="form-control" required>
+              </div>
+
 
              <div align="right"> <button type="submit" class="btn btn-success">Update Profile</button></div>
 
