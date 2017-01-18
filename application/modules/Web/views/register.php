@@ -55,7 +55,11 @@
                 <input type="hidden" name="long" value="" id="long"/>
                 <input type="hidden" name="lat" value="" id="lat"/>
                 <input type="text" name="salonowner" value="" placeholder="Salon Owner" required>
-                <textarea name="salondetails"  placeholder="Salon Details" required></textarea>
+                <textarea name="salondetails"  placeholder="Salon Details" required></textarea><br>
+                <label for="">Opening Hours</label>
+                <input type="time" name="openhours" id="openhours"><br>
+                <label for="">Closing Hours</label>
+                <input type="time" name="closehours" id=closehours>
               </div>
                 <div class="text-right">
                   <button class="button large" type="submit">Register</button>

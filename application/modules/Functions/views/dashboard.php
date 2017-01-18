@@ -101,12 +101,12 @@
 
               <div class="form-group">
                 <label for="ownername">Opening Hours:</label>
-                <input type="time" class="form-control" required>
+                <input type="time" class="form-control" value="<?php echo $userdetails->open_hours;?>" required>
               </div>
 
               <div class="form-group">
                 <label for="ownername">Closing Hours:</label>
-                <input type="time" class="form-control" required>
+                <input type="time" class="form-control" value="<?php echo $userdetails->closing_hours; ?>" required>
               </div>
 
 

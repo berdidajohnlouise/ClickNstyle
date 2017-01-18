@@ -63,8 +63,8 @@ class M_auth extends CI_Model{
                 if($query2->num_rows()>0){
                   $row = $query2->row();
 
-                    $sql3 = "insert into salon(SalonName,ContactNum,SalonDetails,Latitude,Longitude,Address,Status,OwnerName,userid)values(?,?,?,?,?,?,?,?,?)";
-                    $query3 = $this->db->query($sql3,array($data['salonname'],$data['contactnumber'],$data['salondetails'],$data['lat'],$data['long'],$data['salonaddress'],'1',$data['salonowner'],$row->userid));
+                    $sql3 = "insert into salon(SalonName,ContactNum,SalonDetails,open_hours,closing_hours,Latitude,Longitude,Address,Status,OwnerName,userid)values(?,?,?,?,?,?,?,?,?,?,?)";
+                    $query3 = $this->db->query($sql3,array($data['salonname'],$data['contactnumber'],$data['salondetails'],$data['openhours'],$data['closehours'],$data['lat'],$data['long'],$data['salonaddress'],'1',$data['salonowner'],$row->userid));
 
                   $session = array(
                     'userid'=>$row->userid,

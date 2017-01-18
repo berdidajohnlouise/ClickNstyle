@@ -55,11 +55,14 @@ class Auth extends MY_Controller{
         'salondetails'=>$this->input->post('salondetails'),
         'long'=>$this->input->post('long'),
         'lat'=>$this->input->post('lat'),
+        'openhours'=>$this->input->post('openhours'),
+        'closehours'=>$this->input->post('closehours'),
         'user_image'=>'user.png'
       );
 
 
       $success = $this->M_auth->register($usertype,$salonadmin);
+
 
       if($success == 'Username or email address exist ! Please Create Another One'){
         $data = array(
