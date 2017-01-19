@@ -125,6 +125,8 @@ class Account_management extends MY_Controller{
             'lat'=>$data['lat'],
             'ownername'=>$data['ownername'],
             'salondetails'=>$data['salondetails'],
+            'openhours'=>$data['openhours'],
+            'closehours'=>$data['closehours'],
             'user_image'=>''
           );
 
@@ -147,9 +149,10 @@ class Account_management extends MY_Controller{
             'lat'=>$data['lat'],
             'ownername'=>$data['ownername'],
             'salondetails'=>$data['salondetails'],
+            'openhours'=>$data['openhours'],
+            'closehours'=>$data['closehours'],
             'user_image'=>$image['file_name']
           );
-
 
           $success = $this->Account_management_m->updateProfile($userdetails);
 

@@ -107,6 +107,8 @@ class Account_management_m extends CI_Model{
           $this->db->set('Latitude',$data['lat']);
           $this->db->set('OwnerName',$data['ownername']);
           $this->db->set('SalonDetails',$data['salondetails']);
+          $this->db->set('open_hours',$data['openhours']);
+          $this->db->set('closing_hours',$data['closehours']);
           $this->db->where('userid',$this->session->userdata('userid'));
           $query1= $this->db->update('salon');
 
@@ -131,6 +133,8 @@ class Account_management_m extends CI_Model{
           $this->db->set('Latitude',$data['lat']);
           $this->db->set('OwnerName',$data['ownername']);
           $this->db->set('SalonDetails',$data['salondetails']);
+          $this->db->set('open_hours',$data['openhours']);
+          $this->db->set('closing_hours',$data['closehours']);
           $this->db->where('userid',$this->session->userdata('userid'));
           $query1= $this->db->update('salon');
 

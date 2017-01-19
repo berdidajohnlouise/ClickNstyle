@@ -61,17 +61,13 @@
               <div class="form-group">
                   <label for="">Reserve Hours:</label>
                 <select class="form-control" name="">
-                  <option value="">8 am</option>
-                  <option value="">9 am</option>
-                  <option value="">10 am</option>
-                  <option value="">11 am</option>
-                  <option value="">12 pm</option>
-                  <option value="">1 pm</option>
-                  <option value="">2 pm</option>
-                  <option value="">3 pm</option>
-                  <option value="">4 pm</option>
-                  <option value="">5 pm</option>
-                  <option value="">6 pm</option>
+                  <?php
+                  $open = date('H',strtotime($salon->open_hours));
+                  $close = date('H',strtotime($salon->closing_hours));
+                  for($i = $open; $i < $close; $i++):
+                  ?>
+                       <option value="<?= $i; ?>"><?= $i % 12 ? $i % 12 : 12 ?>:00 <?= $i >= 12 ? 'pm' : 'am' ?></option>
+                  <?php endfor ?>
                 </select>
               </div>
 
@@ -106,6 +102,8 @@
                   <h5>Contact no:</h5><span> <?php echo $salon->ContactNum; ?></span>
                   <h5>Owner:</h5><span> <?php echo ucfirst($salon->OwnerName);?></span>
                   <h5>Salon Details:</h5><span> <?php echo ucfirst($salon->SalonDetails);?></span>
+                  <h5>Opening Hours:</h5><span> <?php echo date('h:i a',strtotime($salon->open_hours));?></span>
+                  <h5>Closing Hours:</h5><span> <?php echo date('h:i a',strtotime($salon->closing_hours));?></span>
                   <h5><br></h5><span> <a href="#" class="button large" data-toggle="modal" data-target="#myModal" id="btnreserve"><span class="fa fa-calendar fa-lg"> &nbsp;</span>Reserve now!</a></span>
                   <h5><br>Location:</h5>
                   <iframe style="height:300px;width:100%;border:0;" frameborder="0" src="https://maps.google.com/maps?q=<?php echo $salon->Latitude;?>,<?php echo $salon->Longitude;?>&hl=es;z=14&amp;output=embed"></iframe>

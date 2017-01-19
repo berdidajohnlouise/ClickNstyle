@@ -77,13 +77,15 @@
   $(function(){
 
     $('#salonservices').on('change',function(){
-      $('#Staffs').empty();
+
+      $servicesID = $('#salonservices').val();
+      alert($servicesID);
       $('#serviceStaff').show();
 
-      var url = "<?php echo base_url(); ?>GlobalService/getStaffService/";
+      var url = "<?php echo base_url(); ?>GlobalService/getStaffService/"+$servicesID;
 
     $.getJSON(url,function(result){
-
+        $('#Staffs').empty();
         $.each(result,function(element,value){
            $('#Staffs').append('<option value="'+value.staffID+'">'+value.lastName.charAt(0).toUpperCase() + value.lastName.slice(1) + ', '+value.firstName+'</option>');
          });

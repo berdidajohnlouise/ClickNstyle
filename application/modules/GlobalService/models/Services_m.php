@@ -49,15 +49,49 @@ class Services_m extends CI_Model{
 }
 
 
-function getStaffService(){
+function getStaffService($serviceID){
 
-  $sql = "select * from personnels";
+  $sql = "select servicename from salon_services where serviceID = $serviceID";
   $query = $this->db->query($sql);
 
   if($query->num_rows()>0){
-    $row = $query->result();
-    return $row;
+    $row = $this->db->result();
+
+    if($row == 'Hair'){
+      $sql1 = "select * from personnels where jobdescription = 'Barber' OR jobdescription = 'Colorist'  OR jobdescription = 'Hair Stylist' OR 'Shampoo Technician'";
+      $query1 = $this->db->query($sql1);
+
+      if($query1->num_rows()0){
+        $row = $this->db->result();
+      }
+    }
+    else if($row == 'Manicure' || $row == 'Pedicure'){
+      $sql1 = "select * from personnels where jobdescription = 'Nail Technician'";
+      $query1 = $this->db->query($sql1);
+
+      if($query1->num_rows()0){
+        $row = $this->db->result();
+      }
+
+    }
+    else if($row == 'Makeup'){
+      $sql1 = "select * from personnels where jobdescription = 'Esthetician' OR jobdescription = 'Makeup Artist'";
+      $query1 = $this->db->query($sql1);
+
+      if($query1->num_rows()0){
+        $row = $this->db->result();
+      }
+
+    }
   }
+
+  // $sql = "select * from personnels";
+  // $query = $this->db->query($sql);
+  //
+  // if($query->num_rows()>0){
+  //   $row = $query->result();
+  //   return $row;
+  // }
 
 }
 
