@@ -36,7 +36,7 @@
             <img style="width:150px;height:150px;" id="staff_image" src="<?php echo base_url();?>assets/staffsimage/user.png" alt=""/>
 
           </div>
-
+          <input type="hidden" name="SalonID" value="<?php echo $salon->SalonID; ?>"/>
           <div class="col-md-7">
 
               <div class="form-group">

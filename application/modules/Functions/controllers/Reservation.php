@@ -6,7 +6,7 @@
 
       parent::__construct();
       
-      //$this->load->model('Reservation_m');
+      $this->load->model('Reservation_m');
 
     }
 
@@ -16,13 +16,16 @@
    		$data = $this->input->post();
 
    		$details = array(
+            'cust_userid'=>$this->session->userdata('userid'),
+            'salonid'=>$data['SalonID'],
    			'salonservices'=>$data['salonservices'],
    			'serviceStaff'=>$data['serviceStaff'],
    			'calendar_date'=>$data['calendar_date'],
-   			'reservationhours'=>$data['reservationhours']
+   			'reservationhours'=>$data['reservationhours'].':00:00'
    			);
 
-   		print_r($details);
+   		
+         $success = $this->Reservation_m->addReservation($details);
 
    }
 
