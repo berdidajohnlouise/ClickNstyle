@@ -65,7 +65,7 @@
 
         // console.log(result);
          $.each(result,function(element,value){
-            $('#salonservices').append('<option value="'+value.serviceID+'">'+value.servicename+'</option>');
+            $('#salonservices').append('<option value="'+value.serviceID+'">'+value.servicename+' ( '+value.service_type+' )</option>');
           });
 
       });
@@ -79,13 +79,31 @@
     $('#salonservices').on('change',function(){
 
       $servicesID = $('#salonservices').val();
-      alert($servicesID);
       $('#serviceStaff').show();
+      $('#serviceDuration').show();
+      $('#Staffs').empty();
+      $('#Staffs').append('<option selected="selected" disabled>--Choose Staffs--</option>');
+      $('#staff_image').attr('src','<?php echo base_url();?>assets/staffsimage/user.png');
+      var urlDuration = "<?php echo base_url();?>GlobalService/getServiceDuration/"+$servicesID;
+
+      $.getJSON(urlDuration,function(data){
+
+        var duration = data.duration.substr(0,2);
+
+        console.log(duration);
+         
+        $('#service_duration').append('<option selected disabled>'+data.duration+'</option>');
+
+      });
+
 
       var url = "<?php echo base_url(); ?>GlobalService/getStaffService/"+$servicesID;
 
     $.getJSON(url,function(result){
+
+        console.log(result);
         $('#Staffs').empty();
+        $('#Staffs').append('<option selected="selected" disabled>--Choose Staffs--</option>');
         $.each(result,function(element,value){
            $('#Staffs').append('<option value="'+value.staffID+'">'+value.lastName.charAt(0).toUpperCase() + value.lastName.slice(1) + ', '+value.firstName+'</option>');
          });

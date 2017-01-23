@@ -51,38 +51,53 @@ class Services_m extends CI_Model{
 
 function getStaffService($serviceID){
 
-  $sql = "select servicename from salon_services where serviceID = $serviceID";
+  $sql = "select service_type from salon_services where serviceID = $serviceID";
   $query = $this->db->query($sql);
 
   if($query->num_rows()>0){
-    $row = $this->db->result();
-
-    if($row == 'Hair'){
+    $row = $query->row();
+   
+    if($row->service_type == 'Hair'){
       $sql1 = "select * from personnels where jobdescription = 'Barber' OR jobdescription = 'Colorist'  OR jobdescription = 'Hair Stylist' OR 'Shampoo Technician'";
       $query1 = $this->db->query($sql1);
 
-      if($query1->num_rows()0){
-        $row = $this->db->result();
+      if($query1->num_rows()>0){
+        $rows = $query1->result();
+
+        return $rows;
       }
     }
-    else if($row == 'Manicure' || $row == 'Pedicure'){
+    else if($row->service_type == 'Manicure' || $row == 'Pedicure'){
       $sql1 = "select * from personnels where jobdescription = 'Nail Technician'";
       $query1 = $this->db->query($sql1);
 
-      if($query1->num_rows()0){
-        $row = $this->db->result();
+      if($query1->num_rows()>0){
+        $rows = $query1->result();
+        return $rows;
       }
 
     }
-    else if($row == 'Makeup'){
+    else if($row->service_type == 'Makeup'){
       $sql1 = "select * from personnels where jobdescription = 'Esthetician' OR jobdescription = 'Makeup Artist'";
       $query1 = $this->db->query($sql1);
 
-      if($query1->num_rows()0){
-        $row = $this->db->result();
+      if($query1->num_rows()>0){
+        $rows = $query1->result();
+        return $rows;
       }
 
     }
+    else if($row->service_type == 'Facial'){
+      $sql1 = "select * from personnels where jobdescription = 'Esthetician' OR jobdescription = 'Makeup Artist'";
+      $query1 = $this->db->query($sql1);
+
+      if($query1->num_rows()>0){
+        $rows = $query1->result();
+        return $rows;
+      }
+
+    }
+    
   }
 
   // $sql = "select * from personnels";
@@ -104,6 +119,19 @@ function getStaffById($staffid){
       return $row;
 
     }
+}
+
+function getServiceDuration($serviceID){
+
+  $sql = "select duration from salon_services where serviceID = $serviceID";
+  $query = $this->db->query($sql);
+    if($query->num_rows()>0){
+
+      $row = $query->row();
+      return $row;
+
+    }
+
 }
 
 

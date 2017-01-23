@@ -28,7 +28,7 @@
       <div class="modal-body">
         <div class="row">
 
-          <form action="<?php echo base_url();?>Functions/Staff_management_salon/addstaffs" method="post" enctype="multipart/form-data">
+          <form action="<?php echo base_url();?>Functions/Reservation/addreservation" method="post">
           <div class="col-md-4">
             <strong style="margin-left:5px;">Staff to serve you:</strong>
 
@@ -41,26 +41,34 @@
 
               <div class="form-group">
                 <label for="contactnumber">Select Service:</label>
-                <select class="form-control" id="salonservices">
-                  <option disabled>-- Choose Services --</option>
+                <select class="form-control" id="salonservices" name="salonservices" required>
+                  <option selected="selected" disabled>-- Choose Services --</option>
                 </select>
               </div>
 
+              <div class="form-group" id="serviceDuration" hidden>
+                <label for="contactnumber">Service Duration:</label>
+                <select class="form-control" id="service_duration" disabled>
+                  
+                </select>
+              </div>
+
+
               <div class="form-group" id="serviceStaff" hidden>
                 <label for="">Staff :</label>
-                <select class="form-control" name="" id="Staffs">
+                <select class="form-control" name="serviceStaff" id="Staffs" required>
                   <option selected="selected" disabled>--Choose Staffs--</option>
                 </select>
               </div>
 
               <div class="form-group">
                 <label for="">Calendar:</label>
-                <input type="date" class="form-control"/>
+                <input type="date" name="calendar_date" class="form-control" required/>
               </div>
 
               <div class="form-group">
                   <label for="">Reserve Hours:</label>
-                <select class="form-control" name="">
+                <select class="form-control" name="reservationhours" required>
                   <?php
                   $open = date('H',strtotime($salon->open_hours));
                   $close = date('H',strtotime($salon->closing_hours));
@@ -77,7 +85,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success">Save Changes</button>
+        <button type="submit" class="btn btn-success">Save Changes</button>
       </div>
     </div>
   </div>
@@ -124,7 +132,7 @@
 
 
                   </div>
-                <?php endforeach; }?>1
+                <?php endforeach; }?>
 
               </div>
               <div class="col-md-1">&nbsp;</div>

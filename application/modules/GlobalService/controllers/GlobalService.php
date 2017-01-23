@@ -164,6 +164,14 @@ class GlobalService extends MY_Controller{
       }
     }
 
+    function getServiceDuration($serviceID){
+      $success = $this->Services_m->getServiceDuration($serviceID);
+
+      if($success){
+        echo json_encode($success);
+      }
+    }
+
 
 
 
