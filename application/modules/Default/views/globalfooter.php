@@ -88,11 +88,26 @@
 
       $.getJSON(urlDuration,function(data){
 
-        var duration = data.duration.substr(0,2);
+        //var duration = data.duration.substr(0,2);
+        var hrs = parseInt(Number(data.duration));
+        var min = Math.round((Number(data.duration)-hrs) * 60);
+        
 
-        console.log(duration);
-         
-        $('#service_duration').append('<option selected disabled>'+data.duration+'</option>');
+        //console.log(duration);
+
+
+        if(hrs == 0){
+          $('#rsrv_duration').append('<option value="'+data.duration+'">'+min+' minutes'+'</option>');
+        }
+        else if(hrs == 1){
+          $('#rsrv_duration').append('<option value="'+data.duration+'">'+hrs+' Hour '+min+' minutes'+'</option>');
+        }
+        else if (min == 0){
+          $('#rsrv_duration').append('<option value="'+data.duration+'">'+hrs+' Hour'+'</option>');
+        }
+        else{
+          $('#rsrv_duration').append('<option value="'+data.duration+'">'+hrs+' Hours '+min+' minutes'+'</option>');
+        }
 
       });
 
@@ -101,7 +116,7 @@
 
     $.getJSON(url,function(result){
 
-        console.log(result);
+        
         $('#Staffs').empty();
         $('#Staffs').append('<option selected="selected" disabled>--Choose Staffs--</option>');
         $.each(result,function(element,value){
@@ -134,6 +149,42 @@
 <!-- end script for reservation -->
 
 
+
+
+<!-- Add Reservation Javascript -->
+  <script type="text/javascript">
+  $(document).ready(function(){
+
+    $('#addReservation').click(function(){
+
+        var salonid = $('#rsrv_salonid').val();
+        var service = $('#salonservices').val();
+        var duration = $('#rsrv_duration').val();
+        var staff = $('#Staffs').val();
+        var date = $('#calendar_date').val();
+        var hours = $('#hours').val();
+
+        var rsrv_details = {
+          'salonid': salonid,
+          'service': service,
+          'duration':duration,
+          'staff': staff,
+          'date': date,
+          'hours': hours
+        };
+
+        //console.log(rsrv_details);
+        var url = "<?php echo base_url();?>Functions/Reservation/addreservation";
+        $.post(url,{data:rsrv_details},function(result){
+          alert(result.toString());
+        });
+ 
+    });
+
+  });
+
+  </script>
+<!-- End of Add Reservation Javascript -->
 
 <!-- Page specific script -->
        <script type="text/javascript">

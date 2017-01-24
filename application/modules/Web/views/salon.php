@@ -74,7 +74,7 @@
                   <div class="col-md-8">
                       <b>Service Name :</b> <i><?php echo ucfirst($row->servicename);?> </i><br>
                       <b>Price :</b> &#8369; <?php echo $row->price;?><br>
-                      <b>Duration :</b> <?php echo $row->duration;?><br>
+                      <b>Duration :</b> <?php if($row->duration == 0.5){echo gmdate('H:i', floor($row->duration * 3600)).' minutes';}else{ echo gmdate('H:i', floor($row->duration * 3600)).' Hours';}?><br>
                       <b>Details :</b> <?php echo $row->description;?><br>
                   </div>
                 </div>

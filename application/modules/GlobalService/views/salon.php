@@ -36,7 +36,7 @@
             <img style="width:150px;height:150px;" id="staff_image" src="<?php echo base_url();?>assets/staffsimage/user.png" alt=""/>
 
           </div>
-          <input type="hidden" name="SalonID" value="<?php echo $salon->SalonID; ?>"/>
+          <input type="hidden" id="rsrv_salonid" name="SalonID" value="<?php echo $salon->SalonID; ?>"/>
           <div class="col-md-7">
 
               <div class="form-group">
@@ -48,7 +48,7 @@
 
               <div class="form-group" id="serviceDuration" hidden>
                 <label for="contactnumber">Service Duration:</label>
-                <select class="form-control" id="service_duration" disabled>
+                <select class="form-control" id="rsrv_duration" disabled>
                   
                 </select>
               </div>
@@ -63,12 +63,12 @@
 
               <div class="form-group">
                 <label for="">Calendar:</label>
-                <input type="date" name="calendar_date" class="form-control" required/>
+                <input type="date" name="calendar_date" class="form-control" id="calendar_date" required/>
               </div>
 
               <div class="form-group">
                   <label for="">Reserve Hours:</label>
-                <select class="form-control" name="reservationhours" required>
+                <select class="form-control" name="reservationhours" id="hours" required>
                   <?php
                   $open = date('H',strtotime($salon->open_hours));
                   $close = date('H',strtotime($salon->closing_hours));
@@ -85,7 +85,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-        <button type="submit" class="btn btn-success">Save Changes</button>
+        <button type="button" id="addReservation" class="btn btn-success">Save Changes</button>
       </div>
     </div>
   </div>
@@ -153,7 +153,7 @@
                   <div class="col-md-8">
                       <b>Service Name :</b> <i><?php echo ucfirst($row->servicename);?> </i><br>
                       <b>Price :</b> &#8369; <?php echo $row->price;?><br>
-                      <b>Duration :</b> <?php echo $row->duration;?><br>
+                      <b>Duration :</b> <?php if($row->duration == 0.5){echo gmdate('H:i', floor($row->duration * 3600)).' minutes';}else{ echo gmdate('H:i', floor($row->duration * 3600)).' Hours';}?><br>
                       <b>Details :</b> <?php echo $row->description;?><br>
                   </div>
                 </div>

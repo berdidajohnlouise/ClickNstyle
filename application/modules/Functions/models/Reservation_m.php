@@ -13,8 +13,8 @@
 
 		function addReservation($data){
 
-			$sql = "insert into reservations (custID,serviceID,timeReserved,dateReserved,staffID,salonID) values (?,?,?,?,?,?)";
-			$query = $this->db->query($sql,array($data['cust_userid'],$data['salonservices'],$data['reservationhours'],$data['calendar_date'],$data['serviceStaff'],$data['salonid']));
+			$sql = "insert into reservations (custID,serviceID,timeReserved,eos,dateReserved,staffID,salonID) values (?,?,?,?,?,?,?)";
+			$query = $this->db->query($sql,array($data['cust_userid'],$data['salonservices'],$data['reservationhours'],$data['eos'],$data['calendar_date'],$data['serviceStaff'],$data['salonid']));
 
 
 			

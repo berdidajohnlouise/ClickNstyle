@@ -103,18 +103,17 @@
                           <label for="serviceduration">Service Duration:</label>
                           <select class="form-control" name="serviceduration" required>
                             <option selected="selected" disabled>--Service Duration--</option>
-                            <option>30 minutes</option>
-                            <option>1 Hour</option>
-                            <option>1 Hour and 30 minutes</option>
-                            <option>2 Hours</option>
-                            <option>2 Hours and 30 minutes</option>
-                            <option>3 Hours</option>
-                            <option>3 Hours and 30 minutes</option>
-                            <option>4 Hours</option>
-                            <option>4 Hours and 15 minutes</option>
-                            <option>4 Hours and 30 minutes</option>
-                            <option>5 Hours</option>
-                            <option>5 Hours and 30 minutes</option>
+                            <option value=".5">30 minutes</option>
+                            <option value="1">1 Hour</option>
+                            <option value="1.5">1 Hour and 30 minutes</option>
+                            <option value="2">2 Hours</option>
+                            <option value="2.5">2 Hours and 30 minutes</option>
+                            <option value="3">3 Hours</option>
+                            <option value="3.5">3 Hours and 30 minutes</option>
+                            <option value="4">4 Hours</option>
+                            <option value="4.5">4 Hours and 30 minutes</option>
+                            <option value="5">5 Hours</option>
+                            <option value="5.5">5 Hours and 30 minutes</option>
                           </select>
                         </div>
 
