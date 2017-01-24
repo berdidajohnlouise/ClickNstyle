@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 23, 2017 at 03:38 AM
+-- Generation Time: Jan 24, 2017 at 10:51 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -207,6 +207,7 @@ CREATE TABLE `reservations` (
   `custID` int(11) NOT NULL,
   `serviceID` int(11) NOT NULL,
   `timeReserved` time NOT NULL,
+  `eos` time NOT NULL COMMENT 'End of Service',
   `dateReserved` date NOT NULL,
   `staffID` int(11) NOT NULL,
   `salonID` int(11) NOT NULL
@@ -216,9 +217,11 @@ CREATE TABLE `reservations` (
 -- Dumping data for table `reservations`
 --
 
-INSERT INTO `reservations` (`reservationID`, `custID`, `serviceID`, `timeReserved`, `dateReserved`, `staffID`, `salonID`) VALUES
-(1, 1, 4, '03:00:00', '2016-09-12', 1, 1),
-(2, 1, 4, '07:00:00', '2016-09-16', 1, 1);
+INSERT INTO `reservations` (`reservationID`, `custID`, `serviceID`, `timeReserved`, `eos`, `dateReserved`, `staffID`, `salonID`) VALUES
+(1, 1, 4, '03:00:00', '00:00:00', '2016-09-12', 1, 1),
+(2, 1, 4, '07:00:00', '00:00:00', '2016-09-16', 1, 1),
+(4, 1, 9, '10:00:00', '11:00:00', '2017-01-24', 7, 3),
+(5, 1, 14, '11:00:00', '12:00:00', '2017-01-24', 9, 3);
 
 -- --------------------------------------------------------
 
@@ -274,7 +277,7 @@ CREATE TABLE `salon_services` (
   `description` varchar(100) NOT NULL,
   `servicename` varchar(50) NOT NULL,
   `service_photo` varchar(255) NOT NULL,
-  `duration` varchar(255) NOT NULL COMMENT 'Count by minutes',
+  `duration` float NOT NULL COMMENT 'Count by minutes',
   `service_type` varchar(100) NOT NULL,
   `price` double NOT NULL,
   `salonID` int(11) NOT NULL,
@@ -286,11 +289,12 @@ CREATE TABLE `salon_services` (
 --
 
 INSERT INTO `salon_services` (`serviceID`, `description`, `servicename`, `service_photo`, `duration`, `service_type`, `price`, `salonID`, `reportsID`) VALUES
-(9, 'With matching fucking blower . .', 'Hair Treatment', 'HairCut-Style-Best-Salon-in-Toronto-Jiva-Spa-Salon-Nutrion.jpg', '30 minutes', 'Hair', 1500, 3, 0),
-(10, 'Just a wonderful Manicure for you guys :D ', 'Manicure', 'manicure.jpg', '30 minutes', 'Manicure', 200, 3, 0),
-(11, 'Just A lovely pedicure', 'Pedicure', 'pedicure.jpg', '15 minutes', 'Pedicure', 100, 3, 0),
-(12, 'Drawingan tana imong nawng hangtod sa mo gwapa :D HEHE ', 'Facial Mask', 'facial.jpg', '30 minutes', 'Facial', 500, 3, 0),
-(13, 'Makeupan ang nawng hangtod mobati HAHA :D ', 'Makeup', 'makeup.jpeg', '1 Hour', 'Makeup', 200, 3, 0);
+(9, 'With matching fucking blower . .', 'Hair Treatment', 'HairCut-Style-Best-Salon-in-Toronto-Jiva-Spa-Salon-Nutrion.jpg', 0.5, 'Hair', 1500, 3, 0),
+(10, 'Just a wonderful Manicure for you guys :D ', 'Manicure', 'manicure.jpg', 3, 'Manicure', 200, 3, 0),
+(11, 'Just A lovely pedicure', 'Pedicure', 'pedicure.jpg', 2, 'Pedicure', 100, 3, 0),
+(12, 'Drawingan tana imong nawng hangtod sa mo gwapa :D HEHE ', 'Facial Mask', 'facial.jpg', 0.5, 'Facial', 500, 3, 0),
+(13, 'Makeupan ang nawng hangtod mobati HAHA :D ', 'Makeup', 'makeup.jpeg', 1, 'Makeup', 200, 3, 0),
+(14, 'Laptop na siya at the same time make up haha ', 'Laptop Makeup', 'asus3.JPG', 3.5, 'Makeup', 500, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -552,7 +556,7 @@ ALTER TABLE `promos`
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `reservationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `reservationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `reservation_reports`
 --
@@ -567,7 +571,7 @@ ALTER TABLE `salon`
 -- AUTO_INCREMENT for table `salon_services`
 --
 ALTER TABLE `salon_services`
-  MODIFY `serviceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `serviceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `staff_users`
 --
