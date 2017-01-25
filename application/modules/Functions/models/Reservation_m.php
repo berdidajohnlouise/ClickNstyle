@@ -17,7 +17,9 @@
 			$query = $this->db->query($sql,array($data['cust_userid'],$data['salonservices'],$data['reservationhours'],$data['eos'],$data['calendar_date'],$data['serviceStaff'],$data['salonid']));
 
 
-			
+			if($query->num_rows()>0){
+				return 'Service successfully reserved';
+			}
 		}
 
 	}

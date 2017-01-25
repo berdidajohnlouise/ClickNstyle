@@ -81,8 +81,11 @@
       $servicesID = $('#salonservices').val();
       $('#serviceStaff').show();
       $('#serviceDuration').show();
+      
+      $('#rsrv_duration').empty();
       $('#Staffs').empty();
       $('#Staffs').append('<option selected="selected" disabled>--Choose Staffs--</option>');
+
       $('#staff_image').attr('src','<?php echo base_url();?>assets/staffsimage/user.png');
       var urlDuration = "<?php echo base_url();?>GlobalService/getServiceDuration/"+$servicesID;
 
@@ -176,9 +179,11 @@
         //console.log(rsrv_details);
         var url = "<?php echo base_url();?>Functions/Reservation/addreservation";
         $.post(url,{data:rsrv_details},function(result){
-          alert(result.toString());
+          //alert(result);
         });
- 
+        alert('Service Successfully Reserved');
+
+        location.reload();
     });
 
   });
