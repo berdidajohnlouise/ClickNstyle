@@ -49,7 +49,7 @@
               <div class="form-group" id="serviceDuration" hidden>
                 <label for="contactnumber">Service Duration:</label>
                 <select class="form-control" id="rsrv_duration" disabled>
-                  
+
                 </select>
               </div>
 
@@ -69,13 +69,13 @@
               <div class="form-group">
                   <label for="">Reserve Hours:</label>
                 <select class="form-control" name="reservationhours" id="hours" required>
-                  <?php
-                  $open = date('H',strtotime($salon->open_hours));
-                  $close = date('H',strtotime($salon->closing_hours));
-                  for($i = $open; $i < $close; $i++):
+                  <!-- <?php
+                  //$open = date('H',strtotime($salon->open_hours));
+                  //$close = date('H',strtotime($salon->closing_hours));
+                  //for($i = $open; $i < $close; $i++):
                   ?>
-                       <option value="<?= $i; ?>"><?= $i % 12 ? $i % 12 : 12 ?>:00 <?= $i >= 12 ? 'pm' : 'am' ?></option>
-                  <?php endfor ?>
+                       <option value="<?php //= //$i; ?>"><?php //= //$i % 12 ? $i % 12 : 12 ?>:00 <?php //= //$i >= 12 ? 'pm' : 'am' ?></option>
+                  <?php //endfor ?> -->
                 </select>
               </div>
 

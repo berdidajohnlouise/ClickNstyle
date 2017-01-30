@@ -9,7 +9,7 @@
 		}
 
 
-		
+
 
 		function addReservation($data){
 
@@ -22,7 +22,28 @@
 			}
 		}
 
+
+		function getStaffReservation($staffid,$salonid){
+			$this->db->select('*');
+			$this->db->from('reservations');
+			$this->db->join('salon','salon.SalonID = reservations.salonID');
+			$this->db->where('reservations.staffID',$staffid);
+
+			$query = $this->db->get();
+
+			if($query->num_rows()>0){
+				$row = $query->result();
+				return $row;
+			}
+			else{
+				return false;
+			}
+		}
+
+
 	}
+
+
 
 
 ?>

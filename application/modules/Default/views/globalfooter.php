@@ -81,7 +81,7 @@
       $servicesID = $('#salonservices').val();
       $('#serviceStaff').show();
       $('#serviceDuration').show();
-      
+
       $('#rsrv_duration').empty();
       $('#Staffs').empty();
       $('#Staffs').append('<option selected="selected" disabled>--Choose Staffs--</option>');
@@ -94,7 +94,7 @@
         //var duration = data.duration.substr(0,2);
         var hrs = parseInt(Number(data.duration));
         var min = Math.round((Number(data.duration)-hrs) * 60);
-        
+
 
         //console.log(duration);
 
@@ -119,7 +119,7 @@
 
     $.getJSON(url,function(result){
 
-        
+
         $('#Staffs').empty();
         $('#Staffs').append('<option selected="selected" disabled>--Choose Staffs--</option>');
         $.each(result,function(element,value){
@@ -135,10 +135,53 @@
 
         var staffid = $('#Staffs').val();
         var url = "<?php echo base_url();?>GlobalService/getStaffById/"+staffid;
-
+        var salonid = $('#rsrv_salonid').val();
       $.getJSON(url,function(result){
 
         $('#staff_image').attr('src','<?php echo base_url();?>assets/staffsimage/'+result.photo+'');
+
+
+        });
+
+        var gethours = "<?php echo base_url();?>Functions/Reservation/getStaffReservation/"+staffid+'/'+salonid;
+        $.getJSON(gethours,function(data){
+
+          if(data!=false){
+            $.each(data,function(element,value){
+              var open = value.open_hours.split(':');
+              var close = value.closing_hours.split(':');
+              var durationstart = value.timeReserved.split(':');
+              var durationend = value.eos.split(':');
+
+              if(open[0] > 10){
+                alert(open[0]);
+              }
+              else{
+                var newopen = open[0].split('0');
+                var x = 0;
+
+                for(i = Number(newopen[1]); i < close[0]; i++){
+                var hours=  i%12? i%12 : 12;
+                var time = i>=12 ? 'pm' : 'am';
+
+                 for( x = Number(durationstart[0]);x <= Number(durationend[0]);x++){
+                   if(x==i){
+                       $('#hours').append('<option value =\"'+hours+'\" disabled style="background-color:gray; color: white;">'+hours+':00 '+time+' (Reserved)'+'</option>');
+                   }
+                   else if(i > Number(durationend[0]) || i < Number(durationstart[0])){
+                     $('#hours').append('<option value =\"'+hours+'\">'+hours+':00 '+time+'</option>');
+                   }
+                 }
+
+                }
+              }
+
+            });
+          }
+          else{
+            alert('false siya');
+          }
+
       });
 
     });

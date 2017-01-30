@@ -5,7 +5,7 @@
 	function __construct(){
 
       parent::__construct();
-      
+
       $this->load->model('Reservation_m');
 
     }
@@ -18,12 +18,12 @@
          $arr = explode(".", $duration);
 
          try {
-            
+
             if(isset($arr[1])){
 
-            
+
                  if ($duration == '0.5'){
-                     $eos = $data['hours'] + 1; 
+                     $eos = $data['hours'] + 1;
                  }
                  else if($duration == '1'){
                      $eos = $data['hours'] + 1;
@@ -33,12 +33,12 @@
                  }
                  else if((int)$arr[0]>1){
                      $eos = $data['hours'] + $duration;
-                 } 
+                 }
                  else{
                      $eos = $data['hours'] + $duration;
                  }
-                 
-                
+
+
                   $details = array(
                     'cust_userid'=>$this->session->userdata('userid'),
                     'salonid'=>$data['salonid'],
@@ -49,15 +49,15 @@
                    'reservationhours'=>$data['hours'].':00:00'
                    );
 
-            
+
                  $success = $this->Reservation_m->addReservation($details);
 
-                 
 
-                  
+
+
             }
             else{
-               
+
 
                  if ($duration == '0.5'){
                      $eos = $data['hours'] + 1;
@@ -70,12 +70,12 @@
                  }
                  else if((int)$arr[0]>1){
                      $eos = $data['hours'] + $duration;
-                 } 
+                 }
                  else{
                      $eos = $data['hours'] + $duration;
                  }
-                 
-                
+
+
                   $details = array(
                     'cust_userid'=>$this->session->userdata('userid'),
                     'salonid'=>$data['salonid'],
@@ -86,19 +86,25 @@
                    'reservationhours'=>$data['hours'].':00:00'
                    );
 
-            
+
                    $success = $this->Reservation_m->addReservation($details);
 
-                   
+
 
             }
-              
+
           } catch (Exception $e) {
             echo $e->getMessage();
           }
 
-         
+
    }
+
+	 function getStaffReservation($staffid,$salonid){
+		 $success = $this->Reservation_m->getStaffReservation($staffid,$salonid);
+
+		 echo json_encode($success);
+	 }
 
 
 }
