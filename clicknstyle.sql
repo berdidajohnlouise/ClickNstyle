@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2017 at 04:40 AM
+-- Generation Time: Jan 30, 2017 at 09:59 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -217,20 +217,21 @@ CREATE TABLE IF NOT EXISTS `reservations` (
   `timeReserved` time NOT NULL,
   `eos` time NOT NULL COMMENT 'End of Service',
   `dateReserved` date NOT NULL,
-  `status` int(11) NOT NULL COMMENT '0 - Active | 1 - cancel',
+  `rsrv_status` int(11) NOT NULL COMMENT '0 - Active | 1 - cancel',
   `staffID` int(11) NOT NULL,
   `salonID` int(11) NOT NULL,
   PRIMARY KEY (`reservationID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `reservations`
 --
 
-INSERT INTO `reservations` (`reservationID`, `custID`, `serviceID`, `timeReserved`, `eos`, `dateReserved`, `status`, `staffID`, `salonID`) VALUES
+INSERT INTO `reservations` (`reservationID`, `custID`, `serviceID`, `timeReserved`, `eos`, `dateReserved`, `rsrv_status`, `staffID`, `salonID`) VALUES
 (4, 1, 9, '10:00:00', '11:00:00', '2017-01-24', 0, 7, 3),
 (5, 1, 14, '11:00:00', '12:00:00', '2017-01-24', 0, 9, 3),
-(6, 1, 14, '13:00:00', '15:00:00', '2017-01-31', 0, 9, 3);
+(6, 1, 14, '08:00:00', '10:00:00', '2017-01-31', 0, 9, 3),
+(13, 1, 14, '14:00:00', '18:00:00', '2017-01-30', 0, 9, 3);
 
 -- --------------------------------------------------------
 
