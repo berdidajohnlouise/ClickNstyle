@@ -77,7 +77,7 @@
   $(function(){
 
     $('#salonservices').on('change',function(){
-
+      $('#hours').empty();
       $servicesID = $('#salonservices').val();
       $('#serviceStaff').show();
       $('#serviceDuration').show();
@@ -120,8 +120,8 @@
     $.getJSON(url,function(result){
 
 
-        $('#Staffs').empty();
-        $('#Staffs').append('<option selected="selected" disabled>--Choose Staffs--</option>');
+          $('#Staffs').empty();
+          $('#Staffs').append('<option selected="selected" disabled>--Choose Staffs--</option>');
         $.each(result,function(element,value){
            $('#Staffs').append('<option value="'+value.staffID+'">'+value.lastName.charAt(0).toUpperCase() + value.lastName.slice(1) + ', '+value.firstName+'</option>');
          });
@@ -136,6 +136,8 @@
         var staffid = $('#Staffs').val();
         var url = "<?php echo base_url();?>GlobalService/getStaffById/"+staffid;
         var salonid = $('#rsrv_salonid').val();
+
+        $('#hours').empty();
       $.getJSON(url,function(result){
 
         $('#staff_image').attr('src','<?php echo base_url();?>assets/staffsimage/'+result.photo+'');
@@ -143,46 +145,111 @@
 
         });
 
-        var gethours = "<?php echo base_url();?>Functions/Reservation/getStaffReservation/"+staffid+'/'+salonid;
-        $.getJSON(gethours,function(data){
+        var getsalonhours = "<?php echo base_url();?>Functions/Reservation/getSalonHours/"+salonid;
 
-          if(data!=false){
-            $.each(data,function(element,value){
-              var open = value.open_hours.split(':');
-              var close = value.closing_hours.split(':');
-              var durationstart = value.timeReserved.split(':');
-              var durationend = value.eos.split(':');
+        $.getJSON(getsalonhours,function(result){
 
-              if(open[0] > 10){
-                alert(open[0]);
-              }
-              else{
-                var newopen = open[0].split('0');
-                var x = 0;
+          var open = result.open_hours.split(':');
+          var close = result.closing_hours.split(':');
 
-                for(i = Number(newopen[1]); i < close[0]; i++){
-                var hours=  i%12? i%12 : 12;
-                var time = i>=12 ? 'pm' : 'am';
+          if(open[0]>10){
+            var newopen = open[0].split('0');
 
-                 for( x = Number(durationstart[0]);x <= Number(durationend[0]);x++){
-                   if(x==i){
-                       $('#hours').append('<option value =\"'+hours+'\" disabled style="background-color:gray; color: white;">'+hours+':00 '+time+' (Reserved)'+'</option>');
-                   }
-                   else if(i > Number(durationend[0]) || i < Number(durationstart[0])){
-                     $('#hours').append('<option value =\"'+hours+'\">'+hours+':00 '+time+'</option>');
-                   }
-                 }
+            var i = Number(newopen[1]);
 
-                }
-              }
+            do{
+              var hours = i % 12 ? i%12 : 12;
+              var time = i>=12?'pm':'am';
+              $('#hours').append('<option value =\"'+i+'\" id="'+i+'">'+hours+':00 '+time+'</option>');
 
-            });
+               i++;
+            }
+            while(i < Number(close[0]));
+
           }
           else{
-            alert('false siya');
-          }
+            var newopen = open[0].split('0');
 
-      });
+            var i = Number(newopen[1]);
+
+            do{
+              var hours = i % 12 ? i%12 : 12;
+              var time = i>=12?'pm':'am';
+              $('#hours').append('<option value =\"'+i+'\" id="'+i+'">'+hours+':00 '+time+'</option>');
+
+               i++;
+            }
+            while(i < Number(close[0]));
+
+          }
+                      var gethours = "<?php echo base_url();?>Functions/Reservation/getStaffReservation/"+staffid;
+                      $.getJSON(gethours,function(data){
+                      if(data!=false){
+                        $.each(data,function(element,value){
+                          var durationstart = value.timeReserved.split(':');
+                          var durationend = value.eos.split(':');
+
+                          for(x = Number(durationstart[0]); x< Number(durationend[0]); x++){
+                                var newdurationstart = x % 12 ? x % 12 : 12;
+                                $('#'+x+'').attr('disabled','disabled');
+                                $('#'+x+'').attr('style','background:gray; color:white');
+
+                          }
+
+                           });
+                        }
+
+                     });
+
+        });
+
+        var gethours = "<?php echo base_url();?>Functions/Reservation/getStaffReservation/"+staffid+'/'+salonid;
+      //   $.getJSON(gethours,function(data){
+      //
+      //     if(data!=false){
+      //       $.each(data,function(element,value){
+      //         var open = value.open_hours.split(':');
+      //         var close = value.closing_hours.split(':');
+      //         var durationstart = value.timeReserved.split(':');
+      //         var durationend = value.eos.split(':');
+      //
+      //         if(open[0] > 10){
+      //           alert(open[0]);
+      //         }
+      //         else{
+      //           $('#hours').empty();
+      //           var newopen = open[0].split('0');
+      //
+      //           var i = Number(newopen[1]);
+      //
+      //           do{
+      //             var hours=  i%12? i%12 : 12;
+      //             var time = i>=12 ? 'pm' : 'am';
+      //             $('#hours').append('<option value =\"'+hours+'\">'+hours+':00 '+time+'</option>');
+      //
+      //             for(x = Number(durationstart[0]); x< Number(durationend[0]); x++){
+      //
+      //               if(x==i){
+      //                 $('#hours').append('<option value =\"'+hours+'\" disabled style="background:gray; color:white;">'+hours+':00 '+time+'</option>');
+      //               }
+      //               else{
+      //
+      //               }
+      //             }
+      //
+      //             i++;
+      //           }while(i < Number(close[0]));
+      //
+      //
+      //         }
+      //
+      //       });
+      //     }
+      //     else{
+      //       alert('false siya');
+      //     }
+      //
+      // });
 
     });
 

@@ -57,7 +57,7 @@
               <div class="form-group" id="serviceStaff" hidden>
                 <label for="">Staff :</label>
                 <select class="form-control" name="serviceStaff" id="Staffs" required>
-                  <option selected="selected" disabled>--Choose Staffs--</option>
+
                 </select>
               </div>
 

@@ -100,9 +100,14 @@
 
    }
 
-	 function getStaffReservation($staffid,$salonid){
-		 $success = $this->Reservation_m->getStaffReservation($staffid,$salonid);
+	 function getStaffReservation($staffid){
+		 $success = $this->Reservation_m->getStaffReservation($staffid);
 
+		 echo json_encode($success);
+	 }
+
+	 function getSalonHours($salonid){
+		 $success = $this->Reservation_m->getSalonHours($salonid);
 		 echo json_encode($success);
 	 }
 
