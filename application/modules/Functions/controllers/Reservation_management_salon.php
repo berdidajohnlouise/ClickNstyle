@@ -1,6 +1,6 @@
 <?php
 
-  class Reservation_management extends MY_Controller{
+  class Reservation_management_salon extends MY_Controller{
 
     function __construct(){
 
@@ -17,8 +17,8 @@
     function index(){
       $sidebar = $this->M_sidebars->sidebars($this->session->userdata('usertype'));
       $usersdetails = $this->Account_management_m->account_details($this->session->userdata('userid'));
-      $reservation = $this->Reservation_m->getUserReservation($this->session->userdata('userid'));
-      //echo json_encode($reservation);
+      $reservation = $this->Reservation_m->getSalonReservation($this->session->userdata('userid'));
+
 
       $data = array(
         'title'=>'Products Management',
@@ -29,7 +29,7 @@
 
       $this->load->view('Default/adminheader',$data);
       $this->load->view('Default/adminsidebar',$data);
-      $this->load->view('reservation_management',$data);
+      $this->load->view('reservation_management_salon',$data);
       $this->load->view('Default/adminfooter');
 
     }
