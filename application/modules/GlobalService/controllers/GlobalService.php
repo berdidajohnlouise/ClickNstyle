@@ -83,7 +83,7 @@ class GlobalService extends MY_Controller{
       if(!empty($id)){
 
         $salon = $this->Salons_m->getSalon($id);
-
+        
         if($salon != 'False'){
             $staffs = $this->Salons_m->getStaffs($id);
             $services = $this->Salons_m->getServices($id);

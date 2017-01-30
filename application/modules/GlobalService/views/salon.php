@@ -112,7 +112,9 @@
                   <h5>Salon Details:</h5><span> <?php echo ucfirst($salon->SalonDetails);?></span>
                   <h5>Opening Hours:</h5><span> <?php echo date('h:i a',strtotime($salon->open_hours));?></span>
                   <h5>Closing Hours:</h5><span> <?php echo date('h:i a',strtotime($salon->closing_hours));?></span>
+                  <?php if($this->session->userdata('usertype') == '1'){?>
                   <h5><br></h5><span> <a href="#" class="button large" data-toggle="modal" data-target="#myModal" id="btnreserve"><span class="fa fa-calendar fa-lg"> &nbsp;</span>Reserve now!</a></span>
+                  <?php }?>
                   <h5><br>Location:</h5>
                   <iframe style="height:300px;width:100%;border:0;" frameborder="0" src="https://maps.google.com/maps?q=<?php echo $salon->Latitude;?>,<?php echo $salon->Longitude;?>&hl=es;z=14&amp;output=embed"></iframe>
 
