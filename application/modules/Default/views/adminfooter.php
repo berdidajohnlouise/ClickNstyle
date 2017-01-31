@@ -464,5 +464,130 @@ function deleteCalendar(id){
 
   });
   </script>
+
+<!-- Reservation Confirmation -->
+  <script type="text/javascript">
+
+      function confirmReservation(id){
+      if(confirm('Confirm this reservation.')==true){
+        var url = "<?php echo base_url();?>Functions/Reservation_management_salon/confirmReservation/"+id;
+        $.post(url,function(result){
+          var result1 = result.toString().replace(/\s/g, "");
+
+          if(result1=='True' || result == true){
+            alert('Reservation Successfully Confirmed');
+            window.location.href = "<?php echo base_url();?>Functions/Reservation_management_salon";
+          }
+          else{
+            alert('Developer nga bogo');
+          }
+
+        });
+      }
+      else{
+        location.reload();
+      }
+    }
+
+    function cancelReservation(id){
+      if(confirm('Are your sure to decline this reservation ? ')==true){
+        var url = "<?php echo base_url();?>Functions/Reservation_management_salon/cancelReservation/"+id;
+        $.post(url,function(result){
+          var result1 = result.toString().replace(/\s/g, "");
+
+          if(result1=='True' || result == true){
+            alert('Reservation Successfully Confirmed');
+            window.location.href = "<?php echo base_url();?>Functions/Reservation_management_salon";
+          }
+          else{
+            alert('Developer nga bogo');
+          }
+
+        });
+      }
+      else{
+        location.reload();
+      }
+    }
+
+    // function clearReservation(id){
+    //   if(confirm('Are you sure want to clear this reservation ? ')==true){
+    //     var url = "<?php echo base_url();?>Functions/Reservation_management/clearReservation/"+id;
+    //     $.post(url,function(result){
+    //       var result1 = result.toString().replace(/\s/g, "");
+
+    //       if(result1=='True' || result == true){
+    //         alert('Reservation Successfully Confirmed');
+    //         window.location.href = "<?php echo base_url();?>Functions/Reservation_management";
+    //       }
+    //       else{
+    //         alert('Developer nga bogo');
+    //       }
+
+    //     });
+    //   }
+    //   else{
+    //     location.reload();
+    //   }
+    // }
+
+
+  
+
+
+  </script>
+
+  <script type="text/javascript">
+
+    $(document).ready(function(){
+
+
+
+    $('#reservationdate').on('change',function(){
+
+        $('#rsrvbutton').show();
+
+  
+      // var rsrv_url = "<?php echo base_url();?>Functions/Reservation_management_salon/queryByDate/"+date;
+      // $.post(rsrv_url,function(result){
+
+      //   $('#reservationbody').empty();
+      //      console.log(result);
+
+      //      // if(result){
+
+      //      //    $.each(result,function(element,value){
+
+      //      //      console.log(value.service_name);
+      //      //      $('#reservationbody').append(
+      //      //        // '<td><img src="<?php echo base_url();?>assets/servicesimage/'+value.service_photo+'" width="50" height="50"/> &nbsp;'+value.service_name+'</td>'+
+      //      //        // '<td><img src="<?php echo base_url();?>assets/staffsimage/'+value.photo+'" width="50" height="50"/>&nbsp; '+value.nickName+'</td>'+
+      //      //        // '<td><img src="<?php echo base_url();?>assets/usersimage/'+value.user_image+'" width="50" height="50"/>&nbsp;'+value.lastname+', '+value.firstname+'</td>'
+      //      //        // //'<td>'+ rsrv = value.timeReserved.split(':'); if(rsrv[0]>10){ hours =  rsrv[0] % 12 ? rsrv[0] % 12 : 12 ; pm = rsrv[0]>=12 ? 'pm':'am';  hours.' '.pm;}+'</td>'+
+      //      //        //'<td>'+ var eos = value.eos.split(':'); if(eos[0]>10){ var hours =  eos[0] % 12 ? eos[0] % 12 : 12 ; var pm = eos[0]>=12 ? 'pm':'am';  hours.' '.pm;}+'</td>'+
+      //      //        //'<td>'+var ts = Date.parse(value.dateReserved);+ts+''</td>'+
+      //      //        //'<td>'+ if(value.rsrv_status == 1){+'<span style="color:white; background:green; padding: 3px 10px;"> Confirmed </span>'+}else if(value.rsrv_status == 2){+'<span style="color:white; background:red; padding: 3px 10px;"> Declined </span>'+}+'</td>'
+                                              
+
+      //      //        );
+      //      //    });
+
+      //      // }
+      //      // else
+      //      // {
+      //      //  $('#reservationbody').empty();
+      //      // }
+      //});
+
+
+    });
+
+
+
+    });
+
+  </script>
+
+<!-- Reservation Confirmation -->
 </body>
 </html>

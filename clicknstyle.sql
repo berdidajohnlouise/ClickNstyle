@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2017 at 09:59 AM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Generation Time: Jan 31, 2017 at 09:57 AM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `clicknstyle`
@@ -26,14 +26,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `announcement`
 --
 
-CREATE TABLE IF NOT EXISTS `announcement` (
-  `ann_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `announcement` (
+  `ann_id` int(11) NOT NULL,
   `SalonID` int(11) NOT NULL,
   `ann_name` varchar(30) NOT NULL,
   `ann_description` varchar(100) NOT NULL,
-  `ann_date` date NOT NULL,
-  PRIMARY KEY (`ann_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `ann_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -41,14 +40,13 @@ CREATE TABLE IF NOT EXISTS `announcement` (
 -- Table structure for table `calendar`
 --
 
-CREATE TABLE IF NOT EXISTS `calendar` (
-  `cal_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `calendar` (
+  `cal_id` int(11) NOT NULL,
   `SalonID` int(11) NOT NULL,
   `cal_name` varchar(30) NOT NULL,
   `cal_description` varchar(50) NOT NULL,
-  `cal_date` date NOT NULL,
-  PRIMARY KEY (`cal_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `cal_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `calendar`
@@ -64,8 +62,8 @@ INSERT INTO `calendar` (`cal_id`, `SalonID`, `cal_name`, `cal_description`, `cal
 -- Table structure for table `customers`
 --
 
-CREATE TABLE IF NOT EXISTS `customers` (
-  `custID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `customers` (
+  `custID` int(11) NOT NULL,
   `cust_fname` varchar(255) NOT NULL,
   `cust_lname` varchar(50) NOT NULL,
   `cust_dob` date NOT NULL,
@@ -73,9 +71,8 @@ CREATE TABLE IF NOT EXISTS `customers` (
   `cust_email` varchar(70) NOT NULL,
   `cust_uname` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `status` varchar(8) NOT NULL,
-  PRIMARY KEY (`custID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `status` varchar(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customers`
@@ -90,15 +87,14 @@ INSERT INTO `customers` (`custID`, `cust_fname`, `cust_lname`, `cust_dob`, `cust
 -- Table structure for table `paymentsubs`
 --
 
-CREATE TABLE IF NOT EXISTS `paymentsubs` (
-  `orID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `paymentsubs` (
+  `orID` int(11) NOT NULL,
   `salonID` int(11) NOT NULL,
   `subID` int(11) NOT NULL,
   `amountID` double(9,2) NOT NULL,
   `totalAmount` double(9,2) NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`orID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -106,12 +102,11 @@ CREATE TABLE IF NOT EXISTS `paymentsubs` (
 -- Table structure for table `perservice`
 --
 
-CREATE TABLE IF NOT EXISTS `perservice` (
-  `perserviceID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `perservice` (
+  `perserviceID` int(11) NOT NULL,
   `staffID` int(11) NOT NULL,
-  `serviceID` int(11) NOT NULL,
-  PRIMARY KEY (`perserviceID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+  `serviceID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `perservice`
@@ -131,8 +126,8 @@ INSERT INTO `perservice` (`perserviceID`, `staffID`, `serviceID`) VALUES
 -- Table structure for table `personnels`
 --
 
-CREATE TABLE IF NOT EXISTS `personnels` (
-  `staffID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `personnels` (
+  `staffID` int(11) NOT NULL,
   `nickName` varchar(20) NOT NULL,
   `lastName` varchar(50) NOT NULL,
   `firstName` varchar(50) NOT NULL,
@@ -141,9 +136,8 @@ CREATE TABLE IF NOT EXISTS `personnels` (
   `dob` date NOT NULL,
   `contactNo` varchar(20) NOT NULL,
   `status` int(11) NOT NULL COMMENT '0 - inactive | 1 - active',
-  `salonID` int(11) NOT NULL,
-  PRIMARY KEY (`staffID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+  `salonID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `personnels`
@@ -161,15 +155,14 @@ INSERT INTO `personnels` (`staffID`, `nickName`, `lastName`, `firstName`, `jobde
 -- Table structure for table `products`
 --
 
-CREATE TABLE IF NOT EXISTS `products` (
-  `pro_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `products` (
+  `pro_id` int(11) NOT NULL,
   `SalonID` int(11) NOT NULL,
   `pro_name` varchar(30) NOT NULL,
   `pro_brand` varchar(20) NOT NULL,
   `price` decimal(10,0) NOT NULL,
-  `photo` varchar(255) NOT NULL,
-  PRIMARY KEY (`pro_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `photo` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `products`
@@ -185,17 +178,16 @@ INSERT INTO `products` (`pro_id`, `SalonID`, `pro_name`, `pro_brand`, `price`, `
 -- Table structure for table `promos`
 --
 
-CREATE TABLE IF NOT EXISTS `promos` (
-  `promoID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `promos` (
+  `promoID` int(11) NOT NULL,
   `Photo` varchar(255) NOT NULL,
   `Name` text NOT NULL,
   `promoDetails` varchar(255) NOT NULL,
   `Price` decimal(10,0) NOT NULL,
   `expDate` date NOT NULL,
   `datePosted` date NOT NULL,
-  `salonID` int(11) NOT NULL,
-  PRIMARY KEY (`promoID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+  `salonID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `promos`
@@ -210,18 +202,17 @@ INSERT INTO `promos` (`promoID`, `Photo`, `Name`, `promoDetails`, `Price`, `expD
 -- Table structure for table `reservations`
 --
 
-CREATE TABLE IF NOT EXISTS `reservations` (
-  `reservationID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `reservations` (
+  `reservationID` int(11) NOT NULL,
   `custID` int(11) NOT NULL,
   `serviceID` int(11) NOT NULL,
   `timeReserved` time NOT NULL,
   `eos` time NOT NULL COMMENT 'End of Service',
   `dateReserved` date NOT NULL,
-  `rsrv_status` int(11) NOT NULL COMMENT '0 - Active | 1 - cancel',
+  `rsrv_status` int(11) NOT NULL COMMENT '0 - Waiting For Confirmation | 1 - Confirmed | 2 - Declined | 3 - Clear',
   `staffID` int(11) NOT NULL,
-  `salonID` int(11) NOT NULL,
-  PRIMARY KEY (`reservationID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+  `salonID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `reservations`
@@ -230,8 +221,8 @@ CREATE TABLE IF NOT EXISTS `reservations` (
 INSERT INTO `reservations` (`reservationID`, `custID`, `serviceID`, `timeReserved`, `eos`, `dateReserved`, `rsrv_status`, `staffID`, `salonID`) VALUES
 (4, 1, 9, '10:00:00', '11:00:00', '2017-01-24', 0, 7, 3),
 (5, 1, 14, '11:00:00', '12:00:00', '2017-01-24', 0, 9, 3),
-(6, 1, 14, '08:00:00', '10:00:00', '2017-01-31', 0, 9, 3),
-(13, 1, 14, '14:00:00', '18:00:00', '2017-01-30', 0, 9, 3);
+(6, 1, 14, '08:00:00', '10:00:00', '2017-01-31', 1, 9, 3),
+(13, 1, 14, '14:00:00', '18:00:00', '2017-01-30', 1, 9, 3);
 
 -- --------------------------------------------------------
 
@@ -239,14 +230,13 @@ INSERT INTO `reservations` (`reservationID`, `custID`, `serviceID`, `timeReserve
 -- Table structure for table `reservation_reports`
 --
 
-CREATE TABLE IF NOT EXISTS `reservation_reports` (
-  `reportsID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `reservation_reports` (
+  `reportsID` int(11) NOT NULL,
   `SalonID` int(20) NOT NULL,
   `month` date NOT NULL,
   `year` date NOT NULL,
-  `percentage` double NOT NULL,
-  PRIMARY KEY (`reportsID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `percentage` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -254,8 +244,8 @@ CREATE TABLE IF NOT EXISTS `reservation_reports` (
 -- Table structure for table `salon`
 --
 
-CREATE TABLE IF NOT EXISTS `salon` (
-  `SalonID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `salon` (
+  `SalonID` int(11) NOT NULL,
   `SalonName` varchar(225) NOT NULL,
   `ContactNum` varchar(20) NOT NULL,
   `SalonDetails` varchar(250) NOT NULL,
@@ -266,9 +256,8 @@ CREATE TABLE IF NOT EXISTS `salon` (
   `Address` varchar(50) NOT NULL,
   `Status` varchar(10) NOT NULL,
   `OwnerName` text NOT NULL,
-  `userid` int(11) NOT NULL,
-  PRIMARY KEY (`SalonID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `userid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `salon`
@@ -283,8 +272,8 @@ INSERT INTO `salon` (`SalonID`, `SalonName`, `ContactNum`, `SalonDetails`, `open
 -- Table structure for table `salon_services`
 --
 
-CREATE TABLE IF NOT EXISTS `salon_services` (
-  `serviceID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `salon_services` (
+  `serviceID` int(11) NOT NULL,
   `description` varchar(100) NOT NULL,
   `servicename` varchar(50) NOT NULL,
   `service_photo` varchar(255) NOT NULL,
@@ -292,9 +281,8 @@ CREATE TABLE IF NOT EXISTS `salon_services` (
   `service_type` varchar(100) NOT NULL,
   `price` double NOT NULL,
   `salonID` int(11) NOT NULL,
-  `reportsID` int(11) NOT NULL,
-  PRIMARY KEY (`serviceID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+  `reportsID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `salon_services`
@@ -314,14 +302,13 @@ INSERT INTO `salon_services` (`serviceID`, `description`, `servicename`, `servic
 -- Table structure for table `staff_users`
 --
 
-CREATE TABLE IF NOT EXISTS `staff_users` (
-  `suID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `staff_users` (
+  `suID` int(11) NOT NULL,
   `userName` varchar(30) NOT NULL,
   `password` varchar(255) NOT NULL,
   `salonID` int(11) NOT NULL,
-  `personnel_id` int(11) NOT NULL,
-  PRIMARY KEY (`suID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `personnel_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `staff_users`
@@ -337,11 +324,10 @@ INSERT INTO `staff_users` (`suID`, `userName`, `password`, `salonID`, `personnel
 -- Table structure for table `subscriptions`
 --
 
-CREATE TABLE IF NOT EXISTS `subscriptions` (
-  `subID` int(11) NOT NULL AUTO_INCREMENT,
-  `type` int(11) NOT NULL,
-  PRIMARY KEY (`subID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE `subscriptions` (
+  `subID` int(11) NOT NULL,
+  `type` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -349,15 +335,14 @@ CREATE TABLE IF NOT EXISTS `subscriptions` (
 -- Table structure for table `tbl_menu`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_menu` (
-  `menu_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_menu` (
+  `menu_id` int(11) NOT NULL,
   `menu_name` varchar(255) NOT NULL,
   `menu_details` varchar(255) NOT NULL,
   `menu_route` varchar(255) NOT NULL,
   `menu_icon` varchar(255) NOT NULL COMMENT '0 - Customer,Salon,Admin | 1 admin and salon admin | 2 -  super admin',
-  `menu_status` varchar(255) NOT NULL COMMENT '0 for all | 1 admin and customer | 2 customer | 3 salon admin | 4 super admin',
-  PRIMARY KEY (`menu_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
+  `menu_status` varchar(255) NOT NULL COMMENT '0 for all | 1 admin and customer | 2 customer | 3 salon admin | 4 super admin'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_menu`
@@ -396,8 +381,8 @@ INSERT INTO `tbl_menu` (`menu_id`, `menu_name`, `menu_details`, `menu_route`, `m
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-  `userid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `userid` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -407,9 +392,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `address` varchar(255) NOT NULL,
   `usertype` int(11) NOT NULL COMMENT '0 - admin | 1 - Customer | 2- salon Admin',
   `created_at` date NOT NULL,
-  `user_status` int(11) NOT NULL COMMENT '0 - inactive | 1 - active',
-  PRIMARY KEY (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+  `user_status` int(11) NOT NULL COMMENT '0 - inactive | 1 - active'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -424,6 +408,190 @@ INSERT INTO `users` (`userid`, `username`, `password`, `email`, `user_image`, `f
 (13, 'bridges', 'f6fdffe48c908deb0f4c3bd36c032e72', 'sample@yahoo.com', 'user.png', '', '', '9410, The Gallery, Pope John Paul II Ave, Cebu City, 6000 Cebu', 2, '2016-11-06', 1),
 (16, 'asdas', 'f6fdffe48c908deb0f4c3bd36c032e72', 'alksdjslajd@Yahoo.com', 'user.png', '', '', 'mambaling', 2, '2017-01-18', 1);
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `announcement`
+--
+ALTER TABLE `announcement`
+  ADD PRIMARY KEY (`ann_id`);
+
+--
+-- Indexes for table `calendar`
+--
+ALTER TABLE `calendar`
+  ADD PRIMARY KEY (`cal_id`);
+
+--
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`custID`);
+
+--
+-- Indexes for table `paymentsubs`
+--
+ALTER TABLE `paymentsubs`
+  ADD PRIMARY KEY (`orID`);
+
+--
+-- Indexes for table `perservice`
+--
+ALTER TABLE `perservice`
+  ADD PRIMARY KEY (`perserviceID`);
+
+--
+-- Indexes for table `personnels`
+--
+ALTER TABLE `personnels`
+  ADD PRIMARY KEY (`staffID`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`pro_id`);
+
+--
+-- Indexes for table `promos`
+--
+ALTER TABLE `promos`
+  ADD PRIMARY KEY (`promoID`);
+
+--
+-- Indexes for table `reservations`
+--
+ALTER TABLE `reservations`
+  ADD PRIMARY KEY (`reservationID`);
+
+--
+-- Indexes for table `reservation_reports`
+--
+ALTER TABLE `reservation_reports`
+  ADD PRIMARY KEY (`reportsID`);
+
+--
+-- Indexes for table `salon`
+--
+ALTER TABLE `salon`
+  ADD PRIMARY KEY (`SalonID`);
+
+--
+-- Indexes for table `salon_services`
+--
+ALTER TABLE `salon_services`
+  ADD PRIMARY KEY (`serviceID`);
+
+--
+-- Indexes for table `staff_users`
+--
+ALTER TABLE `staff_users`
+  ADD PRIMARY KEY (`suID`);
+
+--
+-- Indexes for table `subscriptions`
+--
+ALTER TABLE `subscriptions`
+  ADD PRIMARY KEY (`subID`);
+
+--
+-- Indexes for table `tbl_menu`
+--
+ALTER TABLE `tbl_menu`
+  ADD PRIMARY KEY (`menu_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`userid`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `announcement`
+--
+ALTER TABLE `announcement`
+  MODIFY `ann_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `calendar`
+--
+ALTER TABLE `calendar`
+  MODIFY `cal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `custID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `paymentsubs`
+--
+ALTER TABLE `paymentsubs`
+  MODIFY `orID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `perservice`
+--
+ALTER TABLE `perservice`
+  MODIFY `perserviceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `personnels`
+--
+ALTER TABLE `personnels`
+  MODIFY `staffID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `pro_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `promos`
+--
+ALTER TABLE `promos`
+  MODIFY `promoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `reservations`
+--
+ALTER TABLE `reservations`
+  MODIFY `reservationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `reservation_reports`
+--
+ALTER TABLE `reservation_reports`
+  MODIFY `reportsID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `salon`
+--
+ALTER TABLE `salon`
+  MODIFY `SalonID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `salon_services`
+--
+ALTER TABLE `salon_services`
+  MODIFY `serviceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `staff_users`
+--
+ALTER TABLE `staff_users`
+  MODIFY `suID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `subscriptions`
+--
+ALTER TABLE `subscriptions`
+  MODIFY `subID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_menu`
+--
+ALTER TABLE `tbl_menu`
+  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

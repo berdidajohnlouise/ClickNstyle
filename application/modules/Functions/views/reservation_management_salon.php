@@ -34,7 +34,7 @@
                                                 <th>Time Reserved</th>
                                                 <th>End Reservation</th>
                                                 <th>Date Reserved</th>
-                                                <th>Status</th>
+                                                <th>Option</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -47,7 +47,7 @@
                                               <td><?php $am = date('H',strtotime($row->timeReserved)); $hour = $am % 12 ? $am % 12 : 12 ; $time = $am >= 12 ? 'pm':'am'; echo $hour.':00 '.$time;?></td>
                                               <td><?php $am = date('H',strtotime($row->eos)); $hour = $am % 12 ? $am % 12 : 12 ; $time = $am >= 12 ? 'pm':'am'; echo $hour.':00 '.$time;?></td>
                                               <td><?php echo date('M. d, Y',strtotime($row->dateReserved));?></td>
-                                              <td><a href="#" style="color:green"><i class="fa fa-check"></i> Confirm </a><span style="padding-left:3px;"><a href="#"  style="color:red"><i class="fa fa-times"></i> Cancel</a></span></td>
+                                              <td><a href="#" onclick ="confirmReservation(<?php echo $row->reservationID;?>)" style="color:green"><i class="fa fa-check"></i> Confirm </a><span style="padding-left:3px;"><a href="#" onclick ="cancelReservation(<?php echo $row->reservationID;?>)" style="color:red"><i class="fa fa-times"></i> Cancel</a></span></td>
                                             </tr>
 
                                         <?php endforeach; }?>

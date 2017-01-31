@@ -21,7 +21,7 @@
       //echo json_encode($reservation);
 
       $data = array(
-        'title'=>'Products Management',
+        'title'=>'Reservation Management',
         'sidebar'=>$sidebar,
         'userdetails'=>$usersdetails,
         'reservation'=>$reservation
@@ -32,6 +32,16 @@
       $this->load->view('reservation_management',$data);
       $this->load->view('Default/adminfooter');
 
+    }
+
+
+    function clearReservation($id){
+      $success = $this->Reservation_m->clearReservation($id);
+
+      if ($success) {
+        echo $success;
+      }
+     
     }
 
   }

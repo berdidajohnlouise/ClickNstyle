@@ -204,52 +204,6 @@
         });
 
         var gethours = "<?php echo base_url();?>Functions/Reservation/getStaffReservation/"+staffid+'/'+salonid;
-      //   $.getJSON(gethours,function(data){
-      //
-      //     if(data!=false){
-      //       $.each(data,function(element,value){
-      //         var open = value.open_hours.split(':');
-      //         var close = value.closing_hours.split(':');
-      //         var durationstart = value.timeReserved.split(':');
-      //         var durationend = value.eos.split(':');
-      //
-      //         if(open[0] > 10){
-      //           alert(open[0]);
-      //         }
-      //         else{
-      //           $('#hours').empty();
-      //           var newopen = open[0].split('0');
-      //
-      //           var i = Number(newopen[1]);
-      //
-      //           do{
-      //             var hours=  i%12? i%12 : 12;
-      //             var time = i>=12 ? 'pm' : 'am';
-      //             $('#hours').append('<option value =\"'+hours+'\">'+hours+':00 '+time+'</option>');
-      //
-      //             for(x = Number(durationstart[0]); x< Number(durationend[0]); x++){
-      //
-      //               if(x==i){
-      //                 $('#hours').append('<option value =\"'+hours+'\" disabled style="background:gray; color:white;">'+hours+':00 '+time+'</option>');
-      //               }
-      //               else{
-      //
-      //               }
-      //             }
-      //
-      //             i++;
-      //           }while(i < Number(close[0]));
-      //
-      //
-      //         }
-      //
-      //       });
-      //     }
-      //     else{
-      //       alert('false siya');
-      //     }
-      //
-      // });
 
     });
 

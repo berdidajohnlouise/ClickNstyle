@@ -21,7 +21,7 @@
 
 
       $data = array(
-        'title'=>'Products Management',
+        'title'=>'Reservation Management',
         'sidebar'=>$sidebar,
         'userdetails'=>$usersdetails,
         'reservation'=>$reservation
@@ -33,6 +33,29 @@
       $this->load->view('Default/adminfooter');
 
     }
+
+
+    function confirmReservation($id){
+      $success = $this->Reservation_m->confirmReservation($id);
+
+      if ($success) {
+        echo $success;
+      }
+     
+    }
+
+
+    function cancelReservation($id){
+      $success = $this->Reservation_m->cancelReservation($id);
+
+      if ($success) {
+        echo $success;
+      }
+     
+    }
+
+
+ 
 
   }
 

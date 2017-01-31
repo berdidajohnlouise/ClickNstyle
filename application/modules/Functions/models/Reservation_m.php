@@ -59,6 +59,7 @@
 			$this->db->join('personnels','personnels.staffID = reservations.staffID');
 			$this->db->join('salon','salon.SalonID = reservations.salonID');
 			$this->db->join('salon_services','salon_services.serviceID = reservations.serviceID');
+			$this->db->where('reservations.rsrv_status !=', 3);
 			$this->db->where('reservations.custID',$userid);
 			$query = $this->db->get();
 
@@ -96,6 +97,106 @@
 				}
 
 			}
+
+
+			function getReservationMonitoring($userid){
+
+
+			$sql = 'select * from salon where userid = ?';
+			$query1 = $this->db->query($sql,array($userid));
+
+			if($query1->num_rows()>0){
+				$row1  = $query1->row();
+
+								$this->db->select('*');
+								$this->db->from('reservations');
+								$this->db->join('personnels','personnels.staffID = reservations.staffID');
+								$this->db->join('users','users.userid = reservations.custID');
+								$this->db->join('salon_services','salon_services.serviceID = reservations.serviceID');
+								$this->db->where('reservations.rsrv_status !=',0);
+								$this->db->where('reservations.salonID',$row1->SalonID);
+								$query = $this->db->get();
+
+								if($query->num_rows()>0){
+									$row = $query->result();
+									return $row;
+								}
+
+				}
+
+			}
+
+
+		function confirmReservation($id){
+
+			
+			$sql = "update reservations set rsrv_status = 1 where reservationID = $id";
+			$query = $this->db->query($sql);
+
+	      	if($query){
+	        	return true;
+	      	}
+	      	else{
+	        	return false;
+	      	}
+
+		}
+
+		function cancelReservation($id){
+
+			$sql = "update reservations set rsrv_status = 2 where reservationID = $id";
+			$query = $this->db->query($sql);
+
+	      	if($query){
+	        	return true;
+	      	}
+	      	else{
+	        	return false;
+	      	}
+
+		}
+
+
+		function clearReservation($id){
+
+			$sql = "update reservations set rsrv_status = 3 where reservationID = $id";
+			$query = $this->db->query($sql);
+
+	      	if($query){
+	        	return true;
+	      	}
+	      	else{
+	        	return false;
+	      	}
+
+		}
+
+
+		function queryWithDate($date){
+
+			$sql = 'select * from salon where userid = ?';
+			$query1 = $this->db->query($sql,array($this->session->userdata('userid')));
+
+			if($query1->num_rows()>0){
+				$row1  = $query1->row();
+
+					$this->db->select('*');
+					$this->db->from('reservations');
+					$this->db->join('personnels','personnels.staffID = reservations.staffID');
+					$this->db->join('users','users.userid = reservations.custID');
+					$this->db->join('salon_services','salon_services.serviceID = reservations.serviceID');
+					$this->db->where('reservations.dateReserved = ',date('Y-m-d',strtotime($date)));
+					$this->db->where('reservations.rsrv_status !=',0);
+					$this->db->where('reservations.salonID',$row1->SalonID);
+					$query = $this->db->get();
+
+						if($query->num_rows()>0){
+							$row = $query->result();
+							return $row;
+						}
+
+				}
+		}
 
 
 

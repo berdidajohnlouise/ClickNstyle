@@ -36,7 +36,7 @@
                     <button type="submit" name="submit" class="btn bg-olive btn-block" id="loginform">Sign me in</button>
                 </form>
                     <a href="<?php echo base_url();?>Web/register" class="text-center">Register a new account</a>
-                    <a href="<?php echo base_url();?>Web/signinStaff" class="text-center pull-right">Sign-in as Salon Staff</a>
+                    <!-- <a href="<?php echo base_url();?>Web/signinStaff" class="text-center pull-right">Sign-in as Salon Staff</a> -->
                 </div>
 
 
