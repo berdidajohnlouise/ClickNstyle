@@ -131,7 +131,7 @@
     });
 
 
-    $('#Staffs').on('change',function(){
+    $('#calendar_date').on('change',function(){
 
         var staffid = $('#Staffs').val();
         var url = "<?php echo base_url();?>GlobalService/getStaffById/"+staffid;
@@ -144,7 +144,7 @@
 
 
         });
-
+        
         var getsalonhours = "<?php echo base_url();?>Functions/Reservation/getSalonHours/"+salonid;
 
         $.getJSON(getsalonhours,function(result){
@@ -182,7 +182,9 @@
             while(i < Number(close[0]));
 
           }
-                      var gethours = "<?php echo base_url();?>Functions/Reservation/getStaffReservation/"+staffid;
+
+                      var calendar_date = $('#calendar_date').val();
+                      var gethours = "<?php echo base_url();?>Functions/Reservation/getStaffReservation/"+staffid+'/'+calendar_date;
                       $.getJSON(gethours,function(data){
                       if(data!=false){
                         $.each(data,function(element,value){

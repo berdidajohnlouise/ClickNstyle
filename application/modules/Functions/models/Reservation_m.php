@@ -23,9 +23,10 @@
 		}
 
 
-		function getStaffReservation($staffid){
+		function getStaffReservation($staffid,$date){
 			$this->db->select('*');
 			$this->db->from('reservations');
+			$this->db->where('reservations.dateReserved',$date);
 			$this->db->where('reservations.staffID',$staffid);
 
 			$query = $this->db->get();
@@ -71,6 +72,24 @@
 		}
 
 
+
+		function getSalonHoursByCalendar($date,$staffid){
+
+			$sql = "select * from reservations where dateReserved = ? AND staffID = ?";
+			$query = $this->db->query($sql,array($date,$staffid));
+
+			if($query->num_rows()>0){
+
+				return 'true';
+			}
+			else{
+				return 'false';
+			}
+		}
+
+
+
+
 		function getSalonReservation($userid){
 
 
@@ -97,6 +116,7 @@
 				}
 
 			}
+
 
 
 			function getReservationMonitoring($userid){
