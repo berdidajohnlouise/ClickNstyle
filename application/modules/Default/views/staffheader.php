@@ -25,7 +25,7 @@
     <body class="skin-black">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a href="<?php echo base_url();?>GlobalService/" class="logo">
+            <a href="<?php echo base_url();?>Functions/staff_user" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 ClickNStyle
             </a>
@@ -137,7 +137,7 @@
                                   <div class="row">
 
                                     <div class="col-xs-12 text-center">
-                                        <a href="<?php echo base_url();?>Functions" style="color:#4682b4;" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-user"></span> Profile</a>
+                                        <a href="<?php echo base_url();?>FUnctions/staff_user" style="color:#4682b4;" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-user"></span> Profile</a>
                                     </div>
 
 
@@ -145,12 +145,10 @@
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
-                                    <div class="pull-left">
-                                        <a href="<?php echo base_url();?>GlobalService" class="btn btn-default btn-flat">Go To Main Page</a>
-                                    </div>
-                                    <div class="pull-right">
+                                    
+                                    <center>
                                         <a href="<?php echo base_url();?>Auth/logout" class="btn btn-default btn-flat">Sign out</a>
-                                    </div>
+                                    </center>
                                 </li>
                             </ul>
                         </li>

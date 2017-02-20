@@ -29,13 +29,64 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
 
-            <?php foreach($sidebar as $row):?>
-                <li>
-                    <a href="<?php echo base_url()."Functions/".$row->menu_route;?>">
-                        <i class="<?php echo $row->menu_icon;?>"></i> <span><?php echo $row->menu_details;?></span>
+           
+                            <li>
+                    <a href="http://localhost/clicknstyle/Functions/staff_user">
+                        <i class="fa fa-cogs"></i> <span>Account</span>
                     </a>
                 </li>
-            <?php endforeach;?>
+                            <li>
+                    <a href="http://localhost/clicknstyle/StaffUser/Staff_management_user_salon">
+                        <i class="fa fa-users"></i> <span>Staff User Account</span>
+                    </a>
+                </li>
+                            <li>
+                    <a href="http://localhost/clicknstyle/StaffUser/Staff_management_salon">
+                        <i class="fa fa-users"></i> <span>Staffs</span>
+                    </a>
+                </li>
+                            <li>
+                    <a href="http://localhost/clicknstyle/StaffUser/Promos_management_salon">
+                        <i class="fa fa-volume-down"></i> <span>Promos</span>
+                    </a>
+                </li>
+                            <li>
+                    <a href="http://localhost/clicknstyle/StaffUser/Products_management_salon">
+                        <i class="fa fa-tags"></i> <span>Products</span>
+                    </a>
+                </li>
+                            <li>
+                    <a href="http://localhost/clicknstyle/StaffUser/Services_management_salon">
+                        <i class="fa fa-wrench"></i> <span>Services</span>
+                    </a>
+                </li>
+                            <li>                    
+                    <a href="http://localhost/clicknstyle/StaffUser/Announcement_management_salon">
+                        <i class="fa fa-comments"></i> <span>Announcements</span>
+                    </a>
+                </li>
+                            <li>
+                    <a href="http://localhost/clicknstyle/StaffUser/Reservation_management_salon">
+                        <i class="fa fa-tasks"></i> <span>Reservations</span>
+                    </a>
+                </li>
+                            <li>
+                    <a href="http://localhost/clicknstyle/StaffUser/Reservation_monitoring_salon">
+                        <i class="fa fa-flag-checkered"></i> <span>Reservation Monitoring</span>
+                    </a>
+                </li>
+                            <li>
+                    <a href="http://localhost/clicknstyle/StaffUser/Subscription_management_salon">
+                        <i class="fa fa-credit-card"></i> <span>Subscription</span>
+                    </a>
+                </li>
+                            <li>
+                    <a href="http://localhost/clicknstyle/StaffUser/Calendar_management_salon">
+                        <i class="fa fa-calendar"></i> <span>Calendar</span>
+                    </a>
+                </li>
+            
+
 
             </ul>
         </section>

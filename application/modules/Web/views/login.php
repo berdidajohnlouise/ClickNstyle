@@ -36,7 +36,7 @@
                     <button type="submit" name="submit" class="btn bg-olive btn-block" id="loginform">Sign me in</button>
                 </form>
                     <a href="<?php echo base_url();?>Web/register" class="text-center">Register a new account</a>
-                    <!-- <a href="<?php echo base_url();?>Web/signinStaff" class="text-center pull-right">Sign-in as Salon Staff</a> -->
+                    <a href="<?php echo base_url();?>Web/signinStaff" class="text-center pull-right">Sign-in as Salon Staff</a>
                 </div>
 
 
@@ -95,7 +95,7 @@
             $.post(url,{data:userdata},function(result){
               var result1 = result.toString().replace(/\s/g, "") ;
               if(result1=="Login"){
-                window.location.href = "<?php echo base_url();?>Functions/";
+                window.location.href = "<?php echo base_url();?>GlobalService/";
               }
               else{
                 $form.find('.alert').html('Incorrect User Credentials! Please Try Again').show();

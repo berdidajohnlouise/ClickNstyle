@@ -78,6 +78,7 @@ class Salons_m extends CI_Model{
 
     $this->db->select('*');
     $this->db->from('promos');
+    $this->db->where('expDate >=',date('Y-m-d'));
     $this->db->where('salonID',$id);
     $query = $this->db->get();
     if($query->num_rows()>0){
