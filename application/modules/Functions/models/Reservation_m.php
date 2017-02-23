@@ -211,10 +211,14 @@
 					$query = $this->db->get();
 
 						if($query->num_rows()>0){
-							$row = $query->result();
-							return $row;
+							$row = $query->result_array();
+							return json_encode($row);
 						}
 
+				}
+
+				else{
+					return false;
 				}
 		}
 

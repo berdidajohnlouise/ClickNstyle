@@ -131,7 +131,7 @@
                         <b>Staff name :</b> <i><?php echo ucfirst($row->lastName).', '.ucfirst($row->firstName);?></i><br>
                         <b>Position :</b> <?php echo ucfirst($row->jobdescription); ?>
                     </div>
-
+                    <hr>
 
                   </div>
                 <?php endforeach; }?>
@@ -159,6 +159,7 @@
                       <b>Details :</b> <?php echo $row->description;?><br>
                   </div>
                 </div>
+                  <hr>
                 <?php endforeach; }?>
 
 
@@ -176,6 +177,7 @@
                       <b>Brand :</b> <?php echo $row->pro_brand;?><br>
                   </div>
                 </div>
+                  <hr>
                 <?php endforeach; }?>
 
                 <?php if(!empty($promos)){ ?>
@@ -193,6 +195,7 @@
                       <b>Expiration Date :</b> <?php echo date('M. d, Y',strtotime($row->expDate));?><br>
                   </div>
                 </div>
+                  <hr>
                 <?php endforeach; }?>
 
                 <?php if(!empty($announcements)){ ?>
@@ -206,7 +209,9 @@
                       <b>Description :</b> <?php echo ucfirst($row->ann_description);?><br>
                       <b>Posted :</b> <?php echo date('F d, Y',strtotime($row->ann_date));?><br>
                   </div>
+
                 </div>
+                <hr>
                 <?php endforeach; }?>
 
               </div>

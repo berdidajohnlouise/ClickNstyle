@@ -23,10 +23,10 @@
                                 </div><!-- /.box-header -->
 
                                 <div class="box-body table-responsive">
-                                  <form action="<?php echo base_url();?>Functions/Reservation_monitoring_salon/queryByDate" method="post">
+                                  <!-- <form action="<?php //echo base_url();?>Functions/Reservation_monitoring_salon/queryByDate" method="post"> -->
                                       <input type="date" class="btn btn-default" name="reservationdate" id="reservationdate" style="position:absolute; z-index:1; right:370px;"/>
                                       <button type="submit" class="btn btn-success" id="rsrvbutton" style="position:absolute; z-index:1; right:300px; display:none;" >Search</button>
-                                  </form>
+                                 <!--  </form> -->
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
@@ -40,10 +40,10 @@
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
-                                        <tbody >
+                                        <tbody id="reservationbody">
                                           <?php if(!empty($reservation)){?>
                                           <?php foreach($reservation as $row):?>
-                                            <tr id="reservationbody">
+                                            <tr>
                                               <td><img src="<?php echo base_url();?>assets/servicesimage/<?php echo $row->service_photo;?>" width="50" height="50"/> &nbsp;<?php echo $row->servicename;?></td>
                                               <td><img src="<?php echo base_url();?>assets/staffsimage/<?php echo $row->photo;?>" width="50" height="50"/>&nbsp;<?php echo ucfirst($row->nickName);?></td>
                                               <td><img src="<?php echo base_url();?>assets/usersimage/<?php echo $row->user_image;?>" width="50" height="50"/>&nbsp;<?php echo ucfirst($row->lastname).', '.ucfirst($row->firstname);?></td>

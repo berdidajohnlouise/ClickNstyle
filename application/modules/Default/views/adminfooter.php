@@ -545,39 +545,76 @@ function deleteCalendar(id){
 
     $('#reservationdate').on('change',function(){
 
-        $('#rsrvbutton').show();
+        // $('#rsrvbutton').show();
 
-  
-      // var rsrv_url = "<?php echo base_url();?>Functions/Reservation_management_salon/queryByDate/"+date;
-      // $.post(rsrv_url,function(result){
+        var date = $('#reservationdate').val();
 
-      //   $('#reservationbody').empty();
-      //      console.log(result);
+        //console.log(date);
+    $('#reservationbody').empty();
+          
+           // $('#reservationbody').append(
+           //    '<tr id="reservationcontent">'+
+           //    '</tr>'
+           //  );
+      var rsrv_url = "<?php echo base_url();?>Functions/Reservation_monitoring_salon/queryByDate/"+date;
+      $.getJSON(rsrv_url,function(result){
 
-      //      // if(result){
+         
 
-      //      //    $.each(result,function(element,value){
+              $.each(result,function(element,value){
+                 var eos = value.eos.split(':'); 
+                  if(eos[0]>10){ 
+                    var hours =  eos[0] % 12 ? eos[0] % 12 : 12 ;  
+                    var pm = eos[0]>=12 ? 'pm':'am'; 
+                  }
 
-      //      //      console.log(value.service_name);
-      //      //      $('#reservationbody').append(
-      //      //        // '<td><img src="<?php echo base_url();?>assets/servicesimage/'+value.service_photo+'" width="50" height="50"/> &nbsp;'+value.service_name+'</td>'+
-      //      //        // '<td><img src="<?php echo base_url();?>assets/staffsimage/'+value.photo+'" width="50" height="50"/>&nbsp; '+value.nickName+'</td>'+
-      //      //        // '<td><img src="<?php echo base_url();?>assets/usersimage/'+value.user_image+'" width="50" height="50"/>&nbsp;'+value.lastname+', '+value.firstname+'</td>'
-      //      //        // //'<td>'+ rsrv = value.timeReserved.split(':'); if(rsrv[0]>10){ hours =  rsrv[0] % 12 ? rsrv[0] % 12 : 12 ; pm = rsrv[0]>=12 ? 'pm':'am';  hours.' '.pm;}+'</td>'+
-      //      //        //'<td>'+ var eos = value.eos.split(':'); if(eos[0]>10){ var hours =  eos[0] % 12 ? eos[0] % 12 : 12 ; var pm = eos[0]>=12 ? 'pm':'am';  hours.' '.pm;}+'</td>'+
-      //      //        //'<td>'+var ts = Date.parse(value.dateReserved);+ts+''</td>'+
-      //      //        //'<td>'+ if(value.rsrv_status == 1){+'<span style="color:white; background:green; padding: 3px 10px;"> Confirmed </span>'+}else if(value.rsrv_status == 2){+'<span style="color:white; background:red; padding: 3px 10px;"> Declined </span>'+}+'</td>'
+                   var rsrv = value.timeReserved.split(':'); 
+                  if(rsrv[0]>10){ 
+                    var hours1 =  rsrv[0] % 12 ? rsrv[0] % 12 : 12 ;  
+                    var pm1 = rsrv[0]>=12 ? 'pm':'am'; 
+                  }
+                  else{
+                    var hours1 =  rsrv[0] % 12 ? rsrv[0] % 12 : 12 ;  
+                    var pm1 = rsrv[0]>=12 ? 'pm':'am'; 
+                  }
+                  
+                  
+                  
+                if(value.rsrv_status == 1){
+                //console.log(value.service_photo + ' '+ value.servicename);
+                $('#reservationbody').append(
+                  '<tr>'+
+                  '<td><img src="<?php echo base_url();?>assets/servicesimage/'+value.service_photo+'" width="50" height="50"/> &nbsp;'+value.servicename+'</td>'+
+                  '<td><img src="<?php echo base_url();?>assets/staffsimage/'+value.photo+'" width="50" height="50"/>&nbsp; '+value.nickName+'</td>'+
+                  '<td><img src="<?php echo base_url();?>assets/usersimage/'+value.user_image+'" width="50" height="50"/>&nbsp;'+value.lastname+', '+value.firstname+'</td>'+
+                  '<td>'+ hours1+ ':00 '+ pm1+'</td>'+
+                  '<td>'+ hours+ ':00 '+ pm+'</td>'+
+                  '<td>'+value.dateReserved+'</td>'+
+                  '<td><span style="color:white; background:green; padding: 3px 10px;"> Confirmed </span></td>'+
                                               
+                  '</tr>'
+                  );
 
-      //      //        );
-      //      //    });
+                }else if(value.rsrv_status == 2){
 
-      //      // }
-      //      // else
-      //      // {
-      //      //  $('#reservationbody').empty();
-      //      // }
-      //});
+                  $('#reservationbody').append(
+                  '<tr>'+
+                  '<td><img src="<?php echo base_url();?>assets/servicesimage/'+value.service_photo+'" width="50" height="50"/> &nbsp;'+value.servicename+'</td>'+
+                  '<td><img src="<?php echo base_url();?>assets/staffsimage/'+value.photo+'" width="50" height="50"/>&nbsp; '+value.nickName+'</td>'+
+                  '<td><img src="<?php echo base_url();?>assets/usersimage/'+value.user_image+'" width="50" height="50"/>&nbsp;'+value.lastname+', '+value.firstname+'</td>'+
+                  '<td>'+ hours1+ ':00 '+ pm1+'</td>'+
+                  '<td>'+ hours+ ':00 '+ pm+'</td>'+
+                  '<td>'+value.dateReserved+'</td>'+
+                  '<td><span style="color:white; background:red; padding: 3px 10px;"> Declined </span></td>'+
+                                              
+                  '</tr>'
+                  );
+
+                }
+              });
+
+          
+      });
 
 
     });
