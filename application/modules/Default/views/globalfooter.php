@@ -129,21 +129,26 @@
     });
 
     });
+  
 
-
-    $('#calendar_date').on('change',function(){
-
-        var staffid = $('#Staffs').val();
-        var url = "<?php echo base_url();?>GlobalService/getStaffById/"+staffid;
-        var salonid = $('#rsrv_salonid').val();
-
-        $('#hours').empty();
-      $.getJSON(url,function(result){
+  $('#Staffs').on('change',function(){
+     var staffid = $('#Staffs').val();
+      var url = "<?php echo base_url();?>GlobalService/getStaffById/"+staffid;
+       $.getJSON(url,function(result){
 
         $('#staff_image').attr('src','<?php echo base_url();?>assets/staffsimage/'+result.photo+'');
 
 
         });
+  });
+
+    $('#calendar_date').on('change',function(){
+      var staffid = $('#Staffs').val();
+       
+        var salonid = $('#rsrv_salonid').val();
+
+        $('#hours').empty();
+      
         
         var getsalonhours = "<?php echo base_url();?>Functions/Reservation/getSalonHours/"+salonid;
 
@@ -209,7 +214,36 @@
 
     });
 
+
+
   });
+</script>
+
+<script type="text/javascript">
+
+$('#calendar_date').on('change',function(){
+
+  if($('#Staffs').val()== ''){
+    alert('Please Provide staff to proceed');
+    $('#serviceStaff').focus();
+  }
+  else{
+
+    var datenow = new Date();
+    // var nowmonth = (datenow.getMonth()+1) >= 10 ? (datenow.getMonth()+1) : '0'+(datenow.getMonth()+1);
+    var fulldate = datenow.getFullYear() + '-'+(datenow.getMonth()+1)+'-'+datenow.getDate();
+    if(new Date($('#calendar_date').val())>= new Date(fulldate)){
+     $('#reservationbutton').show();
+    }
+    else{
+      alert('Input of calendar must be greater than or equal to current date');
+      $('#reservationbutton').hide();
+    }
+    
+  }
+
+});
+
 </script>
 
 <!-- reveal staffs -->

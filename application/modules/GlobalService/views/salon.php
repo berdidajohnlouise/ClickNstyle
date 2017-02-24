@@ -67,7 +67,7 @@
               </div>
 
               <div class="form-group">
-                  <label for="">Reserve Hours:</label>
+                <label for="">Reserve Hours:</label>
                 <select class="form-control" name="reservationhours" id="hours" required>
                   <!-- <?php
                   //$open = date('H',strtotime($salon->open_hours));
@@ -83,7 +83,7 @@
 
         </div><!-- end of row -->
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" id="reservationbutton" hidden>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         <button type="button" id="addReservation" class="btn btn-success">Save Changes</button>
       </div>

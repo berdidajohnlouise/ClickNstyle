@@ -566,6 +566,9 @@ function deleteCalendar(id){
                   if(eos[0]>10){ 
                     var hours =  eos[0] % 12 ? eos[0] % 12 : 12 ;  
                     var pm = eos[0]>=12 ? 'pm':'am'; 
+                  }else{
+                    var hours =  eos[0] % 12 ? eos[0] % 12 : 12 ;  
+                    var pm = eos[0]>=12 ? 'pm':'am'; 
                   }
 
                    var rsrv = value.timeReserved.split(':'); 
