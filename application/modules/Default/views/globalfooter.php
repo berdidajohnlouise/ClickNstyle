@@ -223,28 +223,72 @@
 
 $('#calendar_date').on('change',function(){
 
-  if($('#Staffs').val()== ''){
-    alert('Please Provide staff to proceed');
-    $('#serviceStaff').focus();
-  }
-  else{
 
-    var datenow = new Date();
-    // var nowmonth = (datenow.getMonth()+1) >= 10 ? (datenow.getMonth()+1) : '0'+(datenow.getMonth()+1);
-    var fulldate = datenow.getFullYear() + '-'+(datenow.getMonth()+1)+'-'+datenow.getDate();
-    if(new Date($('#calendar_date').val())>= new Date(fulldate)){
-     $('#reservationbutton').show();
+  // alert($('#Staffs').val());
+    if($('#Staffs').val()== '' || $('#Staffs').val()==null){
+      alert('Please Provide staff to proceed');
+      $('#serviceStaff').focus();
     }
     else{
-      alert('Input of calendar must be greater than or equal to current date');
-      $('#reservationbutton').hide();
+
+      var datenow = new Date();
+      // var nowmonth = (datenow.getMonth()+1) >= 10 ? (datenow.getMonth()+1) : '0'+(datenow.getMonth()+1);
+      var fulldate = datenow.getFullYear() + '-'+(datenow.getMonth()+1)+'-'+datenow.getDate();
+      if(new Date($('#calendar_date').val())>= new Date(fulldate)){
+       
+        $('#hours').focus();
+
+
+      }
+      else{
+        alert('Input of calendar must be greater than or equal to current date');
+        $('#reservationbutton').hide();
+      }
+      
     }
-    
-  }
 
 });
 
 </script>
+
+
+<script type="text/javascript">
+
+  $('#hours').on('change',function(){
+     if($('#Staffs').val()== '' || $('#Staffs').val()==null){
+      alert('Please Provide staff to proceed');
+      $('#serviceStaff').focus();
+    }
+     else{
+
+      var datenow = new Date();
+      // var nowmonth = (datenow.getMonth()+1) >= 10 ? (datenow.getMonth()+1) : '0'+(datenow.getMonth()+1);
+      var fulldate = datenow.getFullYear() + '-'+(datenow.getMonth()+1)+'-'+datenow.getDate();
+      if(new Date($('#calendar_date').val())>= new Date(fulldate)){
+       
+        var d = new Date(); // for now
+        d.getHours(); // => 9
+
+        if($('#hours').val() > d.getHours() ){
+         $('#reservationbutton').show();
+        }else{
+           alert('Reservation hours must be greater than current time ');
+          $('#hours').focus();
+          
+        }
+
+
+      }
+      else{
+        alert('Input of calendar must be greater than or equal to current date');
+        $('#reservationbutton').hide();
+      }
+      
+    }    
+  });
+
+</script>
+
 
 <!-- reveal staffs -->
 
