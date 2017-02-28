@@ -56,7 +56,7 @@
 <script type="text/javascript">
   $('#btnreserve').click(function(){
 
-
+    $('#salonservices').empty();
       var salonid = $('#salon_id').val();
 
       var url = "<?php echo base_url();?>GlobalService/getSalonService/"+salonid;
@@ -82,7 +82,7 @@
       $('#serviceStaff').show();
       $('#serviceDuration').show();
 
-      $('#rsrv_duration').empty();
+      $('#rsrv_duration').empty();  
       $('#Staffs').empty();
       $('#Staffs').append('<option selected="selected" disabled>--Choose Staffs--</option>');
 
@@ -279,6 +279,7 @@ $('#calendar_date').on('change',function(){
                  $('#reservationbutton').show();
                 }else{
                    alert('Reservation hours must be greater than current time ');
+                   $('#reservationbutton').hide();
                   $('#hours').focus();
                   
                 }

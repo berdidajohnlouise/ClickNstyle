@@ -51,14 +51,14 @@ class Services_m extends CI_Model{
 
 function getStaffService($serviceID){
 
-  $sql = "select service_type from salon_services where serviceID = $serviceID";
+  $sql = "select * from salon_services where serviceID = $serviceID";
   $query = $this->db->query($sql);
 
   if($query->num_rows()>0){
     $row = $query->row();
    
     if($row->service_type == 'Hair'){
-      $sql1 = "select * from personnels where jobdescription = 'Barber' OR jobdescription = 'Colorist'  OR jobdescription = 'Hair Stylist' OR 'Shampoo Technician'";
+      $sql1 = "select * from personnels where (jobdescription = 'Barber' OR jobdescription = 'Colorist'  OR jobdescription = 'Hair Stylist' OR 'Shampoo Technician') AND salonID = $row->salonID";
       $query1 = $this->db->query($sql1);
 
       if($query1->num_rows()>0){
@@ -68,7 +68,7 @@ function getStaffService($serviceID){
       }
     }
     else if($row->service_type == 'Manicure' || $row == 'Pedicure'){
-      $sql1 = "select * from personnels where jobdescription = 'Nail Technician'";
+      $sql1 = "select * from personnels where jobdescription = 'Nail Technician' AND salonID = $row->salonID";
       $query1 = $this->db->query($sql1);
 
       if($query1->num_rows()>0){
@@ -78,7 +78,7 @@ function getStaffService($serviceID){
 
     }
     else if($row->service_type == 'Makeup'){
-      $sql1 = "select * from personnels where jobdescription = 'Esthetician' OR jobdescription = 'Makeup Artist'";
+      $sql1 = "select * from personnels where (jobdescription = 'Esthetician' OR jobdescription = 'Makeup Artist') AND salonID = $row->salonID";
       $query1 = $this->db->query($sql1);
 
       if($query1->num_rows()>0){
@@ -88,7 +88,7 @@ function getStaffService($serviceID){
 
     }
     else if($row->service_type == 'Facial'){
-      $sql1 = "select * from personnels where jobdescription = 'Esthetician' OR jobdescription = 'Makeup Artist'";
+      $sql1 = "select * from personnels where (jobdescription = 'Esthetician' OR jobdescription = 'Makeup Artist') AND salonID = $row->salonID";
       $query1 = $this->db->query($sql1);
 
       if($query1->num_rows()>0){
