@@ -264,19 +264,30 @@ $('#calendar_date').on('change',function(){
       var datenow = new Date();
       // var nowmonth = (datenow.getMonth()+1) >= 10 ? (datenow.getMonth()+1) : '0'+(datenow.getMonth()+1);
       var fulldate = datenow.getFullYear() + '-'+(datenow.getMonth()+1)+'-'+datenow.getDate();
+
+   
       if(new Date($('#calendar_date').val())>= new Date(fulldate)){
        
         var d = new Date(); // for now
         d.getHours(); // => 9
 
-        if($('#hours').val() > d.getHours() ){
-         $('#reservationbutton').show();
-        }else{
-           alert('Reservation hours must be greater than current time ');
-          $('#hours').focus();
-          
-        }
 
+          if(new Date($('#calendar_date').val()).toDateString() == datenow.toDateString()){
+
+
+                 if($('#hours').val() > d.getHours() ){
+                 $('#reservationbutton').show();
+                }else{
+                   alert('Reservation hours must be greater than current time ');
+                  $('#hours').focus();
+                  
+                }
+
+          }
+          else{
+             $('#reservationbutton').show();
+          }
+    
 
       }
       else{

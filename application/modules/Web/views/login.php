@@ -94,8 +94,14 @@
             var url ="<?php echo base_url();?>Auth/login";
             $.post(url,{data:userdata},function(result){
               var result1 = result.toString().replace(/\s/g, "") ;
-              if(result1=="Login"){
+              if(result1==0 || result1 == '0'){
+                window.location.href = "<?php echo base_url();?>Functions/";
+              }
+              else if(result1==1 || result1 == '1'){
                 window.location.href = "<?php echo base_url();?>GlobalService/";
+              }
+              else if(result1==2 || result1 == '2'){
+                 window.location.href = "<?php echo base_url();?>Functions/";
               }
               else{
                 $form.find('.alert').html('Incorrect User Credentials! Please Try Again').show();

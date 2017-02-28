@@ -107,11 +107,9 @@ class Auth extends MY_Controller{
     );
     $success = $this->M_auth->loginSalonStaff($userdetails);
 
-    if($success == 'Login'){
+    
       echo $success;
-    }else{
-      echo $success;
-    }
+  
   }
 
   function logout(){

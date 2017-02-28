@@ -100,7 +100,7 @@ class M_auth extends CI_Model{
           );
           $this->session->set_userdata($session);
 
-          return 'Login';
+          return $row->usertype;
 
       }
       else{
