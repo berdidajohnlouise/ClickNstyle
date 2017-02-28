@@ -28,7 +28,8 @@
 			$this->db->from('reservations');
 			$this->db->where('reservations.dateReserved',$date);
 			$this->db->where('reservations.staffID',$staffid);
-
+			$this->db->where('reservations.rsrv_status',1);
+			//$this->db->where('reservations.rsrv_status',2);
 			$query = $this->db->get();
 
 			if($query->num_rows()>0){
@@ -95,7 +96,7 @@
 
 			$sql = 'select * from salon where userid = ?';
 			$query1 = $this->db->query($sql,array($userid));
-
+			
 			if($query1->num_rows()>0){
 				$row1  = $query1->row();
 
@@ -106,6 +107,7 @@
 								$this->db->join('salon_services','salon_services.serviceID = reservations.serviceID');
 								$this->db->where('reservations.rsrv_status',0);
 								$this->db->where('reservations.salonID',$row1->SalonID);
+								$this->db->where('reservations.dateReserved >=',Date('Y-m-d'));
 								$query = $this->db->get();
 
 								if($query->num_rows()>0){
