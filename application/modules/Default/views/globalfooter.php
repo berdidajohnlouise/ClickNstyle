@@ -57,6 +57,7 @@
   $('#btnreserve').click(function(){
 
     $('#salonservices').empty();
+    $('#salonservices').append('<option disabled selected>--Select Services--</option>');
       var salonid = $('#salon_id').val();
 
       var url = "<?php echo base_url();?>GlobalService/getSalonService/"+salonid;
